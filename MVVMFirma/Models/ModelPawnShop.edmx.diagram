@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="09466ee6c97548e382de6beca8350a7f" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="PawnShopModel.Branches" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.Categories" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.Clients" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.Employees" Width="1.5" PointX="3" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.EmployeeShifts" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.InterestRates" Width="1.5" PointX="3" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.Items" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.OnlineSaleOffers" Width="1.5" PointX="10.5" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.PawnLoanItems" Width="1.5" PointX="13.5" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.PawnLoans" Width="1.5" PointX="5.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.Payments" Width="1.5" PointX="3" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.PriceHistory" Width="1.5" PointX="10.5" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.PurchaseContractItems" Width="1.5" PointX="13.5" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.PurchaseContracts" Width="1.5" PointX="8.25" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.RecordHistory" Width="1.5" PointX="0.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.Sales" Width="1.5" PointX="12.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.SalesItems" Width="1.5" PointX="16" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.sysdiagrams" Width="1.5" PointX="10.5" PointY="14.125" IsExpanded="true" />
+        <AssociationConnector Association="PawnShopModel.FK__Branches__histor__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__EmployeeS__branc__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__Items__current_b__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__Categorie__histo__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__Categorie__paren__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__Items__category___5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__Clients__history__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PawnLoans__clien__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PurchaseC__clien__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__EmployeeS__emplo__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__Employees__histo__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PriceHist__chang__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__EmployeeS__histo__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__InterestR__histo__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PawnLoans__inter__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__Items__history_i__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__OnlineSal__item___6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PawnLoanI__item___66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PriceHist__item___5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PurchaseC__item___03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__SalesItem__item___7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__OnlineSal__histo__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__Sales__online_of__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PawnLoanI__histo__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PawnLoanI__pawn___656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PawnLoans__histo__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PawnLoans__previ__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__Payments__histor__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__Sales__payment_i__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PurchaseC__histo__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PurchaseC__purch__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__PurchaseC__histo__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__Sales__history_i__7B5B524B" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__SalesItem__histo__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="PawnShopModel.FK__SalesItem__sale___7E37BEF6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,23 @@
+<UserControl x:Class="MVVMFirma.Views.AllPurchaseContracts"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMFirma.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <DataGrid AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="purchase_contract_id"/>
+                <DataGridTextColumn Header="client_id"/>
+                <DataGridTextColumn Header="agreement_number"/>
+                <DataGridTextColumn Header="purchase_date"/>
+                <DataGridTextColumn Header="total_purchase_price"/>
+                <DataGridTextColumn Header="status"/>
+                <DataGridTextColumn Header="is_active"/>
+                <DataGridTextColumn Header="history_id"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
