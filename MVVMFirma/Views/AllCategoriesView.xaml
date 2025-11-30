@@ -12,8 +12,8 @@
                 <DataGridTextColumn Header="Category ID" Binding="{Binding category_id}"/>
                 <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
                 <DataGridTextColumn Header="Parent ID" Binding="{Binding parent_id}"/>
-                <DataGridTextColumn Header="Is active?"  Binding="{Binding is_active}"/>
-                <DataGridTextColumn Header="history_id"  Binding="{Binding history_id}"/>
+                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
+                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
