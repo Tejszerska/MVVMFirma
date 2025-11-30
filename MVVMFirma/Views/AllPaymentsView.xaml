@@ -1,4 +1,4 @@
-<UserControl x:Class="MVVMFirma.Views.AllPayments"
+<local:AllViewBase x:Class="MVVMFirma.Views.AllPayments"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label>Viewing of all payments</Label>
-
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="payment_id ID" Binding="{Binding payment_id}"/>
+                <DataGridTextColumn Header="reference_type" Binding="{Binding reference_type}"/>
+                <DataGridTextColumn Header="reference_id" Binding="{Binding reference_id}"/>
+                <DataGridTextColumn Header="payment_date" Binding="{Binding payment_date}"/>
+                <DataGridTextColumn Header="amount" Binding="{Binding amount}"/>
+                <DataGridTextColumn Header="payment_method" Binding="{Binding payment_method}"/>
+                <DataGridTextColumn Header="description" Binding="{Binding description}"/>
+                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
+                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
-</UserControl>
+</local:AllViewBase>

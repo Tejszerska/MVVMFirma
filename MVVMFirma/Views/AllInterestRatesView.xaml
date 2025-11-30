@@ -1,4 +1,4 @@
-<UserControl x:Class="MVVMFirma.Views.AllInterestRates"
+<local:AllViewBase x:Class="MVVMFirma.Views.AllInterestRates"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,17 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <DataGrid AutoGenerateColumns="False">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="interest_rate_id"/>
-                <DataGridTextColumn Header="name"/>
-                <DataGridTextColumn Header="rate_percent"/>
-                <DataGridTextColumn Header="period_days"/>
-                <DataGridTextColumn Header="minimal_interest"/>
-                <DataGridTextColumn Header="is_default"/>
-                <DataGridTextColumn Header="is_active"/>
-                <DataGridTextColumn Header="history_id"/>
+                <DataGridTextColumn Header="Interest rate ID" Binding="{Binding interest_rate_id}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                <DataGridTextColumn Header="Rate percent" Binding="{Binding rate_percent}"/>
+                <DataGridTextColumn Header="Period days" Binding="{Binding period_days}"/>
+                <DataGridTextColumn Header="Minimal interest" Binding="{Binding minimal_interest}"/>
+                <DataGridTextColumn Header="Is default?" Binding="{Binding is_default}"/>
+                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
+                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
-</UserControl>
+</local:AllViewBase>

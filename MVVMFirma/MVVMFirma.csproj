@@ -234,6 +234,7 @@
     <Compile Include="Views\AllSalesView.xaml.cs">
       <DependentUpon>AllSalesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AllViewBase.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -338,6 +339,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\AllBranchesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

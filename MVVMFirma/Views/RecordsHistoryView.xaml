@@ -1,4 +1,4 @@
-<UserControl x:Class="MVVMFirma.Views.RecordsHistory"
+<local:AllViewBase x:Class="MVVMFirma.Views.RecordsHistory"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,17 +7,17 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <DataGrid AutoGenerateColumns="False">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="history_id"/>
-                <DataGridTextColumn Header="created_by"/>
-                <DataGridTextColumn Header="created_at"/>
-                <DataGridTextColumn Header="created_in"/>
-                <DataGridTextColumn Header="modified_by"/>
-                <DataGridTextColumn Header="modified_at"/>
-                <DataGridTextColumn Header="deleted_by"/>
-                <DataGridTextColumn Header="deleted_at"/>
+                <DataGridTextColumn Header="history_id" Binding="{Binding history_id}"/>
+                <DataGridTextColumn Header="created_by" Binding="{Binding created_by}"/>
+                <DataGridTextColumn Header="created_at" Binding="{Binding created_at}"/>
+                <DataGridTextColumn Header="created_in" Binding="{Binding created_in}"/>
+                <DataGridTextColumn Header="modified_by" Binding="{Binding modified_by}"/>
+                <DataGridTextColumn Header="modified_at" Binding="{Binding modified_at}"/>
+                <DataGridTextColumn Header="deleted_by" Binding="{Binding deleted_by}"/>
+                <DataGridTextColumn Header="deleted_at" Binding="{Binding deleted_at}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
-</UserControl>
+</local:AllViewBase>

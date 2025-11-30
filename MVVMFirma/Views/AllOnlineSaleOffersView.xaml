@@ -1,4 +1,4 @@
-<UserControl x:Class="MVVMFirma.Views.AllOnlineSaleOffers"
+<local:AllViewBase x:Class="MVVMFirma.Views.AllOnlineSaleOffers"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,23 +7,23 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <DataGrid AutoGenerateColumns="False">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="online_offer_id"/>
-                <DataGridTextColumn Header="item_id"/>
-                <DataGridTextColumn Header="platform"/>
-                <DataGridTextColumn Header="offer_title"/>
-                <DataGridTextColumn Header="listing_price"/>
-                <DataGridTextColumn Header="listing_date"/>
-                <DataGridTextColumn Header="expiration_date"/>
-                <DataGridTextColumn Header="url"/>
-                <DataGridTextColumn Header="status"/>
-                <DataGridTextColumn Header="views_count"/>
-                <DataGridTextColumn Header="messages_count"/>
-                <DataGridTextColumn Header="notes"/>
-                <DataGridTextColumn Header="is_active"/>
-                <DataGridTextColumn Header="history_id"/>
+                <DataGridTextColumn Header="online_offer_id" Binding="{Binding online_offer_id}"/>
+                <DataGridTextColumn Header="item_id" Binding="{Binding item_id}"/>
+                <DataGridTextColumn Header="platform" Binding="{Binding platform}"/>
+                <DataGridTextColumn Header="offer_title" Binding="{Binding offer_title}"/>
+                <DataGridTextColumn Header="listing_price" Binding="{Binding listing_price}"/>
+                <DataGridTextColumn Header="listing_date" Binding="{Binding listing_date}"/>
+                <DataGridTextColumn Header="expiration_date" Binding="{Binding expiration_date}"/>
+                <DataGridTextColumn Header="url" Binding="{Binding url}"/>
+                <DataGridTextColumn Header="status" Binding="{Binding status}"/>
+                <DataGridTextColumn Header="views_count" Binding="{Binding views_count}"/>
+                <DataGridTextColumn Header="messages_count" Binding="{Binding messages_count}"/>
+                <DataGridTextColumn Header="notes" Binding="{Binding notes}"/>
+                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
+                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
-</UserControl>
+</local:AllViewBase>

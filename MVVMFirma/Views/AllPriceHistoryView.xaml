@@ -1,4 +1,4 @@
-<UserControl x:Class="MVVMFirma.Views.AllPriceHistory"
+<local:AllViewBase x:Class="MVVMFirma.Views.AllPriceHistory"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,15 +7,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <DataGrid AutoGenerateColumns="False">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="price_history_id"/>
-                <DataGridTextColumn Header="item_id"/>
-                <DataGridTextColumn Header="previous_value"/>
-                <DataGridTextColumn Header="new_value"/>
-                <DataGridTextColumn Header="changed_by"/>
-                <DataGridTextColumn Header="changed_at"/>
+                <DataGridTextColumn Header="price_history_id" Binding="{Binding price_history_id}"/>
+                <DataGridTextColumn Header="item_id" Binding="{Binding item_id}"/>
+                <DataGridTextColumn Header="previous_value" Binding="{Binding previous_value}"/>
+                <DataGridTextColumn Header="new_value" Binding="{Binding new_value}"/>
+                <DataGridTextColumn Header="changed_by" Binding="{Binding changed_by}"/>
+                <DataGridTextColumn Header="changed_at" Binding="{Binding changed_at}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
-</UserControl>
+</local:AllViewBase>

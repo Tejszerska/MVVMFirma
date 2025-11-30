@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Interaction logic for AllItems.xaml
     /// </summary>
-    public partial class AllItems : UserControl
+    public partial class AllItems : AllViewBase
     {
         public AllItems()
         {
