@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Interaction logic for SinglePriceHistory.xaml
     /// </summary>
-    public partial class SinglePriceHistory : UserControl
+    public partial class SinglePriceHistory : AllViewBase
     {
         public SinglePriceHistory()
         {

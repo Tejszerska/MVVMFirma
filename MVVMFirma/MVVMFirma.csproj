@@ -144,6 +144,7 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>ModelPawnShop.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Abstract\AllViewModel.cs" />
     <Compile Include="ViewModels\AllBranchesViewModel.cs" />
     <Compile Include="ViewModels\AllCategoriesViewModel.cs" />
     <Compile Include="ViewModels\AllClientsViewModel.cs" />

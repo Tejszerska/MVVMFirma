@@ -1,53 +1,14 @@
-using MVVMFirma.Helper;
 using MVVMFirma.Models;
-using System;
-using System.Collections.Generic;
+using MVVMFirma.ViewModels.Abstract;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace MVVMFirma.ViewModels
 {
-    public class RecordsHistoryViewModel : WorkspaceViewModel
+    public class RecordsHistoryViewModel : AllViewModel<RecordHistory>
     {
-        #region DataBase
-        // ten obiekt reprezentuje bd
-        private readonly PawnShopEntities pawnShopEntities;
-        #endregion
-        #region Command
-        private BaseCommand _LoadCommand;
-        public ICommand LoadCommand
-        {
-            get
-            {
-                if (_LoadCommand == null) _LoadCommand = new BaseCommand(load);
-                return _LoadCommand;
-            }
-        }
-        #endregion
-        #region Lista
-        private ObservableCollection<RecordHistory> _List;
-        public ObservableCollection<RecordHistory> List
-        {
-            get
-            {
-                if (_List == null) load();
-                return _List;
-
-            }
-            set
-            {
-                if (_List != value)
-                {
-                    _List = value;
-                    OnPropertyChanged(() => List); // odswieza wyswietlanie listy
-                }
-            }
-        }
-
-        private void load()
+        #region 
+        public override void Load()
         {
 
             List = new ObservableCollection<RecordHistory>
@@ -58,11 +19,10 @@ namespace MVVMFirma.ViewModels
         #endregion
         #region Constructor
         public RecordsHistoryViewModel()
+            : base()
         {
-            base.DisplayName = "Record History";
-            pawnShopEntities = new PawnShopEntities();
+            base.DisplayName = "RecordHistory";
         }
-
         #endregion
     }
 }

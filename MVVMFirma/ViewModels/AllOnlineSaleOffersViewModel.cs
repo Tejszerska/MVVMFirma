@@ -1,54 +1,15 @@
-using MVVMFirma.Helper;
 using MVVMFirma.Models;
-using MVVMFirma.ViewModels;
-using System;
-using System.Collections.Generic;
+using MVVMFirma.ViewModels.Abstract;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+
 
 namespace MVVMFirma.ViewModels
 {
-public class AllOnlineSaleOffersViewModel : WorkspaceViewModel
+public class AllOnlineSaleOffersViewModel : AllViewModel<OnlineSaleOffers>
     {
-        #region DataBase
-        // ten obiekt reprezentuje bd
-        private readonly PawnShopEntities pawnShopEntities;
-        #endregion
-        #region Command
-        private BaseCommand _LoadCommand;
-        public ICommand LoadCommand
-        {
-            get
-            {
-                if (_LoadCommand == null) _LoadCommand = new BaseCommand(load);
-                return _LoadCommand;
-            }
-        }
-        #endregion
-        #region Lista
-        private ObservableCollection<OnlineSaleOffers> _List;
-        public ObservableCollection<OnlineSaleOffers> List
-        {
-            get
-            {
-                if (_List == null) load();
-                return _List;
-
-            }
-            set
-            {
-                if (_List != value)
-                {
-                    _List = value;
-                    OnPropertyChanged(() => List); // odswieza wyswietlanie listy
-                }
-            }
-        }
-
-        private void load()
+        #region 
+        public override void Load()
         {
 
             List = new ObservableCollection<OnlineSaleOffers>
@@ -59,9 +20,10 @@ public class AllOnlineSaleOffersViewModel : WorkspaceViewModel
         #endregion
         #region Constructor
         public AllOnlineSaleOffersViewModel()
+            : base()
         {
-            base.DisplayName = "Online Sale Offers";
-            pawnShopEntities = new PawnShopEntities();
+            base.DisplayName = "OnlineSaleOffers";
+
         }
 
         #endregion

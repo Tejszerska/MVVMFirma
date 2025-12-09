@@ -1,4 +1,4 @@
-﻿<Window x:Class="MVVMFirma.Views.MainWindow"
+<Window x:Class="MVVMFirma.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
         Title="MVVMFirma" Height="300" Width="300" WindowState="Maximized"
@@ -9,7 +9,7 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="auto" MaxWidth="300"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -33,13 +33,16 @@
             <ToggleButton Width="32" Height="32" Background="Yellow" Margin="2"/>
         </ToolBar>
         <Border Grid.Row="2" Grid.Column="0">
-            <HeaderedContentControl 
+            <ScrollViewer>
+                <HeaderedContentControl 
                 Header="Operacje" 
                 Background="Aqua" 
                 Content="{Binding Path=Commands}" 
                 ContentTemplate="{StaticResource CommandsTemplate}"
                 Style="{StaticResource MainHCCStyle}"
-                />
+                 />
+            </ScrollViewer>
+           
         </Border>
         <Border Grid.Row="2" Grid.Column="1">
             <HeaderedContentControl 
