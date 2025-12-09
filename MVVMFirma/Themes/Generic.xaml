@@ -17,12 +17,32 @@
                             <ToggleButton Content="Add" Height="30" Width="70"/>
                             <ToggleButton Content="Edit" Height="30" Width="70"/>
                             <ToggleButton Content="Delete" Height="30" Width="70"/>
-                            <ToggleButton Content="Refresh" Height="30" Width="70"/>
+                            <ToggleButton Content="Refresh" Height="30" Width="70" Command="{Binding LoadCommand}"/>
                         </ToolBar>
                         <Expander Grid.Row="1" Background="Azure" Header="Filter and Sort">
                             <Label>Filtring and sorting </Label>
                         </Expander>
                         <ContentPresenter Grid.Row="2" Margin="0,5,0,5" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:OneViewBase}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:OneViewBase}">
+                    <Grid Margin="0,10,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="34"/>
+                            <RowDefinition Height="*"/>                            
+                        </Grid.RowDefinitions>
+                        <ToolBar Grid.Row="0" Height="30" Margin="0,2,0,2">
+                            <ToggleButton Content="Save and close" Command="{Binding SaveAndCloseCommand}"/>
+                            <ToggleButton Content="Cancel"/>
+                        </ToolBar>
+                        <ContentPresenter Grid.Row="1" Margin="0,5,0,5"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

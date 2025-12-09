@@ -145,6 +145,7 @@
       <DependentUpon>ModelPawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Abstract\AllViewModel.cs" />
+    <Compile Include="ViewModels\Abstract\OneViewModel.cs" />
     <Compile Include="ViewModels\AllBranchesViewModel.cs" />
     <Compile Include="ViewModels\AllCategoriesViewModel.cs" />
     <Compile Include="ViewModels\AllClientsViewModel.cs" />
@@ -290,6 +291,7 @@
     <Compile Include="Views\NowyTowarView.xaml.cs">
       <DependentUpon>NowyTowarView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\OneViewBase.cs" />
     <Compile Include="Views\RecordsHistoryView.xaml.cs">
       <DependentUpon>RecordsHistoryView.xaml</DependentUpon>
     </Compile>
