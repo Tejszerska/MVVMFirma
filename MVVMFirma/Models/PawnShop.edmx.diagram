@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fa673538344449058e40be4e02a1e05f" Name="Diagram1">
+      <Diagram DiagramId="fa673538344449058e40be4e02a1e05f" Name="Diagram1" ZoomLevel="138">
         <EntityTypeShape EntityType="PawnShopModel.AcquisitionSourceTypes" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PawnShopModel.Branches" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="PawnShopModel.Categories" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PawnShopModel.Clients" Width="1.5" PointX="5.25" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PawnShopModel.Clients" Width="1.5" PointX="5.375" PointY="39" IsExpanded="true" />
         <EntityTypeShape EntityType="PawnShopModel.ContractStatuses" Width="1.5" PointX="3" PointY="30.875" IsExpanded="true" />
         <EntityTypeShape EntityType="PawnShopModel.DocumentTypes" Width="1.5" PointX="3" PointY="34.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PawnShopModel.EmployeeRoles" Width="1.5" PointX="3" PointY="38.25" IsExpanded="true" />

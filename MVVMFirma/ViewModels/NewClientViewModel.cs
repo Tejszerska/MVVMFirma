@@ -1,3 +1,5 @@
+using MVVMFirma.Models;
+using MVVMFirma.ViewModels.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,12 +7,157 @@ using System.Text;
 using System.Threading.Tasks;
 namespace MVVMFirma.ViewModels
 {
-    public class NewClientViewModel : WorkspaceViewModel
+    public class NewClientViewModel : OneViewModel<Clients>
     {
+        #region Constructor
         public NewClientViewModel()
+            : base()
         {
             base.DisplayName = "New Client";
+            item = new Clients();
         }
+        #endregion
+        #region Properties
+        // tylko dla pol towarow ktore bedziemy dodawac - dodajemu properties
+        public string First_name
+        {
+            get
+            {
+                return item.first_name;
+            }
+            set
+            {
+                if (value != item.first_name)
+                {
+                    item.first_name = value;
+                    OnPropertyChanged(() => First_name);
+                }
+            }
+        }
+
+        public string Last_name
+        {
+            get
+            {
+                return item.last_name;
+            }
+            set
+            {
+                if (value != item.last_name)
+                {
+                    item.last_name = value;
+                    OnPropertyChanged(() => Last_name);
+                }
+            }
+        }
+
+        public int Document_type
+        {
+            get
+            {
+                return item.document_type_id;
+            }
+            set
+            {
+                if (value != item.document_type_id)
+                {
+                    item.document_type_id = value;
+                    OnPropertyChanged(() => Document_type);
+                }
+            }
+        }
+
+        public string Document_number
+        {
+            get
+            {
+                return item.document_number;
+            }
+            set
+            {
+                if (value != item.document_number)
+                {
+                    item.document_number = value;
+                    OnPropertyChanged(() => Document_number);
+                }
+            }
+        }
+
+        public string Address
+        {
+            get
+            {
+                return item.address;
+            }
+            set
+            {
+                if (value != item.address)
+                {
+                    item.address = value;
+                    OnPropertyChanged(() => Address);
+                }
+            }
+        }
+
+
+        public string Address_source
+        {
+            get
+            {
+                return item.address_source;
+            }
+            set
+            {
+                if (value != item.address_source)
+                {
+                    item.address_source = value;
+                    OnPropertyChanged(() => Address_source);
+                }
+            }
+        }
+        public string Phone
+        {
+            get
+            {
+                return item.phone;
+            }
+            set
+            {
+                if (value != item.phone)
+                {
+                    item.phone = value;
+                    OnPropertyChanged(() => Phone);
+                }
+            }
+        }
+
+
+        public string Email
+        {
+            get
+            {
+                return item.email;
+            }
+            set
+            {
+                if (value != item.email)
+                {
+                    item.email = value;
+                    OnPropertyChanged(() => Email);
+                }
+            }
+        }
+        
+        #endregion
+        #region Commends
+        // komendy przyciskow zapisz i zamknij
+        public override void Save()
+        {
+            item.is_active = true;
+            item.history_id = createRecordHistory();
+            pawnShopEntities.Clients.Add(item);
+            pawnShopEntities.SaveChanges();
+        }
+        #endregion
     }
 }
-

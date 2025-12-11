@@ -1,4 +1,4 @@
-<UserControl x:Class="MVVMFirma.Views.NewInterestRate"
+<local:OneViewBase x:Class="MVVMFirma.Views.NewInterestRate"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,37 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Content="Adding new interest rates"></Label>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="Name" Margin="0,8,0,8"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Margin="0,8,0,8" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Column="0" Grid.Row="1" Content="Rate pecent" Margin="0,8,0,8"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" Text="{Binding Path=Rate_percent, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Label Grid.Column="0" Grid.Row="2" Content="Period days" Margin="0,8,0,8"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" Text="{Binding Path=Period_days, UpdateSourceTrigger=PropertyChanged}"/>
+        
+        <Label Grid.Column="0" Grid.Row="3" Content="Minimal interest" Margin="0,8,0,8"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Margin="0,8,0,8" Text="{Binding Path=Minimal_interest, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+        <CheckBox Grid.Column="1"
+          Grid.Row="4"
+          IsChecked="{Binding Path=Is_default, UpdateSourceTrigger=PropertyChanged}"
+          Margin="0,8,0,8">
+            Make default
+        </CheckBox>
 
     </Grid>
-</UserControl>
+</local:OneViewBase>
