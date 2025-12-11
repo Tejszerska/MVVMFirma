@@ -15,7 +15,7 @@
                 <DataGridTextColumn Header="Description" Binding="{Binding description}"/>
                 <DataGridTextColumn Header="Estimated value" Binding="{Binding estimated_value}"/>
                 <DataGridTextColumn Header="Sale price" Binding="{Binding sale_price}"/>
-                <DataGridTextColumn Header="Condition" Binding="{Binding condition}"/>
+                <DataGridTextColumn Header="Condition" Binding="{Binding condition_id}"/>
                 <DataGridTextColumn Header="Acquisition source type" Binding="{Binding acquisition_source_type}"/>
                 <DataGridTextColumn Header="Acquisition source ID" Binding="{Binding acquisition_source_id}"/>
                 <DataGridTextColumn Header="Current branch ID" Binding="{Binding current_branch_id}"/>

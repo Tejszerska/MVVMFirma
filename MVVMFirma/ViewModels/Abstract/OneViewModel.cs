@@ -12,13 +12,13 @@ namespace MVVMFirma.ViewModels.Abstract
     public abstract class OneViewModel<T> : WorkspaceViewModel
     {
         #region Database
-        protected PawnShopEntities pawnShopEntities;
+        protected PawnShopEntities1 pawnShopEntities;
         protected T item;
         #endregion
         #region Constructor
         public OneViewModel()
         {
-            pawnShopEntities = new PawnShopEntities();
+            pawnShopEntities = new PawnShopEntities1();
         }
         #endregion
         #region Commends
@@ -40,9 +40,9 @@ namespace MVVMFirma.ViewModels.Abstract
         protected int createRecordHistory()
         {
             RecordHistory recordHistory = new RecordHistory();
-            recordHistory.created_by = 0;
+            recordHistory.created_by = 0; // tymczasowo hardcodowane - przemysle jak to zrobic lepiej
             recordHistory.created_at = DateTime.Now;
-            recordHistory.created_in = 1;
+            recordHistory.created_in = 0; // tymczasowo hardcodowane - przemysle jak to zrobic lepiej
             pawnShopEntities.RecordHistory.Add(recordHistory);
             pawnShopEntities.SaveChanges();
             return recordHistory.history_id;

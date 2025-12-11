@@ -30,7 +30,7 @@ namespace MVVMFirma.Models
         public string description { get; set; }
         public Nullable<decimal> estimated_value { get; set; }
         public Nullable<decimal> sale_price { get; set; }
-        public string condition { get; set; }
+        public Nullable<int> condition_id { get; set; }
         public string acquisition_source_type { get; set; }
         public Nullable<int> acquisition_source_id { get; set; }
         public int current_branch_id { get; set; }
@@ -39,6 +39,7 @@ namespace MVVMFirma.Models
     
         public virtual Branches Branches { get; set; }
         public virtual Categories Categories { get; set; }
+        public virtual ItemConditions ItemConditions { get; set; }
         public virtual RecordHistory RecordHistory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OnlineSaleOffers> OnlineSaleOffers { get; set; }

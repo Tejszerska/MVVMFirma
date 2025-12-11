@@ -43,6 +43,18 @@
           <Property Name="is_active" Type="bit" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="EmployeeRoles">
+          <Key>
+            <PropertyRef Name="employee_role_id" />
+          </Key>
+          <Property Name="employee_role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
+          <Property Name="history_id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="employee_id" />
@@ -51,9 +63,9 @@
           <Property Name="first_name" Type="nvarchar" MaxLength="100" />
           <Property Name="last_name" Type="nvarchar" MaxLength="100" />
           <Property Name="login" Type="nvarchar" MaxLength="100" />
-          <Property Name="role" Type="nvarchar" MaxLength="50" />
           <Property Name="is_active" Type="bit" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
+          <Property Name="employee_role_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="EmployeeShifts">
           <Key>
@@ -80,6 +92,18 @@
           <Property Name="is_active" Type="bit" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="ItemConditions">
+          <Key>
+            <PropertyRef Name="condition_id" />
+          </Key>
+          <Property Name="condition_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
+          <Property Name="history_id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Items">
           <Key>
             <PropertyRef Name="item_id" />
@@ -90,7 +114,7 @@
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="estimated_value" Type="decimal" Precision="12" Scale="2" />
           <Property Name="sale_price" Type="decimal" Precision="12" Scale="2" />
-          <Property Name="condition" Type="nvarchar" MaxLength="50" />
+          <Property Name="condition_id" Type="int" />
           <Property Name="acquisition_source_type" Type="nvarchar" MaxLength="50" />
           <Property Name="acquisition_source_id" Type="int" />
           <Property Name="current_branch_id" Type="int" Nullable="false" />
@@ -659,13 +683,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EmployeeRoles_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="EmployeeRoles" Type="Self.EmployeeRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="EmployeeRoles">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_EmployeeRoles">
+          <End Role="EmployeeRoles" Type="Self.EmployeeRoles" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeRoles">
+              <PropertyRef Name="employee_role_id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="employee_role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemConditions_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="ItemConditions" Type="Self.ItemConditions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="ItemConditions">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_ItemConditions">
+          <End Role="ItemConditions" Type="Self.ItemConditions" Multiplicity="0..1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemConditions">
+              <PropertyRef Name="condition_id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="condition_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PawnShopModelStoreContainer">
           <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeRoles" EntityType="Self.EmployeeRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeShifts" EntityType="Self.EmployeeShifts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InterestRates" EntityType="Self.InterestRates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemConditions" EntityType="Self.ItemConditions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnlineSaleOffers" EntityType="Self.OnlineSaleOffers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PawnLoanItems" EntityType="Self.PawnLoanItems" Schema="dbo" store:Type="Tables" />
@@ -818,6 +892,22 @@
             <End Role="Sales" EntitySet="Sales" />
             <End Role="SalesItems" EntitySet="SalesItems" />
           </AssociationSet>
+          <AssociationSet Name="FK_EmployeeRoles_RecordHistory" Association="Self.FK_EmployeeRoles_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="EmployeeRoles" EntitySet="EmployeeRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_EmployeeRoles" Association="Self.FK_Employees_EmployeeRoles">
+            <End Role="EmployeeRoles" EntitySet="EmployeeRoles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemConditions_RecordHistory" Association="Self.FK_ItemConditions_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="ItemConditions" EntitySet="ItemConditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_ItemConditions" Association="Self.FK_Items_ItemConditions">
+            <End Role="ItemConditions" EntitySet="ItemConditions" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -872,6 +962,20 @@
           <NavigationProperty Name="PawnLoans" Relationship="Self.FK__PawnLoans__clien__5EBF139D" FromRole="Clients" ToRole="PawnLoans" />
           <NavigationProperty Name="PurchaseContracts" Relationship="Self.FK__PurchaseC__clien__6A30C649" FromRole="Clients" ToRole="PurchaseContracts" />
         </EntityType>
+        <EntityType Name="EmployeeRoles">
+          <Key>
+            <PropertyRef Name="employee_role_id" />
+          </Key>
+          <Property Name="employee_role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RecordHistory" Relationship="Self.FK_EmployeeRoles_RecordHistory" FromRole="EmployeeRoles" ToRole="RecordHistory" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_EmployeeRoles" FromRole="EmployeeRoles" ToRole="Employees" />
+        </EntityType>
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="employee_id" />
@@ -880,9 +984,10 @@
           <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_role_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EmployeeRoles" Relationship="Self.FK_Employees_EmployeeRoles" FromRole="Employees" ToRole="EmployeeRoles" />
           <NavigationProperty Name="EmployeeShifts" Relationship="Self.FK__EmployeeS__emplo__4316F928" FromRole="Employees" ToRole="EmployeeShifts" />
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__Employees__histo__403A8C7D" FromRole="Employees" ToRole="RecordHistory" />
           <NavigationProperty Name="PriceHistory" Relationship="Self.FK__PriceHist__chang__5629CD9C" FromRole="Employees" ToRole="PriceHistory" />
@@ -917,6 +1022,20 @@
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__InterestR__histo__5BE2A6F2" FromRole="InterestRates" ToRole="RecordHistory" />
           <NavigationProperty Name="PawnLoans" Relationship="Self.FK__PawnLoans__inter__5FB337D6" FromRole="InterestRates" ToRole="PawnLoans" />
         </EntityType>
+        <EntityType Name="ItemConditions">
+          <Key>
+            <PropertyRef Name="condition_id" />
+          </Key>
+          <Property Name="condition_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RecordHistory" Relationship="Self.FK_ItemConditions_RecordHistory" FromRole="ItemConditions" ToRole="RecordHistory" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Items_ItemConditions" FromRole="ItemConditions" ToRole="Items" />
+        </EntityType>
         <EntityType Name="Items">
           <Key>
             <PropertyRef Name="item_id" />
@@ -927,7 +1046,7 @@
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="estimated_value" Type="Decimal" Precision="12" Scale="2" />
           <Property Name="sale_price" Type="Decimal" Precision="12" Scale="2" />
-          <Property Name="condition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="condition_id" Type="Int32" />
           <Property Name="acquisition_source_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="acquisition_source_id" Type="Int32" />
           <Property Name="current_branch_id" Type="Int32" Nullable="false" />
@@ -935,6 +1054,7 @@
           <Property Name="history_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Branches" Relationship="Self.FK__Items__current_b__5165187F" FromRole="Items" ToRole="Branches" />
           <NavigationProperty Name="Categories" Relationship="Self.FK__Items__category___5070F446" FromRole="Items" ToRole="Categories" />
+          <NavigationProperty Name="ItemConditions" Relationship="Self.FK_Items_ItemConditions" FromRole="Items" ToRole="ItemConditions" />
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__Items__history_i__52593CB8" FromRole="Items" ToRole="RecordHistory" />
           <NavigationProperty Name="OnlineSaleOffers" Relationship="Self.FK__OnlineSal__item___6FE99F9F" FromRole="Items" ToRole="OnlineSaleOffers" />
           <NavigationProperty Name="PawnLoanItems" Relationship="Self.FK__PawnLoanI__item___66603565" FromRole="Items" ToRole="PawnLoanItems" />
@@ -1074,9 +1194,11 @@
           <NavigationProperty Name="Branches" Relationship="Self.FK__Branches__histor__3B75D760" FromRole="RecordHistory" ToRole="Branches" />
           <NavigationProperty Name="Categories" Relationship="Self.FK__Categorie__histo__4D94879B" FromRole="RecordHistory" ToRole="Categories" />
           <NavigationProperty Name="Clients" Relationship="Self.FK__Clients__history__48CFD27E" FromRole="RecordHistory" ToRole="Clients" />
+          <NavigationProperty Name="EmployeeRoles" Relationship="Self.FK_EmployeeRoles_RecordHistory" FromRole="RecordHistory" ToRole="EmployeeRoles" />
           <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__histo__403A8C7D" FromRole="RecordHistory" ToRole="Employees" />
           <NavigationProperty Name="EmployeeShifts" Relationship="Self.FK__EmployeeS__histo__44FF419A" FromRole="RecordHistory" ToRole="EmployeeShifts" />
           <NavigationProperty Name="InterestRates" Relationship="Self.FK__InterestR__histo__5BE2A6F2" FromRole="RecordHistory" ToRole="InterestRates" />
+          <NavigationProperty Name="ItemConditions" Relationship="Self.FK_ItemConditions_RecordHistory" FromRole="RecordHistory" ToRole="ItemConditions" />
           <NavigationProperty Name="Items" Relationship="Self.FK__Items__history_i__52593CB8" FromRole="RecordHistory" ToRole="Items" />
           <NavigationProperty Name="OnlineSaleOffers" Relationship="Self.FK__OnlineSal__histo__71D1E811" FromRole="RecordHistory" ToRole="OnlineSaleOffers" />
           <NavigationProperty Name="PawnLoanItems" Relationship="Self.FK__PawnLoanI__histo__6754599E" FromRole="RecordHistory" ToRole="PawnLoanItems" />
@@ -1236,6 +1358,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EmployeeRoles_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="EmployeeRoles" Type="Self.EmployeeRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="EmployeeRoles">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_EmployeeRoles">
+          <End Role="EmployeeRoles" Type="Self.EmployeeRoles" Multiplicity="1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeeRoles">
+              <PropertyRef Name="employee_role_id" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="employee_role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__EmployeeS__emplo__4316F928">
           <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
           <End Role="EmployeeShifts" Type="Self.EmployeeShifts" Multiplicity="*" />
@@ -1305,6 +1451,30 @@
             </Principal>
             <Dependent Role="PawnLoans">
               <PropertyRef Name="interest_rate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemConditions_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="ItemConditions" Type="Self.ItemConditions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="ItemConditions">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_ItemConditions">
+          <End Role="ItemConditions" Type="Self.ItemConditions" Multiplicity="0..1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemConditions">
+              <PropertyRef Name="condition_id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="condition_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1548,13 +1718,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PawnShopEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PawnShopEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Branches" EntityType="Self.Branches" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="EmployeeRoles" EntityType="Self.EmployeeRoles" />
           <EntitySet Name="Employees" EntityType="Self.Employees" />
           <EntitySet Name="EmployeeShifts" EntityType="Self.EmployeeShifts" />
           <EntitySet Name="InterestRates" EntityType="Self.InterestRates" />
+          <EntitySet Name="ItemConditions" EntityType="Self.ItemConditions" />
           <EntitySet Name="Items" EntityType="Self.Items" />
           <EntitySet Name="OnlineSaleOffers" EntityType="Self.OnlineSaleOffers" />
           <EntitySet Name="PawnLoanItems" EntityType="Self.PawnLoanItems" />
@@ -1603,6 +1775,14 @@
             <End Role="Clients" EntitySet="Clients" />
             <End Role="PurchaseContracts" EntitySet="PurchaseContracts" />
           </AssociationSet>
+          <AssociationSet Name="FK_EmployeeRoles_RecordHistory" Association="Self.FK_EmployeeRoles_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="EmployeeRoles" EntitySet="EmployeeRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_EmployeeRoles" Association="Self.FK_Employees_EmployeeRoles">
+            <End Role="EmployeeRoles" EntitySet="EmployeeRoles" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
           <AssociationSet Name="FK__EmployeeS__emplo__4316F928" Association="Self.FK__EmployeeS__emplo__4316F928">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="EmployeeShifts" EntitySet="EmployeeShifts" />
@@ -1626,6 +1806,14 @@
           <AssociationSet Name="FK__PawnLoans__inter__5FB337D6" Association="Self.FK__PawnLoans__inter__5FB337D6">
             <End Role="InterestRates" EntitySet="InterestRates" />
             <End Role="PawnLoans" EntitySet="PawnLoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemConditions_RecordHistory" Association="Self.FK_ItemConditions_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="ItemConditions" EntitySet="ItemConditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_ItemConditions" Association="Self.FK_Items_ItemConditions">
+            <End Role="ItemConditions" EntitySet="ItemConditions" />
+            <End Role="Items" EntitySet="Items" />
           </AssociationSet>
           <AssociationSet Name="FK__Items__history_i__52593CB8" Association="Self.FK__Items__history_i__52593CB8">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
@@ -1713,7 +1901,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PawnShopModelStoreContainer" CdmEntityContainer="PawnShopEntities">
+        <EntityContainerMapping StorageEntityContainer="PawnShopModelStoreContainer" CdmEntityContainer="PawnShopEntities1">
           <EntitySetMapping Name="Branches">
             <EntityTypeMapping TypeName="PawnShopModel.Branches">
               <MappingFragment StoreEntitySet="Branches">
@@ -1755,6 +1943,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeRoles">
+            <EntityTypeMapping TypeName="PawnShopModel.EmployeeRoles">
+              <MappingFragment StoreEntitySet="EmployeeRoles">
+                <ScalarProperty Name="employee_role_id" ColumnName="employee_role_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="PawnShopModel.Employees">
               <MappingFragment StoreEntitySet="Employees">
@@ -1762,9 +1963,9 @@
                 <ScalarProperty Name="first_name" ColumnName="first_name" />
                 <ScalarProperty Name="last_name" ColumnName="last_name" />
                 <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="role" ColumnName="role" />
                 <ScalarProperty Name="is_active" ColumnName="is_active" />
                 <ScalarProperty Name="history_id" ColumnName="history_id" />
+                <ScalarProperty Name="employee_role_id" ColumnName="employee_role_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1795,6 +1996,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ItemConditions">
+            <EntityTypeMapping TypeName="PawnShopModel.ItemConditions">
+              <MappingFragment StoreEntitySet="ItemConditions">
+                <ScalarProperty Name="condition_id" ColumnName="condition_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Items">
             <EntityTypeMapping TypeName="PawnShopModel.Items">
               <MappingFragment StoreEntitySet="Items">
@@ -1804,7 +2018,7 @@
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="estimated_value" ColumnName="estimated_value" />
                 <ScalarProperty Name="sale_price" ColumnName="sale_price" />
-                <ScalarProperty Name="condition" ColumnName="condition" />
+                <ScalarProperty Name="condition_id" ColumnName="condition_id" />
                 <ScalarProperty Name="acquisition_source_type" ColumnName="acquisition_source_type" />
                 <ScalarProperty Name="acquisition_source_id" ColumnName="acquisition_source_id" />
                 <ScalarProperty Name="current_branch_id" ColumnName="current_branch_id" />

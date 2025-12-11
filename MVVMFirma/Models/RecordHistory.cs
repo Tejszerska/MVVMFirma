@@ -20,9 +20,11 @@ namespace MVVMFirma.Models
             this.Branches = new HashSet<Branches>();
             this.Categories = new HashSet<Categories>();
             this.Clients = new HashSet<Clients>();
+            this.EmployeeRoles = new HashSet<EmployeeRoles>();
             this.Employees = new HashSet<Employees>();
             this.EmployeeShifts = new HashSet<EmployeeShifts>();
             this.InterestRates = new HashSet<InterestRates>();
+            this.ItemConditions = new HashSet<ItemConditions>();
             this.Items = new HashSet<Items>();
             this.OnlineSaleOffers = new HashSet<OnlineSaleOffers>();
             this.PawnLoanItems = new HashSet<PawnLoanItems>();
@@ -50,11 +52,15 @@ namespace MVVMFirma.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Clients> Clients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EmployeeRoles> EmployeeRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employees> Employees { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeShifts> EmployeeShifts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InterestRates> InterestRates { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemConditions> ItemConditions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Items> Items { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

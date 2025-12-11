@@ -12,28 +12,24 @@ namespace MVVMFirma.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Employees
+    public partial class EmployeeRoles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Employees()
+        public EmployeeRoles()
         {
-            this.EmployeeShifts = new HashSet<EmployeeShifts>();
-            this.PriceHistory = new HashSet<PriceHistory>();
+            this.Employees = new HashSet<Employees>();
         }
     
-        public int employee_id { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public string login { get; set; }
-        public bool is_active { get; set; }
-        public int history_id { get; set; }
         public int employee_role_id { get; set; }
+        public string code { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        public bool is_active { get; set; }
+        public int order_index { get; set; }
+        public int history_id { get; set; }
     
-        public virtual EmployeeRoles EmployeeRoles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeShifts> EmployeeShifts { get; set; }
         public virtual RecordHistory RecordHistory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PriceHistory> PriceHistory { get; set; }
+        public virtual ICollection<Employees> Employees { get; set; }
     }
 }
