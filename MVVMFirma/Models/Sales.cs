@@ -21,19 +21,21 @@ namespace MVVMFirma.Models
         }
     
         public int sale_id { get; set; }
-        public Nullable<decimal> sale_price { get; set; }
+        public decimal sale_price { get; set; }
         public System.DateTime sale_date { get; set; }
-        public string finalization_source { get; set; }
+        public int finalization_source_id { get; set; }
         public Nullable<int> online_offer_id { get; set; }
-        public Nullable<int> payment_id { get; set; }
-        public string status { get; set; }
+        public int payment_id { get; set; }
+        public int status_id { get; set; }
         public bool is_active { get; set; }
         public int history_id { get; set; }
     
+        public virtual FinalizationSources FinalizationSources { get; set; }
         public virtual OnlineSaleOffers OnlineSaleOffers { get; set; }
         public virtual Payments Payments { get; set; }
         public virtual RecordHistory RecordHistory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesItems> SalesItems { get; set; }
+        public virtual SalesStatuses SalesStatuses { get; set; }
     }
 }

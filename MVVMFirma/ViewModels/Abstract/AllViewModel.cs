@@ -15,7 +15,7 @@ namespace MVVMFirma.ViewModels.Abstract
     {
         #region DataBase
         // ten obiekt reprezentuje bd
-        protected readonly PawnShopEntities1 pawnShopEntities;
+        protected readonly PawnShopEntities3 pawnShopEntities;
         #endregion
         #region Command
         private BaseCommand _LoadCommand;
@@ -54,7 +54,7 @@ namespace MVVMFirma.ViewModels.Abstract
         #region Constructor
         public AllViewModel()
         {
-            pawnShopEntities = new PawnShopEntities1();
+            pawnShopEntities = new PawnShopEntities3();
         }
 
         #endregion

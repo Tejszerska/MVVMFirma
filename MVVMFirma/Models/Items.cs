@@ -28,15 +28,16 @@ namespace MVVMFirma.Models
         public string name { get; set; }
         public Nullable<int> category_id { get; set; }
         public string description { get; set; }
-        public Nullable<decimal> estimated_value { get; set; }
-        public Nullable<decimal> sale_price { get; set; }
-        public Nullable<int> condition_id { get; set; }
-        public string acquisition_source_type { get; set; }
-        public Nullable<int> acquisition_source_id { get; set; }
+        public decimal estimated_value { get; set; }
+        public decimal sale_price { get; set; }
+        public int condition_id { get; set; }
+        public int acquisition_source_type_id { get; set; }
+        public int acquisition_source_id { get; set; }
         public int current_branch_id { get; set; }
-        public string item_status { get; set; }
+        public int item_status_id { get; set; }
         public int history_id { get; set; }
     
+        public virtual AcquisitionSourceTypes AcquisitionSourceTypes { get; set; }
         public virtual Branches Branches { get; set; }
         public virtual Categories Categories { get; set; }
         public virtual ItemConditions ItemConditions { get; set; }
@@ -51,5 +52,6 @@ namespace MVVMFirma.Models
         public virtual ICollection<PurchaseContractItems> PurchaseContractItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesItems> SalesItems { get; set; }
+        public virtual ItemStatuses ItemStatuses { get; set; }
     }
 }

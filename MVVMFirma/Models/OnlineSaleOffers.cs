@@ -22,13 +22,13 @@ namespace MVVMFirma.Models
     
         public int online_offer_id { get; set; }
         public int item_id { get; set; }
-        public string platform { get; set; }
+        public int platform_id { get; set; }
         public string offer_title { get; set; }
-        public Nullable<decimal> listing_price { get; set; }
-        public Nullable<System.DateTime> listing_date { get; set; }
-        public Nullable<System.DateTime> expiration_date { get; set; }
+        public decimal listing_price { get; set; }
+        public System.DateTime listing_date { get; set; }
+        public System.DateTime expiration_date { get; set; }
         public string url { get; set; }
-        public string status { get; set; }
+        public int status_id { get; set; }
         public Nullable<int> views_count { get; set; }
         public Nullable<int> messages_count { get; set; }
         public string notes { get; set; }
@@ -36,8 +36,10 @@ namespace MVVMFirma.Models
         public int history_id { get; set; }
     
         public virtual Items Items { get; set; }
+        public virtual OnlinePlatforms OnlinePlatforms { get; set; }
         public virtual RecordHistory RecordHistory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sales> Sales { get; set; }
+        public virtual SalesStatuses SalesStatuses { get; set; }
     }
 }

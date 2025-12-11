@@ -26,14 +26,15 @@ namespace MVVMFirma.Models
         public string agreement_number { get; set; }
         public System.DateTime start_date { get; set; }
         public System.DateTime due_date { get; set; }
-        public Nullable<decimal> total_loan_amount { get; set; }
+        public decimal total_loan_amount { get; set; }
         public int interest_rate_id { get; set; }
-        public string status { get; set; }
+        public int status_id { get; set; }
         public Nullable<int> previous_loan_id { get; set; }
         public bool is_active { get; set; }
         public int history_id { get; set; }
     
         public virtual Clients Clients { get; set; }
+        public virtual ContractStatuses ContractStatuses { get; set; }
         public virtual InterestRates InterestRates { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PawnLoanItems> PawnLoanItems { get; set; }

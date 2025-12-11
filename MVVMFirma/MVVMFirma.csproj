@@ -75,80 +75,104 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helper\BaseCommand.cs" />
+    <Compile Include="Models\AcquisitionSourceTypes.cs">
+      <DependentUpon>PawnShop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Branches.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Categories.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Clients.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContractStatuses.cs">
+      <DependentUpon>PawnShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DocumentTypes.cs">
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EmployeeRoles.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Employees.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EmployeeShifts.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FinalizationSources.cs">
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InterestRates.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ItemConditions.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Items.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemStatuses.cs">
+      <DependentUpon>PawnShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OnlinePlatforms.cs">
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OnlineSaleOffers.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PawnLoanItems.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PawnLoans.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PawnShopModel.Context.cs">
+    <Compile Include="Models\PawnShop.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PawnShopModel.Context.tt</DependentUpon>
+      <DependentUpon>PawnShop.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PawnShopModel.cs">
+    <Compile Include="Models\PawnShop.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PawnShopModel.Designer.cs">
+    <Compile Include="Models\PawnShop.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PawnShopModel.edmx</DependentUpon>
+      <DependentUpon>PawnShop.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PaymentMethods.cs">
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Payments.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PriceHistory.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PurchaseContractItems.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PurchaseContracts.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RecordHistory.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Sales.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SalesItems.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SalesStatuses.cs">
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>PawnShopModel.tt</DependentUpon>
+      <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Abstract\AllViewModel.cs" />
     <Compile Include="ViewModels\Abstract\OneViewModel.cs" />
@@ -333,12 +357,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <EntityDeploy Include="Models\PawnShopModel.edmx">
+    <EntityDeploy Include="Models\PawnShop.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PawnShopModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>PawnShop.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\PawnShopModel.edmx.diagram">
-      <DependentUpon>PawnShopModel.edmx</DependentUpon>
+    <None Include="Models\PawnShop.edmx.diagram">
+      <DependentUpon>PawnShop.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -518,15 +542,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Models\PawnShopModel.Context.tt">
+    <Content Include="Models\PawnShop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PawnShopModel.edmx</DependentUpon>
-      <LastGenOutput>PawnShopModel.Context.cs</LastGenOutput>
+      <DependentUpon>PawnShop.edmx</DependentUpon>
+      <LastGenOutput>PawnShop.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\PawnShopModel.tt">
+    <Content Include="Models\PawnShop.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PawnShopModel.edmx</DependentUpon>
-      <LastGenOutput>PawnShopModel.cs</LastGenOutput>
+      <DependentUpon>PawnShop.edmx</DependentUpon>
+      <LastGenOutput>PawnShop.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,6 +5,18 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="PawnShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AcquisitionSourceTypes">
+          <Key>
+            <PropertyRef Name="acquisition_source_type_id" />
+          </Key>
+          <Property Name="acquisition_source_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
+          <Property Name="history_id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Branches">
           <Key>
             <PropertyRef Name="branch_id" />
@@ -31,16 +43,41 @@
             <PropertyRef Name="client_id" />
           </Key>
           <Property Name="client_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="first_name" Type="nvarchar" MaxLength="100" />
-          <Property Name="last_name" Type="nvarchar" MaxLength="100" />
-          <Property Name="document_type" Type="nvarchar" MaxLength="50" />
-          <Property Name="document_number" Type="nvarchar" MaxLength="100" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="document_type_id" Type="int" Nullable="false" />
+          <Property Name="document_number" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="pesel" Type="nvarchar" MaxLength="20" />
           <Property Name="address" Type="nvarchar" MaxLength="300" />
           <Property Name="address_source" Type="nvarchar" MaxLength="50" />
           <Property Name="phone" Type="nvarchar" MaxLength="50" />
           <Property Name="email" Type="nvarchar" MaxLength="100" />
           <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="history_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContractStatuses">
+          <Key>
+            <PropertyRef Name="contract_status_id" />
+          </Key>
+          <Property Name="contract_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="contract_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
+          <Property Name="history_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentTypes">
+          <Key>
+            <PropertyRef Name="document_type_id" />
+          </Key>
+          <Property Name="document_type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="EmployeeRoles">
@@ -79,6 +116,18 @@
           <Property Name="notes" Type="nvarchar" MaxLength="500" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="FinalizationSources">
+          <Key>
+            <PropertyRef Name="finalization_source_id" />
+          </Key>
+          <Property Name="finalization_source_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
+          <Property Name="history_id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="InterestRates">
           <Key>
             <PropertyRef Name="interest_rate_id" />
@@ -112,13 +161,37 @@
           <Property Name="name" Type="nvarchar" MaxLength="200" />
           <Property Name="category_id" Type="int" />
           <Property Name="description" Type="nvarchar(max)" />
-          <Property Name="estimated_value" Type="decimal" Precision="12" Scale="2" />
-          <Property Name="sale_price" Type="decimal" Precision="12" Scale="2" />
-          <Property Name="condition_id" Type="int" />
-          <Property Name="acquisition_source_type" Type="nvarchar" MaxLength="50" />
-          <Property Name="acquisition_source_id" Type="int" />
+          <Property Name="estimated_value" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="sale_price" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="condition_id" Type="int" Nullable="false" />
+          <Property Name="acquisition_source_type_id" Type="int" Nullable="false" />
+          <Property Name="acquisition_source_id" Type="int" Nullable="false" />
           <Property Name="current_branch_id" Type="int" Nullable="false" />
-          <Property Name="item_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="item_status_id" Type="int" Nullable="false" />
+          <Property Name="history_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ItemStatuses">
+          <Key>
+            <PropertyRef Name="item_status_id" />
+          </Key>
+          <Property Name="item_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
+          <Property Name="history_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OnlinePlatforms">
+          <Key>
+            <PropertyRef Name="platform_id" />
+          </Key>
+          <Property Name="platform_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OnlineSaleOffers">
@@ -127,13 +200,13 @@
           </Key>
           <Property Name="online_offer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="item_id" Type="int" Nullable="false" />
-          <Property Name="platform" Type="nvarchar" MaxLength="100" />
-          <Property Name="offer_title" Type="nvarchar" MaxLength="300" />
-          <Property Name="listing_price" Type="decimal" Precision="12" Scale="2" />
-          <Property Name="listing_date" Type="datetime2" Precision="7" />
-          <Property Name="expiration_date" Type="datetime2" Precision="7" />
-          <Property Name="url" Type="nvarchar" MaxLength="500" />
-          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="platform_id" Type="int" Nullable="false" />
+          <Property Name="offer_title" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="listing_price" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="listing_date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="expiration_date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="url" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
           <Property Name="views_count" Type="int" />
           <Property Name="messages_count" Type="int" />
           <Property Name="notes" Type="nvarchar" MaxLength="500" />
@@ -157,14 +230,26 @@
           </Key>
           <Property Name="pawn_loan_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="client_id" Type="int" Nullable="false" />
-          <Property Name="agreement_number" Type="nvarchar" MaxLength="100" />
+          <Property Name="agreement_number" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="start_date" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="due_date" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="total_loan_amount" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="total_loan_amount" Type="decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="interest_rate_id" Type="int" Nullable="false" />
-          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="status_id" Type="int" Nullable="false" />
           <Property Name="previous_loan_id" Type="int" />
           <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="history_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentMethods">
+          <Key>
+            <PropertyRef Name="payment_method_id" />
+          </Key>
+          <Property Name="payment_method_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Payments">
@@ -172,11 +257,10 @@
             <PropertyRef Name="payment_id" />
           </Key>
           <Property Name="payment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="reference_type" Type="nvarchar" MaxLength="50" />
-          <Property Name="reference_id" Type="int" />
+          <Property Name="reference_id" Type="int" Nullable="false" />
           <Property Name="payment_date" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="amount" Type="decimal" Precision="12" Scale="2" />
-          <Property Name="payment_method" Type="nvarchar" MaxLength="50" />
+          <Property Name="amount" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="payment_method_id" Type="int" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="300" />
           <Property Name="is_active" Type="bit" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
@@ -209,10 +293,10 @@
           </Key>
           <Property Name="purchase_contract_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="client_id" Type="int" Nullable="false" />
-          <Property Name="agreement_number" Type="nvarchar" MaxLength="100" />
+          <Property Name="agreement_number" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="purchase_date" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="total_purchase_price" Type="decimal" Precision="12" Scale="2" />
-          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="total_purchase_price" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
           <Property Name="is_active" Type="bit" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
@@ -234,12 +318,12 @@
             <PropertyRef Name="sale_id" />
           </Key>
           <Property Name="sale_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="sale_price" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="sale_price" Type="decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="sale_date" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="finalization_source" Type="nvarchar" MaxLength="50" />
+          <Property Name="finalization_source_id" Type="int" Nullable="false" />
           <Property Name="online_offer_id" Type="int" />
-          <Property Name="payment_id" Type="int" />
-          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="payment_id" Type="int" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
           <Property Name="is_active" Type="bit" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
@@ -251,6 +335,18 @@
           <Property Name="sale_id" Type="int" Nullable="false" />
           <Property Name="item_id" Type="int" Nullable="false" />
           <Property Name="sold_price_for_item" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="history_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalesStatuses">
+          <Key>
+            <PropertyRef Name="sales_status_id" />
+          </Key>
+          <Property Name="sales_status_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -636,7 +732,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Sales__payment_i__797309D9">
-          <End Role="Payments" Type="Self.Payments" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="1" />
           <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Payments">
@@ -683,6 +779,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AcquisitionSourceTypes_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="AcquisitionSourceTypes" Type="Self.AcquisitionSourceTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="AcquisitionSourceTypes">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_DocumentTypes">
+          <End Role="DocumentTypes" Type="Self.DocumentTypes" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypes">
+              <PropertyRef Name="document_type_id" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="document_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContractStatuses_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="ContractStatuses" Type="Self.ContractStatuses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="ContractStatuses">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocumentTypes_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="DocumentTypes" Type="Self.DocumentTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="DocumentTypes">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EmployeeRoles_RecordHistory">
           <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
           <End Role="EmployeeRoles" Type="Self.EmployeeRoles" Multiplicity="*" />
@@ -707,6 +851,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FinalizationSources_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="FinalizationSources" Type="Self.FinalizationSources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="FinalizationSources">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ItemConditions_RecordHistory">
           <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
           <End Role="ItemConditions" Type="Self.ItemConditions" Multiplicity="*" />
@@ -719,8 +875,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Items_AcquisitionSourceTypes1">
+          <End Role="AcquisitionSourceTypes" Type="Self.AcquisitionSourceTypes" Multiplicity="1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcquisitionSourceTypes">
+              <PropertyRef Name="acquisition_source_type_id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="acquisition_source_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Items_ItemConditions">
-          <End Role="ItemConditions" Type="Self.ItemConditions" Multiplicity="0..1" />
+          <End Role="ItemConditions" Type="Self.ItemConditions" Multiplicity="1" />
           <End Role="Items" Type="Self.Items" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ItemConditions">
@@ -731,19 +899,170 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Items_ItemStatuses">
+          <End Role="ItemStatuses" Type="Self.ItemStatuses" Multiplicity="1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemStatuses">
+              <PropertyRef Name="item_status_id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="item_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemStatuses_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="ItemStatuses" Type="Self.ItemStatuses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="ItemStatuses">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OnlinePlatforms_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="OnlinePlatforms" Type="Self.OnlinePlatforms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="OnlinePlatforms">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OnlineSaleOffers_OnlinePlatforms1">
+          <End Role="OnlinePlatforms" Type="Self.OnlinePlatforms" Multiplicity="1" />
+          <End Role="OnlineSaleOffers" Type="Self.OnlineSaleOffers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OnlinePlatforms">
+              <PropertyRef Name="platform_id" />
+            </Principal>
+            <Dependent Role="OnlineSaleOffers">
+              <PropertyRef Name="platform_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OnlineSaleOffers_SalesStatuses">
+          <End Role="SalesStatuses" Type="Self.SalesStatuses" Multiplicity="1" />
+          <End Role="OnlineSaleOffers" Type="Self.OnlineSaleOffers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesStatuses">
+              <PropertyRef Name="sales_status_id" />
+            </Principal>
+            <Dependent Role="OnlineSaleOffers">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PawnLoans_ContractStatuses">
+          <End Role="ContractStatuses" Type="Self.ContractStatuses" Multiplicity="1" />
+          <End Role="PawnLoans" Type="Self.PawnLoans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractStatuses">
+              <PropertyRef Name="contract_status_id" />
+            </Principal>
+            <Dependent Role="PawnLoans">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentMethods_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="PaymentMethods" Type="Self.PaymentMethods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="PaymentMethods">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_PaymentMethods">
+          <End Role="PaymentMethods" Type="Self.PaymentMethods" Multiplicity="1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethods">
+              <PropertyRef Name="payment_method_id" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="payment_method_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseContracts_ContractStatuses">
+          <End Role="ContractStatuses" Type="Self.ContractStatuses" Multiplicity="1" />
+          <End Role="PurchaseContracts" Type="Self.PurchaseContracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractStatuses">
+              <PropertyRef Name="contract_status_id" />
+            </Principal>
+            <Dependent Role="PurchaseContracts">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_FinalizationSources1">
+          <End Role="FinalizationSources" Type="Self.FinalizationSources" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinalizationSources">
+              <PropertyRef Name="finalization_source_id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="finalization_source_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_SalesStatuses">
+          <End Role="SalesStatuses" Type="Self.SalesStatuses" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesStatuses">
+              <PropertyRef Name="sales_status_id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesStatuses_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="SalesStatuses" Type="Self.SalesStatuses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="SalesStatuses">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PawnShopModelStoreContainer">
+          <EntitySet Name="AcquisitionSourceTypes" EntityType="Self.AcquisitionSourceTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContractStatuses" EntityType="Self.ContractStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentTypes" EntityType="Self.DocumentTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeRoles" EntityType="Self.EmployeeRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeShifts" EntityType="Self.EmployeeShifts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FinalizationSources" EntityType="Self.FinalizationSources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InterestRates" EntityType="Self.InterestRates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemConditions" EntityType="Self.ItemConditions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemStatuses" EntityType="Self.ItemStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OnlinePlatforms" EntityType="Self.OnlinePlatforms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnlineSaleOffers" EntityType="Self.OnlineSaleOffers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PawnLoanItems" EntityType="Self.PawnLoanItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PawnLoans" EntityType="Self.PawnLoans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PriceHistory" EntityType="Self.PriceHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseContractItems" EntityType="Self.PurchaseContractItems" Schema="dbo" store:Type="Tables" />
@@ -751,6 +1070,7 @@
           <EntitySet Name="RecordHistory" EntityType="Self.RecordHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalesItems" EntityType="Self.SalesItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesStatuses" EntityType="Self.SalesStatuses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Branches__histor__3B75D760" Association="Self.FK__Branches__histor__3B75D760">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
@@ -892,6 +1212,22 @@
             <End Role="Sales" EntitySet="Sales" />
             <End Role="SalesItems" EntitySet="SalesItems" />
           </AssociationSet>
+          <AssociationSet Name="FK_AcquisitionSourceTypes_RecordHistory" Association="Self.FK_AcquisitionSourceTypes_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="AcquisitionSourceTypes" EntitySet="AcquisitionSourceTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_DocumentTypes" Association="Self.FK_Clients_DocumentTypes">
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContractStatuses_RecordHistory" Association="Self.FK_ContractStatuses_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="ContractStatuses" EntitySet="ContractStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocumentTypes_RecordHistory" Association="Self.FK_DocumentTypes_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+          </AssociationSet>
           <AssociationSet Name="FK_EmployeeRoles_RecordHistory" Association="Self.FK_EmployeeRoles_RecordHistory">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
             <End Role="EmployeeRoles" EntitySet="EmployeeRoles" />
@@ -900,13 +1236,69 @@
             <End Role="EmployeeRoles" EntitySet="EmployeeRoles" />
             <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
+          <AssociationSet Name="FK_FinalizationSources_RecordHistory" Association="Self.FK_FinalizationSources_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="FinalizationSources" EntitySet="FinalizationSources" />
+          </AssociationSet>
           <AssociationSet Name="FK_ItemConditions_RecordHistory" Association="Self.FK_ItemConditions_RecordHistory">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
             <End Role="ItemConditions" EntitySet="ItemConditions" />
           </AssociationSet>
+          <AssociationSet Name="FK_Items_AcquisitionSourceTypes1" Association="Self.FK_Items_AcquisitionSourceTypes1">
+            <End Role="AcquisitionSourceTypes" EntitySet="AcquisitionSourceTypes" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
           <AssociationSet Name="FK_Items_ItemConditions" Association="Self.FK_Items_ItemConditions">
             <End Role="ItemConditions" EntitySet="ItemConditions" />
             <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_ItemStatuses" Association="Self.FK_Items_ItemStatuses">
+            <End Role="ItemStatuses" EntitySet="ItemStatuses" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemStatuses_RecordHistory" Association="Self.FK_ItemStatuses_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="ItemStatuses" EntitySet="ItemStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OnlinePlatforms_RecordHistory" Association="Self.FK_OnlinePlatforms_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="OnlinePlatforms" EntitySet="OnlinePlatforms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OnlineSaleOffers_OnlinePlatforms1" Association="Self.FK_OnlineSaleOffers_OnlinePlatforms1">
+            <End Role="OnlinePlatforms" EntitySet="OnlinePlatforms" />
+            <End Role="OnlineSaleOffers" EntitySet="OnlineSaleOffers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OnlineSaleOffers_SalesStatuses" Association="Self.FK_OnlineSaleOffers_SalesStatuses">
+            <End Role="SalesStatuses" EntitySet="SalesStatuses" />
+            <End Role="OnlineSaleOffers" EntitySet="OnlineSaleOffers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PawnLoans_ContractStatuses" Association="Self.FK_PawnLoans_ContractStatuses">
+            <End Role="ContractStatuses" EntitySet="ContractStatuses" />
+            <End Role="PawnLoans" EntitySet="PawnLoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentMethods_RecordHistory" Association="Self.FK_PaymentMethods_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="PaymentMethods" EntitySet="PaymentMethods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_PaymentMethods" Association="Self.FK_Payments_PaymentMethods">
+            <End Role="PaymentMethods" EntitySet="PaymentMethods" />
+            <End Role="Payments" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseContracts_ContractStatuses" Association="Self.FK_PurchaseContracts_ContractStatuses">
+            <End Role="ContractStatuses" EntitySet="ContractStatuses" />
+            <End Role="PurchaseContracts" EntitySet="PurchaseContracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_FinalizationSources1" Association="Self.FK_Sales_FinalizationSources1">
+            <End Role="FinalizationSources" EntitySet="FinalizationSources" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_SalesStatuses" Association="Self.FK_Sales_SalesStatuses">
+            <End Role="SalesStatuses" EntitySet="SalesStatuses" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesStatuses_RecordHistory" Association="Self.FK_SalesStatuses_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="SalesStatuses" EntitySet="SalesStatuses" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -914,6 +1306,20 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PawnShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AcquisitionSourceTypes">
+          <Key>
+            <PropertyRef Name="acquisition_source_type_id" />
+          </Key>
+          <Property Name="acquisition_source_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RecordHistory" Relationship="Self.FK_AcquisitionSourceTypes_RecordHistory" FromRole="AcquisitionSourceTypes" ToRole="RecordHistory" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Items_AcquisitionSourceTypes1" FromRole="AcquisitionSourceTypes" ToRole="Items" />
+        </EntityType>
         <EntityType Name="Branches">
           <Key>
             <PropertyRef Name="branch_id" />
@@ -947,10 +1353,10 @@
             <PropertyRef Name="client_id" />
           </Key>
           <Property Name="client_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="document_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="document_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="document_type_id" Type="Int32" Nullable="false" />
+          <Property Name="document_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="pesel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="address_source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -961,6 +1367,37 @@
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__Clients__history__48CFD27E" FromRole="Clients" ToRole="RecordHistory" />
           <NavigationProperty Name="PawnLoans" Relationship="Self.FK__PawnLoans__clien__5EBF139D" FromRole="Clients" ToRole="PawnLoans" />
           <NavigationProperty Name="PurchaseContracts" Relationship="Self.FK__PurchaseC__clien__6A30C649" FromRole="Clients" ToRole="PurchaseContracts" />
+          <NavigationProperty Name="DocumentTypes" Relationship="Self.FK_Clients_DocumentTypes" FromRole="Clients" ToRole="DocumentTypes" />
+        </EntityType>
+        <EntityType Name="ContractStatuses">
+          <Key>
+            <PropertyRef Name="contract_status_id" />
+          </Key>
+          <Property Name="contract_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="contract_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RecordHistory" Relationship="Self.FK_ContractStatuses_RecordHistory" FromRole="ContractStatuses" ToRole="RecordHistory" />
+          <NavigationProperty Name="PawnLoans" Relationship="Self.FK_PawnLoans_ContractStatuses" FromRole="ContractStatuses" ToRole="PawnLoans" />
+          <NavigationProperty Name="PurchaseContracts" Relationship="Self.FK_PurchaseContracts_ContractStatuses" FromRole="ContractStatuses" ToRole="PurchaseContracts" />
+        </EntityType>
+        <EntityType Name="DocumentTypes">
+          <Key>
+            <PropertyRef Name="document_type_id" />
+          </Key>
+          <Property Name="document_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_DocumentTypes" FromRole="DocumentTypes" ToRole="Clients" />
+          <NavigationProperty Name="RecordHistory" Relationship="Self.FK_DocumentTypes_RecordHistory" FromRole="DocumentTypes" ToRole="RecordHistory" />
         </EntityType>
         <EntityType Name="EmployeeRoles">
           <Key>
@@ -1007,6 +1444,20 @@
           <NavigationProperty Name="Employees" Relationship="Self.FK__EmployeeS__emplo__4316F928" FromRole="EmployeeShifts" ToRole="Employees" />
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__EmployeeS__histo__44FF419A" FromRole="EmployeeShifts" ToRole="RecordHistory" />
         </EntityType>
+        <EntityType Name="FinalizationSources">
+          <Key>
+            <PropertyRef Name="finalization_source_id" />
+          </Key>
+          <Property Name="finalization_source_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RecordHistory" Relationship="Self.FK_FinalizationSources_RecordHistory" FromRole="FinalizationSources" ToRole="RecordHistory" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_FinalizationSources1" FromRole="FinalizationSources" ToRole="Sales" />
+        </EntityType>
         <EntityType Name="InterestRates">
           <Key>
             <PropertyRef Name="interest_rate_id" />
@@ -1044,14 +1495,15 @@
           <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="category_id" Type="Int32" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="estimated_value" Type="Decimal" Precision="12" Scale="2" />
-          <Property Name="sale_price" Type="Decimal" Precision="12" Scale="2" />
-          <Property Name="condition_id" Type="Int32" />
-          <Property Name="acquisition_source_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="acquisition_source_id" Type="Int32" />
+          <Property Name="estimated_value" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="sale_price" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="condition_id" Type="Int32" Nullable="false" />
+          <Property Name="acquisition_source_type_id" Type="Int32" Nullable="false" />
+          <Property Name="acquisition_source_id" Type="Int32" Nullable="false" />
           <Property Name="current_branch_id" Type="Int32" Nullable="false" />
-          <Property Name="item_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="item_status_id" Type="Int32" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AcquisitionSourceTypes" Relationship="Self.FK_Items_AcquisitionSourceTypes1" FromRole="Items" ToRole="AcquisitionSourceTypes" />
           <NavigationProperty Name="Branches" Relationship="Self.FK__Items__current_b__5165187F" FromRole="Items" ToRole="Branches" />
           <NavigationProperty Name="Categories" Relationship="Self.FK__Items__category___5070F446" FromRole="Items" ToRole="Categories" />
           <NavigationProperty Name="ItemConditions" Relationship="Self.FK_Items_ItemConditions" FromRole="Items" ToRole="ItemConditions" />
@@ -1061,6 +1513,35 @@
           <NavigationProperty Name="PriceHistory" Relationship="Self.FK__PriceHist__item___5535A963" FromRole="Items" ToRole="PriceHistory" />
           <NavigationProperty Name="PurchaseContractItems" Relationship="Self.FK__PurchaseC__item___03F0984C" FromRole="Items" ToRole="PurchaseContractItems" />
           <NavigationProperty Name="SalesItems" Relationship="Self.FK__SalesItem__item___7F2BE32F" FromRole="Items" ToRole="SalesItems" />
+          <NavigationProperty Name="ItemStatuses" Relationship="Self.FK_Items_ItemStatuses" FromRole="Items" ToRole="ItemStatuses" />
+        </EntityType>
+        <EntityType Name="ItemStatuses">
+          <Key>
+            <PropertyRef Name="item_status_id" />
+          </Key>
+          <Property Name="item_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Items_ItemStatuses" FromRole="ItemStatuses" ToRole="Items" />
+          <NavigationProperty Name="RecordHistory" Relationship="Self.FK_ItemStatuses_RecordHistory" FromRole="ItemStatuses" ToRole="RecordHistory" />
+        </EntityType>
+        <EntityType Name="OnlinePlatforms">
+          <Key>
+            <PropertyRef Name="platform_id" />
+          </Key>
+          <Property Name="platform_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RecordHistory" Relationship="Self.FK_OnlinePlatforms_RecordHistory" FromRole="OnlinePlatforms" ToRole="RecordHistory" />
+          <NavigationProperty Name="OnlineSaleOffers" Relationship="Self.FK_OnlineSaleOffers_OnlinePlatforms1" FromRole="OnlinePlatforms" ToRole="OnlineSaleOffers" />
         </EntityType>
         <EntityType Name="OnlineSaleOffers">
           <Key>
@@ -1068,21 +1549,23 @@
           </Key>
           <Property Name="online_offer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="item_id" Type="Int32" Nullable="false" />
-          <Property Name="platform" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="offer_title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="listing_price" Type="Decimal" Precision="12" Scale="2" />
-          <Property Name="listing_date" Type="DateTime" Precision="7" />
-          <Property Name="expiration_date" Type="DateTime" Precision="7" />
-          <Property Name="url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="platform_id" Type="Int32" Nullable="false" />
+          <Property Name="offer_title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="listing_price" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="listing_date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="expiration_date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
           <Property Name="views_count" Type="Int32" />
           <Property Name="messages_count" Type="Int32" />
           <Property Name="notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Items" Relationship="Self.FK__OnlineSal__item___6FE99F9F" FromRole="OnlineSaleOffers" ToRole="Items" />
+          <NavigationProperty Name="OnlinePlatforms" Relationship="Self.FK_OnlineSaleOffers_OnlinePlatforms1" FromRole="OnlineSaleOffers" ToRole="OnlinePlatforms" />
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__OnlineSal__histo__71D1E811" FromRole="OnlineSaleOffers" ToRole="RecordHistory" />
           <NavigationProperty Name="Sales" Relationship="Self.FK__Sales__online_of__787EE5A0" FromRole="OnlineSaleOffers" ToRole="Sales" />
+          <NavigationProperty Name="SalesStatuses" Relationship="Self.FK_OnlineSaleOffers_SalesStatuses" FromRole="OnlineSaleOffers" ToRole="SalesStatuses" />
         </EntityType>
         <EntityType Name="PawnLoanItems">
           <Key>
@@ -1104,35 +1587,50 @@
           </Key>
           <Property Name="pawn_loan_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="client_id" Type="Int32" Nullable="false" />
-          <Property Name="agreement_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="agreement_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="start_date" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="due_date" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="total_loan_amount" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="total_loan_amount" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="interest_rate_id" Type="Int32" Nullable="false" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
           <Property Name="previous_loan_id" Type="Int32" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Clients" Relationship="Self.FK__PawnLoans__clien__5EBF139D" FromRole="PawnLoans" ToRole="Clients" />
+          <NavigationProperty Name="ContractStatuses" Relationship="Self.FK_PawnLoans_ContractStatuses" FromRole="PawnLoans" ToRole="ContractStatuses" />
           <NavigationProperty Name="InterestRates" Relationship="Self.FK__PawnLoans__inter__5FB337D6" FromRole="PawnLoans" ToRole="InterestRates" />
           <NavigationProperty Name="PawnLoanItems" Relationship="Self.FK__PawnLoanI__pawn___656C112C" FromRole="PawnLoans" ToRole="PawnLoanItems" />
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__PawnLoans__histo__628FA481" FromRole="PawnLoans" ToRole="RecordHistory" />
           <NavigationProperty Name="PawnLoans1" Relationship="Self.FK__PawnLoans__previ__60A75C0F" FromRole="PawnLoans" ToRole="PawnLoans1" />
           <NavigationProperty Name="PawnLoans2" Relationship="Self.FK__PawnLoans__previ__60A75C0F" FromRole="PawnLoans1" ToRole="PawnLoans" />
         </EntityType>
+        <EntityType Name="PaymentMethods">
+          <Key>
+            <PropertyRef Name="payment_method_id" />
+          </Key>
+          <Property Name="payment_method_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RecordHistory" Relationship="Self.FK_PaymentMethods_RecordHistory" FromRole="PaymentMethods" ToRole="RecordHistory" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_Payments_PaymentMethods" FromRole="PaymentMethods" ToRole="Payments" />
+        </EntityType>
         <EntityType Name="Payments">
           <Key>
             <PropertyRef Name="payment_id" />
           </Key>
           <Property Name="payment_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="reference_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="reference_id" Type="Int32" />
+          <Property Name="reference_id" Type="Int32" Nullable="false" />
           <Property Name="payment_date" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="amount" Type="Decimal" Precision="12" Scale="2" />
-          <Property Name="payment_method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="amount" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="payment_method_id" Type="Int32" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PaymentMethods" Relationship="Self.FK_Payments_PaymentMethods" FromRole="Payments" ToRole="PaymentMethods" />
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__Payments__histor__75A278F5" FromRole="Payments" ToRole="RecordHistory" />
           <NavigationProperty Name="Sales" Relationship="Self.FK__Sales__payment_i__797309D9" FromRole="Payments" ToRole="Sales" />
         </EntityType>
@@ -1169,13 +1667,14 @@
           </Key>
           <Property Name="purchase_contract_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="client_id" Type="Int32" Nullable="false" />
-          <Property Name="agreement_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="agreement_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="purchase_date" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="total_purchase_price" Type="Decimal" Precision="12" Scale="2" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="total_purchase_price" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Clients" Relationship="Self.FK__PurchaseC__clien__6A30C649" FromRole="PurchaseContracts" ToRole="Clients" />
+          <NavigationProperty Name="ContractStatuses" Relationship="Self.FK_PurchaseContracts_ContractStatuses" FromRole="PurchaseContracts" ToRole="ContractStatuses" />
           <NavigationProperty Name="PurchaseContractItems" Relationship="Self.FK__PurchaseC__purch__02FC7413" FromRole="PurchaseContracts" ToRole="PurchaseContractItems" />
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__PurchaseC__histo__6C190EBB" FromRole="PurchaseContracts" ToRole="RecordHistory" />
         </EntityType>
@@ -1191,41 +1690,51 @@
           <Property Name="modified_at" Type="DateTime" Precision="7" />
           <Property Name="deleted_by" Type="Int32" />
           <Property Name="deleted_at" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="AcquisitionSourceTypes" Relationship="Self.FK_AcquisitionSourceTypes_RecordHistory" FromRole="RecordHistory" ToRole="AcquisitionSourceTypes" />
           <NavigationProperty Name="Branches" Relationship="Self.FK__Branches__histor__3B75D760" FromRole="RecordHistory" ToRole="Branches" />
           <NavigationProperty Name="Categories" Relationship="Self.FK__Categorie__histo__4D94879B" FromRole="RecordHistory" ToRole="Categories" />
           <NavigationProperty Name="Clients" Relationship="Self.FK__Clients__history__48CFD27E" FromRole="RecordHistory" ToRole="Clients" />
+          <NavigationProperty Name="ContractStatuses" Relationship="Self.FK_ContractStatuses_RecordHistory" FromRole="RecordHistory" ToRole="ContractStatuses" />
+          <NavigationProperty Name="DocumentTypes" Relationship="Self.FK_DocumentTypes_RecordHistory" FromRole="RecordHistory" ToRole="DocumentTypes" />
           <NavigationProperty Name="EmployeeRoles" Relationship="Self.FK_EmployeeRoles_RecordHistory" FromRole="RecordHistory" ToRole="EmployeeRoles" />
           <NavigationProperty Name="Employees" Relationship="Self.FK__Employees__histo__403A8C7D" FromRole="RecordHistory" ToRole="Employees" />
           <NavigationProperty Name="EmployeeShifts" Relationship="Self.FK__EmployeeS__histo__44FF419A" FromRole="RecordHistory" ToRole="EmployeeShifts" />
+          <NavigationProperty Name="FinalizationSources" Relationship="Self.FK_FinalizationSources_RecordHistory" FromRole="RecordHistory" ToRole="FinalizationSources" />
           <NavigationProperty Name="InterestRates" Relationship="Self.FK__InterestR__histo__5BE2A6F2" FromRole="RecordHistory" ToRole="InterestRates" />
           <NavigationProperty Name="ItemConditions" Relationship="Self.FK_ItemConditions_RecordHistory" FromRole="RecordHistory" ToRole="ItemConditions" />
           <NavigationProperty Name="Items" Relationship="Self.FK__Items__history_i__52593CB8" FromRole="RecordHistory" ToRole="Items" />
+          <NavigationProperty Name="ItemStatuses" Relationship="Self.FK_ItemStatuses_RecordHistory" FromRole="RecordHistory" ToRole="ItemStatuses" />
+          <NavigationProperty Name="OnlinePlatforms" Relationship="Self.FK_OnlinePlatforms_RecordHistory" FromRole="RecordHistory" ToRole="OnlinePlatforms" />
           <NavigationProperty Name="OnlineSaleOffers" Relationship="Self.FK__OnlineSal__histo__71D1E811" FromRole="RecordHistory" ToRole="OnlineSaleOffers" />
           <NavigationProperty Name="PawnLoanItems" Relationship="Self.FK__PawnLoanI__histo__6754599E" FromRole="RecordHistory" ToRole="PawnLoanItems" />
           <NavigationProperty Name="PawnLoans" Relationship="Self.FK__PawnLoans__histo__628FA481" FromRole="RecordHistory" ToRole="PawnLoans" />
+          <NavigationProperty Name="PaymentMethods" Relationship="Self.FK_PaymentMethods_RecordHistory" FromRole="RecordHistory" ToRole="PaymentMethods" />
           <NavigationProperty Name="Payments" Relationship="Self.FK__Payments__histor__75A278F5" FromRole="RecordHistory" ToRole="Payments" />
           <NavigationProperty Name="PurchaseContractItems" Relationship="Self.FK__PurchaseC__histo__04E4BC85" FromRole="RecordHistory" ToRole="PurchaseContractItems" />
           <NavigationProperty Name="PurchaseContracts" Relationship="Self.FK__PurchaseC__histo__6C190EBB" FromRole="RecordHistory" ToRole="PurchaseContracts" />
           <NavigationProperty Name="Sales" Relationship="Self.FK__Sales__history_i__7B5B524B" FromRole="RecordHistory" ToRole="Sales" />
           <NavigationProperty Name="SalesItems" Relationship="Self.FK__SalesItem__histo__00200768" FromRole="RecordHistory" ToRole="SalesItems" />
+          <NavigationProperty Name="SalesStatuses" Relationship="Self.FK_SalesStatuses_RecordHistory" FromRole="RecordHistory" ToRole="SalesStatuses" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
             <PropertyRef Name="sale_id" />
           </Key>
           <Property Name="sale_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="sale_price" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="sale_price" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="sale_date" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="finalization_source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="finalization_source_id" Type="Int32" Nullable="false" />
           <Property Name="online_offer_id" Type="Int32" />
-          <Property Name="payment_id" Type="Int32" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="payment_id" Type="Int32" Nullable="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FinalizationSources" Relationship="Self.FK_Sales_FinalizationSources1" FromRole="Sales" ToRole="FinalizationSources" />
           <NavigationProperty Name="OnlineSaleOffers" Relationship="Self.FK__Sales__online_of__787EE5A0" FromRole="Sales" ToRole="OnlineSaleOffers" />
           <NavigationProperty Name="Payments" Relationship="Self.FK__Sales__payment_i__797309D9" FromRole="Sales" ToRole="Payments" />
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__Sales__history_i__7B5B524B" FromRole="Sales" ToRole="RecordHistory" />
           <NavigationProperty Name="SalesItems" Relationship="Self.FK__SalesItem__sale___7E37BEF6" FromRole="Sales" ToRole="SalesItems" />
+          <NavigationProperty Name="SalesStatuses" Relationship="Self.FK_Sales_SalesStatuses" FromRole="Sales" ToRole="SalesStatuses" />
         </EntityType>
         <EntityType Name="SalesItems">
           <Key>
@@ -1240,6 +1749,21 @@
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__SalesItem__histo__00200768" FromRole="SalesItems" ToRole="RecordHistory" />
           <NavigationProperty Name="Sales" Relationship="Self.FK__SalesItem__sale___7E37BEF6" FromRole="SalesItems" ToRole="Sales" />
         </EntityType>
+        <EntityType Name="SalesStatuses">
+          <Key>
+            <PropertyRef Name="sales_status_id" />
+          </Key>
+          <Property Name="sales_status_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OnlineSaleOffers" Relationship="Self.FK_OnlineSaleOffers_SalesStatuses" FromRole="SalesStatuses" ToRole="OnlineSaleOffers" />
+          <NavigationProperty Name="RecordHistory" Relationship="Self.FK_SalesStatuses_RecordHistory" FromRole="SalesStatuses" ToRole="RecordHistory" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_SalesStatuses" FromRole="SalesStatuses" ToRole="Sales" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -1250,6 +1774,30 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_AcquisitionSourceTypes_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="AcquisitionSourceTypes" Type="Self.AcquisitionSourceTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="AcquisitionSourceTypes">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Items_AcquisitionSourceTypes1">
+          <End Role="AcquisitionSourceTypes" Type="Self.AcquisitionSourceTypes" Multiplicity="1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcquisitionSourceTypes">
+              <PropertyRef Name="acquisition_source_type_id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="acquisition_source_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Branches__histor__3B75D760">
           <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
           <End Role="Branches" Type="Self.Branches" Multiplicity="*" />
@@ -1358,6 +1906,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Clients_DocumentTypes">
+          <End Role="DocumentTypes" Type="Self.DocumentTypes" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentTypes">
+              <PropertyRef Name="document_type_id" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="document_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContractStatuses_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="ContractStatuses" Type="Self.ContractStatuses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="ContractStatuses">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PawnLoans_ContractStatuses">
+          <End Role="ContractStatuses" Type="Self.ContractStatuses" Multiplicity="1" />
+          <End Role="PawnLoans" Type="Self.PawnLoans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractStatuses">
+              <PropertyRef Name="contract_status_id" />
+            </Principal>
+            <Dependent Role="PawnLoans">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseContracts_ContractStatuses">
+          <End Role="ContractStatuses" Type="Self.ContractStatuses" Multiplicity="1" />
+          <End Role="PurchaseContracts" Type="Self.PurchaseContracts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContractStatuses">
+              <PropertyRef Name="contract_status_id" />
+            </Principal>
+            <Dependent Role="PurchaseContracts">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DocumentTypes_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="DocumentTypes" Type="Self.DocumentTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="DocumentTypes">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EmployeeRoles_RecordHistory">
           <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
           <End Role="EmployeeRoles" Type="Self.EmployeeRoles" Multiplicity="*" />
@@ -1430,6 +2038,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FinalizationSources_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="FinalizationSources" Type="Self.FinalizationSources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="FinalizationSources">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_FinalizationSources1">
+          <End Role="FinalizationSources" Type="Self.FinalizationSources" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinalizationSources">
+              <PropertyRef Name="finalization_source_id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="finalization_source_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__InterestR__histo__5BE2A6F2">
           <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
           <End Role="InterestRates" Type="Self.InterestRates" Multiplicity="*" />
@@ -1467,7 +2099,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Items_ItemConditions">
-          <End Role="ItemConditions" Type="Self.ItemConditions" Multiplicity="0..1" />
+          <End Role="ItemConditions" Type="Self.ItemConditions" Multiplicity="1" />
           <End Role="Items" Type="Self.Items" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ItemConditions">
@@ -1550,6 +2182,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Items_ItemStatuses">
+          <End Role="ItemStatuses" Type="Self.ItemStatuses" Multiplicity="1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ItemStatuses">
+              <PropertyRef Name="item_status_id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="item_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ItemStatuses_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="ItemStatuses" Type="Self.ItemStatuses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="ItemStatuses">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OnlinePlatforms_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="OnlinePlatforms" Type="Self.OnlinePlatforms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="OnlinePlatforms">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OnlineSaleOffers_OnlinePlatforms1">
+          <End Role="OnlinePlatforms" Type="Self.OnlinePlatforms" Multiplicity="1" />
+          <End Role="OnlineSaleOffers" Type="Self.OnlineSaleOffers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OnlinePlatforms">
+              <PropertyRef Name="platform_id" />
+            </Principal>
+            <Dependent Role="OnlineSaleOffers">
+              <PropertyRef Name="platform_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__OnlineSal__histo__71D1E811">
           <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
           <End Role="OnlineSaleOffers" Type="Self.OnlineSaleOffers" Multiplicity="*" />
@@ -1571,6 +2251,18 @@
             </Principal>
             <Dependent Role="Sales">
               <PropertyRef Name="online_offer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OnlineSaleOffers_SalesStatuses">
+          <End Role="SalesStatuses" Type="Self.SalesStatuses" Multiplicity="1" />
+          <End Role="OnlineSaleOffers" Type="Self.OnlineSaleOffers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesStatuses">
+              <PropertyRef Name="sales_status_id" />
+            </Principal>
+            <Dependent Role="OnlineSaleOffers">
+              <PropertyRef Name="status_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1622,6 +2314,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PaymentMethods_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="PaymentMethods" Type="Self.PaymentMethods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="PaymentMethods">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_PaymentMethods">
+          <End Role="PaymentMethods" Type="Self.PaymentMethods" Multiplicity="1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethods">
+              <PropertyRef Name="payment_method_id" />
+            </Principal>
+            <Dependent Role="Payments">
+              <PropertyRef Name="payment_method_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Payments__histor__75A278F5">
           <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
           <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
@@ -1635,7 +2351,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Sales__payment_i__797309D9">
-          <End Role="Payments" Type="Self.Payments" Multiplicity="0..1" />
+          <End Role="Payments" Type="Self.Payments" Multiplicity="1" />
           <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Payments">
@@ -1706,6 +2422,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SalesStatuses_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="SalesStatuses" Type="Self.SalesStatuses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="SalesStatuses">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SalesItem__sale___7E37BEF6">
           <End Role="Sales" Type="Self.Sales" Multiplicity="1" />
           <End Role="SalesItems" Type="Self.SalesItems" Multiplicity="*" />
@@ -1718,19 +2446,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PawnShopEntities1" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_Sales_SalesStatuses">
+          <End Role="SalesStatuses" Type="Self.SalesStatuses" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesStatuses">
+              <PropertyRef Name="sales_status_id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PawnShopEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AcquisitionSourceTypes" EntityType="Self.AcquisitionSourceTypes" />
           <EntitySet Name="Branches" EntityType="Self.Branches" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="ContractStatuses" EntityType="Self.ContractStatuses" />
+          <EntitySet Name="DocumentTypes" EntityType="Self.DocumentTypes" />
           <EntitySet Name="EmployeeRoles" EntityType="Self.EmployeeRoles" />
           <EntitySet Name="Employees" EntityType="Self.Employees" />
           <EntitySet Name="EmployeeShifts" EntityType="Self.EmployeeShifts" />
+          <EntitySet Name="FinalizationSources" EntityType="Self.FinalizationSources" />
           <EntitySet Name="InterestRates" EntityType="Self.InterestRates" />
           <EntitySet Name="ItemConditions" EntityType="Self.ItemConditions" />
           <EntitySet Name="Items" EntityType="Self.Items" />
+          <EntitySet Name="ItemStatuses" EntityType="Self.ItemStatuses" />
+          <EntitySet Name="OnlinePlatforms" EntityType="Self.OnlinePlatforms" />
           <EntitySet Name="OnlineSaleOffers" EntityType="Self.OnlineSaleOffers" />
           <EntitySet Name="PawnLoanItems" EntityType="Self.PawnLoanItems" />
           <EntitySet Name="PawnLoans" EntityType="Self.PawnLoans" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethods" />
           <EntitySet Name="Payments" EntityType="Self.Payments" />
           <EntitySet Name="PriceHistory" EntityType="Self.PriceHistory" />
           <EntitySet Name="PurchaseContractItems" EntityType="Self.PurchaseContractItems" />
@@ -1738,7 +2485,16 @@
           <EntitySet Name="RecordHistory" EntityType="Self.RecordHistory" />
           <EntitySet Name="Sales" EntityType="Self.Sales" />
           <EntitySet Name="SalesItems" EntityType="Self.SalesItems" />
+          <EntitySet Name="SalesStatuses" EntityType="Self.SalesStatuses" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_AcquisitionSourceTypes_RecordHistory" Association="Self.FK_AcquisitionSourceTypes_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="AcquisitionSourceTypes" EntitySet="AcquisitionSourceTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Items_AcquisitionSourceTypes1" Association="Self.FK_Items_AcquisitionSourceTypes1">
+            <End Role="AcquisitionSourceTypes" EntitySet="AcquisitionSourceTypes" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
           <AssociationSet Name="FK__Branches__histor__3B75D760" Association="Self.FK__Branches__histor__3B75D760">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
             <End Role="Branches" EntitySet="Branches" />
@@ -1775,6 +2531,26 @@
             <End Role="Clients" EntitySet="Clients" />
             <End Role="PurchaseContracts" EntitySet="PurchaseContracts" />
           </AssociationSet>
+          <AssociationSet Name="FK_Clients_DocumentTypes" Association="Self.FK_Clients_DocumentTypes">
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContractStatuses_RecordHistory" Association="Self.FK_ContractStatuses_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="ContractStatuses" EntitySet="ContractStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PawnLoans_ContractStatuses" Association="Self.FK_PawnLoans_ContractStatuses">
+            <End Role="ContractStatuses" EntitySet="ContractStatuses" />
+            <End Role="PawnLoans" EntitySet="PawnLoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseContracts_ContractStatuses" Association="Self.FK_PurchaseContracts_ContractStatuses">
+            <End Role="ContractStatuses" EntitySet="ContractStatuses" />
+            <End Role="PurchaseContracts" EntitySet="PurchaseContracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DocumentTypes_RecordHistory" Association="Self.FK_DocumentTypes_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="DocumentTypes" EntitySet="DocumentTypes" />
+          </AssociationSet>
           <AssociationSet Name="FK_EmployeeRoles_RecordHistory" Association="Self.FK_EmployeeRoles_RecordHistory">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
             <End Role="EmployeeRoles" EntitySet="EmployeeRoles" />
@@ -1798,6 +2574,14 @@
           <AssociationSet Name="FK__EmployeeS__histo__44FF419A" Association="Self.FK__EmployeeS__histo__44FF419A">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
             <End Role="EmployeeShifts" EntitySet="EmployeeShifts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinalizationSources_RecordHistory" Association="Self.FK_FinalizationSources_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="FinalizationSources" EntitySet="FinalizationSources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_FinalizationSources1" Association="Self.FK_Sales_FinalizationSources1">
+            <End Role="FinalizationSources" EntitySet="FinalizationSources" />
+            <End Role="Sales" EntitySet="Sales" />
           </AssociationSet>
           <AssociationSet Name="FK__InterestR__histo__5BE2A6F2" Association="Self.FK__InterestR__histo__5BE2A6F2">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
@@ -1839,6 +2623,22 @@
             <End Role="Items" EntitySet="Items" />
             <End Role="SalesItems" EntitySet="SalesItems" />
           </AssociationSet>
+          <AssociationSet Name="FK_Items_ItemStatuses" Association="Self.FK_Items_ItemStatuses">
+            <End Role="ItemStatuses" EntitySet="ItemStatuses" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ItemStatuses_RecordHistory" Association="Self.FK_ItemStatuses_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="ItemStatuses" EntitySet="ItemStatuses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OnlinePlatforms_RecordHistory" Association="Self.FK_OnlinePlatforms_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="OnlinePlatforms" EntitySet="OnlinePlatforms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OnlineSaleOffers_OnlinePlatforms1" Association="Self.FK_OnlineSaleOffers_OnlinePlatforms1">
+            <End Role="OnlinePlatforms" EntitySet="OnlinePlatforms" />
+            <End Role="OnlineSaleOffers" EntitySet="OnlineSaleOffers" />
+          </AssociationSet>
           <AssociationSet Name="FK__OnlineSal__histo__71D1E811" Association="Self.FK__OnlineSal__histo__71D1E811">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
             <End Role="OnlineSaleOffers" EntitySet="OnlineSaleOffers" />
@@ -1846,6 +2646,10 @@
           <AssociationSet Name="FK__Sales__online_of__787EE5A0" Association="Self.FK__Sales__online_of__787EE5A0">
             <End Role="OnlineSaleOffers" EntitySet="OnlineSaleOffers" />
             <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OnlineSaleOffers_SalesStatuses" Association="Self.FK_OnlineSaleOffers_SalesStatuses">
+            <End Role="SalesStatuses" EntitySet="SalesStatuses" />
+            <End Role="OnlineSaleOffers" EntitySet="OnlineSaleOffers" />
           </AssociationSet>
           <AssociationSet Name="FK__PawnLoanI__histo__6754599E" Association="Self.FK__PawnLoanI__histo__6754599E">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
@@ -1862,6 +2666,14 @@
           <AssociationSet Name="FK__PawnLoans__previ__60A75C0F" Association="Self.FK__PawnLoans__previ__60A75C0F">
             <End Role="PawnLoans" EntitySet="PawnLoans" />
             <End Role="PawnLoans1" EntitySet="PawnLoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentMethods_RecordHistory" Association="Self.FK_PaymentMethods_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="PaymentMethods" EntitySet="PaymentMethods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_PaymentMethods" Association="Self.FK_Payments_PaymentMethods">
+            <End Role="PaymentMethods" EntitySet="PaymentMethods" />
+            <End Role="Payments" EntitySet="Payments" />
           </AssociationSet>
           <AssociationSet Name="FK__Payments__histor__75A278F5" Association="Self.FK__Payments__histor__75A278F5">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
@@ -1891,9 +2703,17 @@
             <End Role="RecordHistory" EntitySet="RecordHistory" />
             <End Role="SalesItems" EntitySet="SalesItems" />
           </AssociationSet>
+          <AssociationSet Name="FK_SalesStatuses_RecordHistory" Association="Self.FK_SalesStatuses_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="SalesStatuses" EntitySet="SalesStatuses" />
+          </AssociationSet>
           <AssociationSet Name="FK__SalesItem__sale___7E37BEF6" Association="Self.FK__SalesItem__sale___7E37BEF6">
             <End Role="Sales" EntitySet="Sales" />
             <End Role="SalesItems" EntitySet="SalesItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_SalesStatuses" Association="Self.FK_Sales_SalesStatuses">
+            <End Role="SalesStatuses" EntitySet="SalesStatuses" />
+            <End Role="Sales" EntitySet="Sales" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1901,7 +2721,20 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PawnShopModelStoreContainer" CdmEntityContainer="PawnShopEntities1">
+        <EntityContainerMapping StorageEntityContainer="PawnShopModelStoreContainer" CdmEntityContainer="PawnShopEntities3">
+          <EntitySetMapping Name="AcquisitionSourceTypes">
+            <EntityTypeMapping TypeName="PawnShopModel.AcquisitionSourceTypes">
+              <MappingFragment StoreEntitySet="AcquisitionSourceTypes">
+                <ScalarProperty Name="acquisition_source_type_id" ColumnName="acquisition_source_type_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Branches">
             <EntityTypeMapping TypeName="PawnShopModel.Branches">
               <MappingFragment StoreEntitySet="Branches">
@@ -1931,7 +2764,7 @@
                 <ScalarProperty Name="client_id" ColumnName="client_id" />
                 <ScalarProperty Name="first_name" ColumnName="first_name" />
                 <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="document_type" ColumnName="document_type" />
+                <ScalarProperty Name="document_type_id" ColumnName="document_type_id" />
                 <ScalarProperty Name="document_number" ColumnName="document_number" />
                 <ScalarProperty Name="pesel" ColumnName="pesel" />
                 <ScalarProperty Name="address" ColumnName="address" />
@@ -1939,6 +2772,33 @@
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContractStatuses">
+            <EntityTypeMapping TypeName="PawnShopModel.ContractStatuses">
+              <MappingFragment StoreEntitySet="ContractStatuses">
+                <ScalarProperty Name="contract_status_id" ColumnName="contract_status_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="contract_type" ColumnName="contract_type" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentTypes">
+            <EntityTypeMapping TypeName="PawnShopModel.DocumentTypes">
+              <MappingFragment StoreEntitySet="DocumentTypes">
+                <ScalarProperty Name="document_type_id" ColumnName="document_type_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
                 <ScalarProperty Name="history_id" ColumnName="history_id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1982,6 +2842,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="FinalizationSources">
+            <EntityTypeMapping TypeName="PawnShopModel.FinalizationSources">
+              <MappingFragment StoreEntitySet="FinalizationSources">
+                <ScalarProperty Name="finalization_source_id" ColumnName="finalization_source_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="InterestRates">
             <EntityTypeMapping TypeName="PawnShopModel.InterestRates">
               <MappingFragment StoreEntitySet="InterestRates">
@@ -2019,10 +2892,36 @@
                 <ScalarProperty Name="estimated_value" ColumnName="estimated_value" />
                 <ScalarProperty Name="sale_price" ColumnName="sale_price" />
                 <ScalarProperty Name="condition_id" ColumnName="condition_id" />
-                <ScalarProperty Name="acquisition_source_type" ColumnName="acquisition_source_type" />
+                <ScalarProperty Name="acquisition_source_type_id" ColumnName="acquisition_source_type_id" />
                 <ScalarProperty Name="acquisition_source_id" ColumnName="acquisition_source_id" />
                 <ScalarProperty Name="current_branch_id" ColumnName="current_branch_id" />
-                <ScalarProperty Name="item_status" ColumnName="item_status" />
+                <ScalarProperty Name="item_status_id" ColumnName="item_status_id" />
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemStatuses">
+            <EntityTypeMapping TypeName="PawnShopModel.ItemStatuses">
+              <MappingFragment StoreEntitySet="ItemStatuses">
+                <ScalarProperty Name="item_status_id" ColumnName="item_status_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OnlinePlatforms">
+            <EntityTypeMapping TypeName="PawnShopModel.OnlinePlatforms">
+              <MappingFragment StoreEntitySet="OnlinePlatforms">
+                <ScalarProperty Name="platform_id" ColumnName="platform_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
                 <ScalarProperty Name="history_id" ColumnName="history_id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2032,13 +2931,13 @@
               <MappingFragment StoreEntitySet="OnlineSaleOffers">
                 <ScalarProperty Name="online_offer_id" ColumnName="online_offer_id" />
                 <ScalarProperty Name="item_id" ColumnName="item_id" />
-                <ScalarProperty Name="platform" ColumnName="platform" />
+                <ScalarProperty Name="platform_id" ColumnName="platform_id" />
                 <ScalarProperty Name="offer_title" ColumnName="offer_title" />
                 <ScalarProperty Name="listing_price" ColumnName="listing_price" />
                 <ScalarProperty Name="listing_date" ColumnName="listing_date" />
                 <ScalarProperty Name="expiration_date" ColumnName="expiration_date" />
                 <ScalarProperty Name="url" ColumnName="url" />
-                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
                 <ScalarProperty Name="views_count" ColumnName="views_count" />
                 <ScalarProperty Name="messages_count" ColumnName="messages_count" />
                 <ScalarProperty Name="notes" ColumnName="notes" />
@@ -2069,9 +2968,22 @@
                 <ScalarProperty Name="due_date" ColumnName="due_date" />
                 <ScalarProperty Name="total_loan_amount" ColumnName="total_loan_amount" />
                 <ScalarProperty Name="interest_rate_id" ColumnName="interest_rate_id" />
-                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
                 <ScalarProperty Name="previous_loan_id" ColumnName="previous_loan_id" />
                 <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="PawnShopModel.PaymentMethods">
+              <MappingFragment StoreEntitySet="PaymentMethods">
+                <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
                 <ScalarProperty Name="history_id" ColumnName="history_id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2080,11 +2992,10 @@
             <EntityTypeMapping TypeName="PawnShopModel.Payments">
               <MappingFragment StoreEntitySet="Payments">
                 <ScalarProperty Name="payment_id" ColumnName="payment_id" />
-                <ScalarProperty Name="reference_type" ColumnName="reference_type" />
                 <ScalarProperty Name="reference_id" ColumnName="reference_id" />
                 <ScalarProperty Name="payment_date" ColumnName="payment_date" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="payment_method" ColumnName="payment_method" />
+                <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="is_active" ColumnName="is_active" />
                 <ScalarProperty Name="history_id" ColumnName="history_id" />
@@ -2123,7 +3034,7 @@
                 <ScalarProperty Name="agreement_number" ColumnName="agreement_number" />
                 <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
                 <ScalarProperty Name="total_purchase_price" ColumnName="total_purchase_price" />
-                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
                 <ScalarProperty Name="is_active" ColumnName="is_active" />
                 <ScalarProperty Name="history_id" ColumnName="history_id" />
               </MappingFragment>
@@ -2149,10 +3060,10 @@
                 <ScalarProperty Name="sale_id" ColumnName="sale_id" />
                 <ScalarProperty Name="sale_price" ColumnName="sale_price" />
                 <ScalarProperty Name="sale_date" ColumnName="sale_date" />
-                <ScalarProperty Name="finalization_source" ColumnName="finalization_source" />
+                <ScalarProperty Name="finalization_source_id" ColumnName="finalization_source_id" />
                 <ScalarProperty Name="online_offer_id" ColumnName="online_offer_id" />
                 <ScalarProperty Name="payment_id" ColumnName="payment_id" />
-                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
                 <ScalarProperty Name="is_active" ColumnName="is_active" />
                 <ScalarProperty Name="history_id" ColumnName="history_id" />
               </MappingFragment>
@@ -2165,6 +3076,19 @@
                 <ScalarProperty Name="sale_id" ColumnName="sale_id" />
                 <ScalarProperty Name="item_id" ColumnName="item_id" />
                 <ScalarProperty Name="sold_price_for_item" ColumnName="sold_price_for_item" />
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesStatuses">
+            <EntityTypeMapping TypeName="PawnShopModel.SalesStatuses">
+              <MappingFragment StoreEntitySet="SalesStatuses">
+                <ScalarProperty Name="sales_status_id" ColumnName="sales_status_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
                 <ScalarProperty Name="history_id" ColumnName="history_id" />
               </MappingFragment>
             </EntityTypeMapping>

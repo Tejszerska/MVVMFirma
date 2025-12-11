@@ -17,23 +17,31 @@ namespace MVVMFirma.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RecordHistory()
         {
+            this.AcquisitionSourceTypes = new HashSet<AcquisitionSourceTypes>();
             this.Branches = new HashSet<Branches>();
             this.Categories = new HashSet<Categories>();
             this.Clients = new HashSet<Clients>();
+            this.ContractStatuses = new HashSet<ContractStatuses>();
+            this.DocumentTypes = new HashSet<DocumentTypes>();
             this.EmployeeRoles = new HashSet<EmployeeRoles>();
             this.Employees = new HashSet<Employees>();
             this.EmployeeShifts = new HashSet<EmployeeShifts>();
+            this.FinalizationSources = new HashSet<FinalizationSources>();
             this.InterestRates = new HashSet<InterestRates>();
             this.ItemConditions = new HashSet<ItemConditions>();
             this.Items = new HashSet<Items>();
+            this.ItemStatuses = new HashSet<ItemStatuses>();
+            this.OnlinePlatforms = new HashSet<OnlinePlatforms>();
             this.OnlineSaleOffers = new HashSet<OnlineSaleOffers>();
             this.PawnLoanItems = new HashSet<PawnLoanItems>();
             this.PawnLoans = new HashSet<PawnLoans>();
+            this.PaymentMethods = new HashSet<PaymentMethods>();
             this.Payments = new HashSet<Payments>();
             this.PurchaseContractItems = new HashSet<PurchaseContractItems>();
             this.PurchaseContracts = new HashSet<PurchaseContracts>();
             this.Sales = new HashSet<Sales>();
             this.SalesItems = new HashSet<SalesItems>();
+            this.SalesStatuses = new HashSet<SalesStatuses>();
         }
     
         public int history_id { get; set; }
@@ -46,11 +54,17 @@ namespace MVVMFirma.Models
         public Nullable<System.DateTime> deleted_at { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AcquisitionSourceTypes> AcquisitionSourceTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Branches> Branches { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Categories> Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Clients> Clients { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContractStatuses> ContractStatuses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DocumentTypes> DocumentTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeRoles> EmployeeRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -58,17 +72,25 @@ namespace MVVMFirma.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeShifts> EmployeeShifts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FinalizationSources> FinalizationSources { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InterestRates> InterestRates { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemConditions> ItemConditions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Items> Items { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ItemStatuses> ItemStatuses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OnlinePlatforms> OnlinePlatforms { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OnlineSaleOffers> OnlineSaleOffers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PawnLoanItems> PawnLoanItems { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PawnLoans> PawnLoans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentMethods> PaymentMethods { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payments> Payments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -79,5 +101,7 @@ namespace MVVMFirma.Models
         public virtual ICollection<Sales> Sales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesItems> SalesItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesStatuses> SalesStatuses { get; set; }
     }
 }

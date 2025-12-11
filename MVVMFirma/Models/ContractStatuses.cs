@@ -12,26 +12,22 @@ namespace MVVMFirma.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Clients
+    public partial class ContractStatuses
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clients()
+        public ContractStatuses()
         {
             this.PawnLoans = new HashSet<PawnLoans>();
             this.PurchaseContracts = new HashSet<PurchaseContracts>();
         }
     
-        public int client_id { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public int document_type_id { get; set; }
-        public string document_number { get; set; }
-        public string pesel { get; set; }
-        public string address { get; set; }
-        public string address_source { get; set; }
-        public string phone { get; set; }
-        public string email { get; set; }
+        public int contract_status_id { get; set; }
+        public string code { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        public string contract_type { get; set; }
         public bool is_active { get; set; }
+        public int order_index { get; set; }
         public int history_id { get; set; }
     
         public virtual RecordHistory RecordHistory { get; set; }
@@ -39,6 +35,5 @@ namespace MVVMFirma.Models
         public virtual ICollection<PawnLoans> PawnLoans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseContracts> PurchaseContracts { get; set; }
-        public virtual DocumentTypes DocumentTypes { get; set; }
     }
 }

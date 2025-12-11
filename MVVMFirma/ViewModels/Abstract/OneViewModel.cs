@@ -12,13 +12,13 @@ namespace MVVMFirma.ViewModels.Abstract
     public abstract class OneViewModel<T> : WorkspaceViewModel
     {
         #region Database
-        protected PawnShopEntities1 pawnShopEntities;
+        protected PawnShopEntities3 pawnShopEntities;
         protected T item;
         #endregion
         #region Constructor
         public OneViewModel()
         {
-            pawnShopEntities = new PawnShopEntities1();
+            pawnShopEntities = new PawnShopEntities3();
         }
         #endregion
         #region Commends

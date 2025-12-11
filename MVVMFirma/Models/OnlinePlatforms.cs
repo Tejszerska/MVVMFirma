@@ -12,26 +12,24 @@ namespace MVVMFirma.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Payments
+    public partial class OnlinePlatforms
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Payments()
+        public OnlinePlatforms()
         {
-            this.Sales = new HashSet<Sales>();
+            this.OnlineSaleOffers = new HashSet<OnlineSaleOffers>();
         }
     
-        public int payment_id { get; set; }
-        public int reference_id { get; set; }
-        public System.DateTime payment_date { get; set; }
-        public decimal amount { get; set; }
-        public int payment_method_id { get; set; }
+        public int platform_id { get; set; }
+        public string code { get; set; }
+        public string name { get; set; }
         public string description { get; set; }
         public bool is_active { get; set; }
+        public int order_index { get; set; }
         public int history_id { get; set; }
     
-        public virtual PaymentMethods PaymentMethods { get; set; }
         public virtual RecordHistory RecordHistory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sales> Sales { get; set; }
+        public virtual ICollection<OnlineSaleOffers> OnlineSaleOffers { get; set; }
     }
 }

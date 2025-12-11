@@ -24,12 +24,13 @@ namespace MVVMFirma.Models
         public int client_id { get; set; }
         public string agreement_number { get; set; }
         public System.DateTime purchase_date { get; set; }
-        public Nullable<decimal> total_purchase_price { get; set; }
-        public string status { get; set; }
+        public decimal total_purchase_price { get; set; }
+        public int status_id { get; set; }
         public bool is_active { get; set; }
         public int history_id { get; set; }
     
         public virtual Clients Clients { get; set; }
+        public virtual ContractStatuses ContractStatuses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseContractItems> PurchaseContractItems { get; set; }
         public virtual RecordHistory RecordHistory { get; set; }
