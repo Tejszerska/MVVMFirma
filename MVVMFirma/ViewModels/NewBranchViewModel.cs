@@ -67,7 +67,7 @@ namespace MVVMFirma.ViewModels
         public override void Save()
         {
             item.is_active = true;
-            item.history_id = 1; // tymczasowo, zeby dzialalo POTEM ZROBIC REKORD HISTORII
+            item.history_id = createRecordHistory();
             pawnShopEntities.Branches.Add(item);
             pawnShopEntities.SaveChanges();
         }

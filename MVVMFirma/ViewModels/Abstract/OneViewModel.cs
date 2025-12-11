@@ -37,7 +37,17 @@ namespace MVVMFirma.ViewModels.Abstract
             }
         }
         public abstract void Save();
-        
+        protected int createRecordHistory()
+        {
+            RecordHistory recordHistory = new RecordHistory();
+            recordHistory.created_by = 0;
+            recordHistory.created_at = DateTime.Now;
+            recordHistory.created_in = 1;
+            pawnShopEntities.RecordHistory.Add(recordHistory);
+            pawnShopEntities.SaveChanges();
+            return recordHistory.history_id;
+
+        }
         private void saveAndClose()
         {
             Save();
