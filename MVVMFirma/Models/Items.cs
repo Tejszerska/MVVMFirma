@@ -26,7 +26,7 @@ namespace MVVMFirma.Models
     
         public int item_id { get; set; }
         public string name { get; set; }
-        public Nullable<int> category_id { get; set; }
+        public int category_id { get; set; }
         public string description { get; set; }
         public decimal estimated_value { get; set; }
         public decimal sale_price { get; set; }
@@ -36,6 +36,7 @@ namespace MVVMFirma.Models
         public int current_branch_id { get; set; }
         public int item_status_id { get; set; }
         public int history_id { get; set; }
+        public bool is_active { get; set; }
     
         public virtual AcquisitionSourceTypes AcquisitionSourceTypes { get; set; }
         public virtual Branches Branches { get; set; }

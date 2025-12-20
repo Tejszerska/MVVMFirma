@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MVVMFirma.Views
 {
     /// <summary>
-    /// Interaction logic for SinglePriceHistory.xaml
+    /// Interaction logic for InventoryAgingRaportView.xaml
     /// </summary>
-    public partial class SinglePriceHistory : AllViewBase
+    public partial class InventoryAgingRaportView : UserControl
     {
-        public SinglePriceHistory()
+        public InventoryAgingRaportView()
         {
             InitializeComponent();
         }

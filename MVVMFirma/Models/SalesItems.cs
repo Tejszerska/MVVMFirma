@@ -17,7 +17,7 @@ namespace MVVMFirma.Models
         public int sales_item_id { get; set; }
         public int sale_id { get; set; }
         public int item_id { get; set; }
-        public Nullable<decimal> sold_price_for_item { get; set; }
+        public decimal sold_price_for_item { get; set; }
         public int history_id { get; set; }
     
         public virtual Items Items { get; set; }

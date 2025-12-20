@@ -9,15 +9,11 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="payment_id ID" Binding="{Binding payment_id}"/>
-                <DataGridTextColumn Header="reference_type" Binding="{Binding reference_type}"/>
-                <DataGridTextColumn Header="reference_id" Binding="{Binding reference_id}"/>
-                <DataGridTextColumn Header="payment_date" Binding="{Binding payment_date}"/>
-                <DataGridTextColumn Header="amount" Binding="{Binding amount}"/>
-                <DataGridTextColumn Header="payment_method" Binding="{Binding payment_method}"/>
-                <DataGridTextColumn Header="description" Binding="{Binding description}"/>
-                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
-                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
+                <DataGridTextColumn Header="Payment ID" Binding="{Binding PaymentID}"/>
+                <DataGridTextColumn Header="Payment Date" Binding="{Binding PaymentDate}"/>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}"/>
+                <DataGridTextColumn Header="Payment Method" Binding="{Binding PaymentMethod}"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>                
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

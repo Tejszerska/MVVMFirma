@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MVVMFirma.Views
 {
     /// <summary>
-    /// Logika interakcji dla klasy NowyKontrahentView.xaml
+    /// Interaction logic for PawnLoansRaportView.xaml
     /// </summary>
-    public partial class NowyKontrahentView : UserControl
+    public partial class PawnLoansRaportView : UserControl
     {
-        public NowyKontrahentView()
+        public PawnLoansRaportView()
         {
             InitializeComponent();
         }

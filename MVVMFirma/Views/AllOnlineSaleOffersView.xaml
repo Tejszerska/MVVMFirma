@@ -9,20 +9,14 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="online_offer_id" Binding="{Binding online_offer_id}"/>
-                <DataGridTextColumn Header="item_id" Binding="{Binding item_id}"/>
-                <DataGridTextColumn Header="platform" Binding="{Binding platform}"/>
-                <DataGridTextColumn Header="offer_title" Binding="{Binding offer_title}"/>
-                <DataGridTextColumn Header="listing_price" Binding="{Binding listing_price}"/>
-                <DataGridTextColumn Header="listing_date" Binding="{Binding listing_date}"/>
-                <DataGridTextColumn Header="expiration_date" Binding="{Binding expiration_date}"/>
-                <DataGridTextColumn Header="url" Binding="{Binding url}"/>
-                <DataGridTextColumn Header="status" Binding="{Binding status}"/>
-                <DataGridTextColumn Header="views_count" Binding="{Binding views_count}"/>
-                <DataGridTextColumn Header="messages_count" Binding="{Binding messages_count}"/>
-                <DataGridTextColumn Header="notes" Binding="{Binding notes}"/>
-                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
-                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
+                <DataGridTextColumn Header="OnlineSaleOfferId" Binding="{Binding OnlineSaleOfferId}"/>
+                <DataGridTextColumn Header="Item Name" Binding="{Binding ItemName}"/>
+                <DataGridTextColumn Header="Platform" Binding="{Binding Platform}"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Expiration Date" Binding="{Binding ExpirationDate}"/>
+                <DataGridTextColumn Header="Offer Title" Binding="{Binding OfferTitle}"/>
+                <DataGridTextColumn Header="Link" Binding="{Binding Link}"/>
+                
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

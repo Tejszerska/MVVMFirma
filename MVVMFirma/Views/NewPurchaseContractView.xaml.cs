@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Interaction logic for AddPurchaseContract.xaml
     /// </summary>
-    public partial class NewPurchaseContract : UserControl
+    public partial class NewPurchaseContract : OneViewBase
     {
         public NewPurchaseContract()
         {

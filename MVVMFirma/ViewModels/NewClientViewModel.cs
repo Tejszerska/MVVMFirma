@@ -100,17 +100,17 @@ namespace MVVMFirma.ViewModels
         }
 
 
-        public string Address_source
+        public int? Address_source
         {
             get
             {
-                return item.address_source;
+                return item.address_source_id;
             }
             set
             {
-                if (value != item.address_source)
+                if (value != item.address_source_id)
                 {
-                    item.address_source = value;
+                    item.address_source_id = value;
                     OnPropertyChanged(() => Address_source);
                 }
             }

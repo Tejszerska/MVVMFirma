@@ -22,9 +22,9 @@ namespace MVVMFirma.Models
     
         public int interest_rate_id { get; set; }
         public string name { get; set; }
-        public Nullable<decimal> rate_percent { get; set; }
-        public Nullable<int> period_days { get; set; }
-        public Nullable<decimal> minimal_interest { get; set; }
+        public decimal rate_percent { get; set; }
+        public int period_days { get; set; }
+        public decimal minimal_interest { get; set; }
         public bool is_default { get; set; }
         public bool is_active { get; set; }
         public int history_id { get; set; }

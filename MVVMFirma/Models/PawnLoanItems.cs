@@ -17,7 +17,7 @@ namespace MVVMFirma.Models
         public int pawn_loan_item_id { get; set; }
         public int pawn_loan_id { get; set; }
         public int item_id { get; set; }
-        public Nullable<decimal> loan_amount_for_item { get; set; }
+        public decimal loan_amount_for_item { get; set; }
         public string notes { get; set; }
         public int history_id { get; set; }
     

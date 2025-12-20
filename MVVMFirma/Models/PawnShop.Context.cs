@@ -13,10 +13,10 @@ namespace MVVMFirma.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PawnShopEntities3 : DbContext
+    public partial class PawnShopEntities : DbContext
     {
-        public PawnShopEntities3()
-            : base("name=PawnShopEntities3")
+        public PawnShopEntities()
+            : base("name=PawnShopEntities")
         {
         }
     
@@ -26,6 +26,7 @@ namespace MVVMFirma.Models
         }
     
         public virtual DbSet<AcquisitionSourceTypes> AcquisitionSourceTypes { get; set; }
+        public virtual DbSet<AddressSources> AddressSources { get; set; }
         public virtual DbSet<Branches> Branches { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Clients> Clients { get; set; }

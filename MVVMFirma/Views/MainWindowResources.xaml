@@ -3,12 +3,6 @@
                     xmlns:vm="clr-namespace:MVVMFirma.ViewModels"
                     xmlns:vw="clr-namespace:MVVMFirma.Views"
                     >
-    <DataTemplate DataType="{x:Type vm:WszystkieTowaryViewModel}">
-        <vw:WszystkieTowaryView/>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type vm:NowyTowarViewModel}">
-        <vw:NowyTowarView/>
-    </DataTemplate>
     <DataTemplate DataType="{x:Type vm:AllBranchesViewModel}">
         <vw:AllBranchesView/>
     </DataTemplate>
@@ -102,10 +96,12 @@
     <DataTemplate DataType="{x:Type vm:RecordsHistoryViewModel}">
         <vw:RecordsHistory/>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type vm:SinglePriceHistoryViewModel}">
-        <vw:SinglePriceHistory/>
+    <DataTemplate DataType="{x:Type vm:PawnLoansRaportViewModel}">
+        <vw:PawnLoansRaportView/>
     </DataTemplate>
-
+    <DataTemplate DataType="{x:Type vm:InventoryAgingRaportViewModel}">
+        <vw:InventoryAgingRaportView/>
+    </DataTemplate>
 
 
     <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">

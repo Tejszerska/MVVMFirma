@@ -16,7 +16,6 @@ namespace MVVMFirma.ViewModels
         }
         #endregion
         #region Properties
-        // tylko dla pol towarow ktore bedziemy dodawac - dodajemu properties
         public string Name
         {
             get

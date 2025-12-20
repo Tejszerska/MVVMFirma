@@ -9,14 +9,14 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="history_id" Binding="{Binding history_id}"/>
-                <DataGridTextColumn Header="created_by" Binding="{Binding created_by}"/>
-                <DataGridTextColumn Header="created_at" Binding="{Binding created_at}"/>
-                <DataGridTextColumn Header="created_in" Binding="{Binding created_in}"/>
-                <DataGridTextColumn Header="modified_by" Binding="{Binding modified_by}"/>
-                <DataGridTextColumn Header="modified_at" Binding="{Binding modified_at}"/>
-                <DataGridTextColumn Header="deleted_by" Binding="{Binding deleted_by}"/>
-                <DataGridTextColumn Header="deleted_at" Binding="{Binding deleted_at}"/>
+                <DataGridTextColumn Header="RecordHistoryID" Binding="{Binding RecordHistoryID}"/>
+                <DataGridTextColumn Header="CreateEmployee" Binding="{Binding CreateEmployee}"/>
+                <DataGridTextColumn Header="CreateDate" Binding="{Binding CreateDate}"/>
+                <DataGridTextColumn Header="CreateBranch" Binding="{Binding CreateBranch}"/>
+                <DataGridTextColumn Header="ModifyEmployee" Binding="{Binding ModifyEmployee}"/>
+                <DataGridTextColumn Header="ModifyDate" Binding="{Binding ModifyDate}"/>
+                <DataGridTextColumn Header="DeleteEmployee" Binding="{Binding DeleteEmployee}"/>
+                <DataGridTextColumn Header="DeleteDate" Binding="{Binding DeleteDate}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

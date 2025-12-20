@@ -78,9 +78,16 @@
     <Compile Include="Models\AcquisitionSourceTypes.cs">
       <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddressSources.cs">
+      <DependentUpon>PawnShop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Branches.cs">
       <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BussinessLogic\DatabaseClass.cs" />
+    <Compile Include="Models\BussinessLogic\ContractStatusesB.cs" />
+    <Compile Include="Models\BussinessLogic\InventoryAgingB.cs" />
+    <Compile Include="Models\BussinessLogic\PawnLoanSummaryB.cs" />
     <Compile Include="Models\Categories.cs">
       <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
@@ -102,6 +109,17 @@
     <Compile Include="Models\EmployeeShifts.cs">
       <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EntitiesForView\CategoriesExtendedView.cs" />
+    <Compile Include="Models\EntitiesForView\ClientsExtendedView.cs" />
+    <Compile Include="Models\EntitiesForView\EmpoloyeeShiftExtendedView.cs" />
+    <Compile Include="Models\EntitiesForView\InventoryAging.cs" />
+    <Compile Include="Models\EntitiesForView\ItemsExtendedView.cs" />
+    <Compile Include="Models\EntitiesForView\KeyAndValue.cs" />
+    <Compile Include="Models\EntitiesForView\OnlineSaleOffersExtendedView.cs" />
+    <Compile Include="Models\EntitiesForView\PawnLoanForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\PaymentsExtendedView.cs" />
+    <Compile Include="Models\EntitiesForView\PriceHistoryExtededView.cs" />
+    <Compile Include="Models\EntitiesForView\RecordHistoryExtendedView.cs" />
     <Compile Include="Models\FinalizationSources.cs">
       <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
@@ -192,8 +210,10 @@
     <Compile Include="ViewModels\AllPurchaseContractsViewModel.cs" />
     <Compile Include="ViewModels\AllSalesItemsViewModel.cs" />
     <Compile Include="ViewModels\AllSalesViewModel.cs" />
+    <Compile Include="ViewModels\BaseDBViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CommandViewModel.cs" />
+    <Compile Include="ViewModels\InventoryAgingRaportViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\NewBranchViewModel.cs" />
     <Compile Include="ViewModels\NewCategoryViewModel.cs" />
@@ -209,15 +229,9 @@
     <Compile Include="ViewModels\NewPurchaseContractViewModel.cs" />
     <Compile Include="ViewModels\NewSalesItemsViewModel.cs" />
     <Compile Include="ViewModels\NewSaleViewModel.cs" />
-    <Compile Include="ViewModels\NowaFakturaViewModel.cs" />
-    <Compile Include="ViewModels\NowyKontrahentViewModel.cs" />
-    <Compile Include="ViewModels\NowyTowarViewModel.cs" />
+    <Compile Include="ViewModels\PawnLoansRaportViewModel.cs" />
     <Compile Include="ViewModels\RecordsHistoryViewModel.cs" />
-    <Compile Include="ViewModels\SinglePriceHistoryViewModel.cs" />
     <Compile Include="ViewModels\WorkspaceViewModel.cs" />
-    <Compile Include="ViewModels\WszyscyKontrahenciViewModel.cs" />
-    <Compile Include="ViewModels\WszystkieFakturyViewModel.cs" />
-    <Compile Include="ViewModels\WszystkieTowaryViewModel.cs" />
     <Compile Include="Views\AllBranchesView.xaml.cs">
       <DependentUpon>AllBranchesView.xaml</DependentUpon>
     </Compile>
@@ -267,6 +281,9 @@
       <DependentUpon>AllSalesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AllViewBase.cs" />
+    <Compile Include="Views\InventoryAgingRaportView.xaml.cs">
+      <DependentUpon>InventoryAgingRaportView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -312,30 +329,12 @@
     <Compile Include="Views\NewSaleView.xaml.cs">
       <DependentUpon>NewSaleView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\NowaFakturaView.xaml.cs">
-      <DependentUpon>NowaFakturaView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\NowyKontrahentView.xaml.cs">
-      <DependentUpon>NowyKontrahentView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\NowyTowarView.xaml.cs">
-      <DependentUpon>NowyTowarView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\OneViewBase.cs" />
+    <Compile Include="Views\PawnLoansRaportView.xaml.cs">
+      <DependentUpon>PawnLoansRaportView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RecordsHistoryView.xaml.cs">
       <DependentUpon>RecordsHistoryView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SinglePriceHistoryView.xaml.cs">
-      <DependentUpon>SinglePriceHistoryView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WszyscyKontrahenciView.xaml.cs">
-      <DependentUpon>WszyscyKontrahenciView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WszystkieFakturyView.xaml.cs">
-      <DependentUpon>WszystkieFakturyView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WszystkieTowaryView.xaml.cs">
-      <DependentUpon>WszystkieTowaryView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -440,6 +439,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\InventoryAgingRaportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -504,37 +507,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\NowaFakturaView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\NowyKontrahentView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\NowyTowarView.xaml">
+    <Page Include="Views\PawnLoansRaportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RecordsHistoryView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\SinglePriceHistoryView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\WszyscyKontrahenciView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\WszystkieFakturyView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\WszystkieTowaryView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

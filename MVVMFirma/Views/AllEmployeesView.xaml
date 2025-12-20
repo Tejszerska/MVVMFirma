@@ -14,8 +14,6 @@
                 <DataGridTextColumn Header="Last name" Binding="{Binding last_name}"/>
                 <DataGridTextColumn Header="Login" Binding="{Binding login}"/>
                 <DataGridTextColumn Header="Role" Binding="{Binding employee_role_id}"/>
-                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
-                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

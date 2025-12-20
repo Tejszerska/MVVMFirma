@@ -13,7 +13,7 @@ public class AllEmployeesViewModel : AllViewModel<Employees>
 
             List = new ObservableCollection<Employees>
                 (
-                  pawnShopEntities.Employees.ToList()
+                  pawnShopEntities.Employees.Where(x => x.is_active == true).ToList()
                 );
         }
         #endregion

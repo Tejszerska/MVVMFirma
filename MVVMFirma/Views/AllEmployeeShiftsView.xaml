@@ -9,13 +9,13 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Shift ID" Binding="{Binding shift_id}"/>
-                <DataGridTextColumn Header="Employee ID" Binding="{Binding employee_id}"/>
-                <DataGridTextColumn Header="Branch ID" Binding="{Binding branch_id}"/>
-                <DataGridTextColumn Header="Shift start" Binding="{Binding shift_start}"/>
-                <DataGridTextColumn Header="Shift end" Binding="{Binding shift_end}"/>
-                <DataGridTextColumn Header="Notes" Binding="{Binding notes}"/>
-                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
+                <DataGridTextColumn Header="Shift ID" Binding="{Binding EmployeeShiftId}"/>
+                <DataGridTextColumn Header="First Name" Binding="{Binding EmployeeFirstName}"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding EmployeeLastName}"/>
+                <DataGridTextColumn Header="Branch Name" Binding="{Binding BranchName}"/>
+                <DataGridTextColumn Header="Shift start" Binding="{Binding ShiftStart}"/>
+                <DataGridTextColumn Header="Shift end" Binding="{Binding ShiftEnd}"/>
+                <DataGridTextColumn Header="Notes" Binding="{Binding Notes}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -18,6 +18,7 @@ namespace MVVMFirma.Models
         public RecordHistory()
         {
             this.AcquisitionSourceTypes = new HashSet<AcquisitionSourceTypes>();
+            this.AddressSources = new HashSet<AddressSources>();
             this.Branches = new HashSet<Branches>();
             this.Categories = new HashSet<Categories>();
             this.Clients = new HashSet<Clients>();
@@ -55,6 +56,8 @@ namespace MVVMFirma.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AcquisitionSourceTypes> AcquisitionSourceTypes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AddressSources> AddressSources { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Branches> Branches { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

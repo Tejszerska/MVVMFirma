@@ -16,6 +16,10 @@ namespace MVVMFirma.Helper
             _command = command;
         }
 
+        public BaseCommand()
+        {
+        }
+
         public void Execute(object parameter)
         {
             _command();

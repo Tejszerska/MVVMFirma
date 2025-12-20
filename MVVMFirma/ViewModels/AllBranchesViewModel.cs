@@ -13,7 +13,8 @@ namespace MVVMFirma.ViewModels
 
             List = new ObservableCollection<Branches>
                 (
-                  pawnShopEntities.Branches.ToList()
+                pawnShopEntities.Branches.Where(x => x.is_active == true).ToList()
+                
                 );
         }             
         #endregion
@@ -21,10 +22,8 @@ namespace MVVMFirma.ViewModels
         public AllBranchesViewModel()
             :base()
         {
-            base.DisplayName = "Branches";
-            
+            base.DisplayName = "Branches";            
         }
-
         #endregion
     }
 }

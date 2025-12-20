@@ -13,8 +13,7 @@
                 <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
                 <DataGridTextColumn Header="Address" Binding="{Binding address}"/>
                 <DataGridTextColumn Header="Phone" Binding="{Binding phone}"/>
-                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
-                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>                
+                          
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

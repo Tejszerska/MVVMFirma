@@ -9,11 +9,9 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Category ID" Binding="{Binding category_id}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
-                <DataGridTextColumn Header="Parent ID" Binding="{Binding parent_id}"/>
-                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
-                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
+                <DataGridTextColumn Header="Category ID" Binding="{Binding CategoryId}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Parent Category" Binding="{Binding ParentCategory}"/>               
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -16,8 +16,8 @@ namespace MVVMFirma.Models
     {
         public int price_history_id { get; set; }
         public int item_id { get; set; }
-        public Nullable<decimal> previous_value { get; set; }
-        public Nullable<decimal> new_value { get; set; }
+        public decimal previous_value { get; set; }
+        public decimal new_value { get; set; }
         public int changed_by { get; set; }
         public System.DateTime changed_at { get; set; }
     

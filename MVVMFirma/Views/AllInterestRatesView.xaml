@@ -15,8 +15,7 @@
                 <DataGridTextColumn Header="Period days" Binding="{Binding period_days}"/>
                 <DataGridTextColumn Header="Minimal interest" Binding="{Binding minimal_interest}"/>
                 <DataGridTextColumn Header="Is default?" Binding="{Binding is_default}"/>
-                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
-                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
+                
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

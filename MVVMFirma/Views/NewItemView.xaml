@@ -1,4 +1,4 @@
-<UserControl x:Class="MVVMFirma.Views.NewItem"
+<local:OneViewBase x:Class="MVVMFirma.Views.NewItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,8 +6,54 @@
              xmlns:local="clr-namespace:MVVMFirma.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Label Content="Adding new item"></Label>
 
+    <Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="150"/>
+        <ColumnDefinition Width="200"/>
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="40"/>
+    </Grid.RowDefinitions>
+
+    <Label Grid.Column="0" Grid.Row="0" Content="Name" Margin="0,8,0,8"/>
+    <TextBox Grid.Column="1" Grid.Row="0" Margin="0,8,0,8" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}"/>
+
+    <Label Grid.Column="0" Grid.Row="1" Content="Category ID" Margin="0,8,0,8"/>
+    <TextBox Grid.Column="1" Grid.Row="1" Margin="0,8,0,8" Text="{Binding Path=Category_Id, UpdateSourceTrigger=PropertyChanged}"/>
+
+    <Label Grid.Column="0" Grid.Row="2" Content="Description" Margin="0,8,0,8"/>
+    <TextBox Grid.Column="1" Grid.Row="2" Margin="0,8,0,8" Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}"/>
+
+    <Label Grid.Column="0" Grid.Row="3" Content="Estimated value" Margin="0,8,0,8"/>
+    <TextBox Grid.Column="1" Grid.Row="3" Margin="0,8,0,8" Text="{Binding Path=Estimated_Value, UpdateSourceTrigger=PropertyChanged}"/>
+
+    <Label Grid.Column="0" Grid.Row="4" Content="Sale price" Margin="0,8,0,8"/>
+    <TextBox Grid.Column="1" Grid.Row="4" Margin="0,8,0,8" Text="{Binding Path=Sale_Price, UpdateSourceTrigger=PropertyChanged}"/>
+
+    <Label Grid.Column="0" Grid.Row="5" Content="Condition ID" Margin="0,8,0,8"/>
+    <TextBox Grid.Column="1" Grid.Row="5" Margin="0,8,0,8" Text="{Binding Path=Condition_Id, UpdateSourceTrigger=PropertyChanged}"/>
+
+    <Label Grid.Column="0" Grid.Row="6" Content="Acq. source type ID" Margin="0,8,0,8"/>
+    <TextBox Grid.Column="1" Grid.Row="6" Margin="0,8,0,8" Text="{Binding Path=Acquisition_Source_Type_Id, UpdateSourceTrigger=PropertyChanged}"/>
+
+    <Label Grid.Column="0" Grid.Row="7" Content="Acq. source ID" Margin="0,8,0,8"/>
+    <TextBox Grid.Column="1" Grid.Row="7" Margin="0,8,0,8" Text="{Binding Path=Acquisition_Source_Id, UpdateSourceTrigger=PropertyChanged}"/>
+
+    <Label Grid.Column="0" Grid.Row="8" Content="Current branch ID" Margin="0,8,0,8"/>
+    <TextBox Grid.Column="1" Grid.Row="8" Margin="0,8,0,8" Text="{Binding Path=Current_Branch_Id, UpdateSourceTrigger=PropertyChanged}"/>
+
+    <Label Grid.Column="0" Grid.Row="9" Content="Item status ID" Margin="0,8,0,8"/>
+    <TextBox Grid.Column="1" Grid.Row="9" Margin="0,8,0,8" Text="{Binding Path=Item_Status_Id, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
-</UserControl>
+</local:OneViewBase>

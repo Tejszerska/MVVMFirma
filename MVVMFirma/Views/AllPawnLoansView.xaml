@@ -9,17 +9,16 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="pawn_loan_id" Binding="{Binding pawn_loan_id}"/>
-                <DataGridTextColumn Header="client_id" Binding="{Binding client_id}"/>
-                <DataGridTextColumn Header="agreement_number" Binding="{Binding agreement_number}"/>
-                <DataGridTextColumn Header="start_date" Binding="{Binding start_date}"/>
-                <DataGridTextColumn Header="due_date" Binding="{Binding due_date}"/>
-                <DataGridTextColumn Header="total_loan_amount" Binding="{Binding total_loan_amount}"/>
-                <DataGridTextColumn Header="interest_rate_id" Binding="{Binding interest_rate_id}"/>
-                <DataGridTextColumn Header="status" Binding="{Binding status}"/>
-                <DataGridTextColumn Header="previous_loan_id" Binding="{Binding previous_loan_id}"/>
-                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
-                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
+                <DataGridTextColumn Header="Agreement Number" Binding="{Binding AgreementNumber}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}"/>
+                <DataGridTextColumn Header="Due Date" Binding="{Binding DueDate}"/>
+                <DataGridTextColumn Header="Total LoanAmount" Binding="{Binding TotalLoanAmount}"/>
+                <DataGridTextColumn Header="Interest Rate" Binding="{Binding InterestRate}"/>
+                <DataGridTextColumn Header="Items" Binding="{Binding Items}"/>
+                <DataGridTextColumn Header="Previous Agreement Number" Binding="{Binding PreviousAgreementNumber}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

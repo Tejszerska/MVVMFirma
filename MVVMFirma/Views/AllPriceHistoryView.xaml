@@ -9,12 +9,12 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="price_history_id" Binding="{Binding price_history_id}"/>
-                <DataGridTextColumn Header="item_id" Binding="{Binding item_id}"/>
-                <DataGridTextColumn Header="previous_value" Binding="{Binding previous_value}"/>
-                <DataGridTextColumn Header="new_value" Binding="{Binding new_value}"/>
-                <DataGridTextColumn Header="changed_by" Binding="{Binding changed_by}"/>
-                <DataGridTextColumn Header="changed_at" Binding="{Binding changed_at}"/>
+                <DataGridTextColumn Header="Item ID" Binding="{Binding ItemID}"/>
+                <DataGridTextColumn Header="Item Name" Binding="{Binding ItemName}"/>
+                <DataGridTextColumn Header="Change Date" Binding="{Binding ChangeDate}"/>
+                <DataGridTextColumn Header="Old Price" Binding="{Binding OldPrice}"/>
+                <DataGridTextColumn Header="New Price" Binding="{Binding NewPrice}"/>
+                <DataGridTextColumn Header="Changed By Employee" Binding="{Binding ChangedByEmployee}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

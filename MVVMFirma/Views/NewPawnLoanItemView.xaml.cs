@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +18,7 @@ namespace MVVMFirma.Views
     /// <summary>
     /// Interaction logic for NewPawnLoanItemView.xaml
     /// </summary>
-    public partial class NewPawnLoanItemView : UserControl
+    public partial class NewPawnLoanItemView : OneViewBase
     {
         public NewPawnLoanItemView()
         {

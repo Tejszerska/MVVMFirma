@@ -17,13 +17,25 @@
           <Property Name="order_index" Type="int" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="AddressSources">
+          <Key>
+            <PropertyRef Name="address_source_id" />
+          </Key>
+          <Property Name="address_source_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="500" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="order_index" Type="int" Nullable="false" />
+          <Property Name="history_id" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Branches">
           <Key>
             <PropertyRef Name="branch_id" />
           </Key>
           <Property Name="branch_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="200" />
-          <Property Name="address" Type="nvarchar" MaxLength="300" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="phone" Type="nvarchar" MaxLength="50" />
           <Property Name="is_active" Type="bit" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
@@ -33,7 +45,7 @@
             <PropertyRef Name="category_id" />
           </Key>
           <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="200" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="parent_id" Type="int" />
           <Property Name="is_active" Type="bit" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
@@ -49,7 +61,7 @@
           <Property Name="document_number" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="pesel" Type="nvarchar" MaxLength="20" />
           <Property Name="address" Type="nvarchar" MaxLength="300" />
-          <Property Name="address_source" Type="nvarchar" MaxLength="50" />
+          <Property Name="address_source_id" Type="int" />
           <Property Name="phone" Type="nvarchar" MaxLength="50" />
           <Property Name="email" Type="nvarchar" MaxLength="100" />
           <Property Name="is_active" Type="bit" Nullable="false" />
@@ -97,9 +109,9 @@
             <PropertyRef Name="employee_id" />
           </Key>
           <Property Name="employee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="first_name" Type="nvarchar" MaxLength="100" />
-          <Property Name="last_name" Type="nvarchar" MaxLength="100" />
-          <Property Name="login" Type="nvarchar" MaxLength="100" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="is_active" Type="bit" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
           <Property Name="employee_role_id" Type="int" Nullable="false" />
@@ -133,10 +145,10 @@
             <PropertyRef Name="interest_rate_id" />
           </Key>
           <Property Name="interest_rate_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="200" />
-          <Property Name="rate_percent" Type="decimal" Precision="6" Scale="2" />
-          <Property Name="period_days" Type="int" />
-          <Property Name="minimal_interest" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="rate_percent" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="period_days" Type="int" Nullable="false" />
+          <Property Name="minimal_interest" Type="decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="is_default" Type="bit" Nullable="false" />
           <Property Name="is_active" Type="bit" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
@@ -158,8 +170,8 @@
             <PropertyRef Name="item_id" />
           </Key>
           <Property Name="item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="200" />
-          <Property Name="category_id" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="estimated_value" Type="decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="sale_price" Type="decimal" Precision="12" Scale="2" Nullable="false" />
@@ -169,6 +181,7 @@
           <Property Name="current_branch_id" Type="int" Nullable="false" />
           <Property Name="item_status_id" Type="int" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ItemStatuses">
           <Key>
@@ -220,7 +233,7 @@
           <Property Name="pawn_loan_item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pawn_loan_id" Type="int" Nullable="false" />
           <Property Name="item_id" Type="int" Nullable="false" />
-          <Property Name="loan_amount_for_item" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="loan_amount_for_item" Type="decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="notes" Type="nvarchar" MaxLength="500" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
@@ -271,8 +284,8 @@
           </Key>
           <Property Name="price_history_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="item_id" Type="int" Nullable="false" />
-          <Property Name="previous_value" Type="decimal" Precision="12" Scale="2" />
-          <Property Name="new_value" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="previous_value" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="new_value" Type="decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="changed_by" Type="int" Nullable="false" />
           <Property Name="changed_at" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
@@ -283,7 +296,7 @@
           <Property Name="purchase_contract_item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="purchase_contract_id" Type="int" Nullable="false" />
           <Property Name="item_id" Type="int" Nullable="false" />
-          <Property Name="purchase_price" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="purchase_price" Type="decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="notes" Type="nvarchar" MaxLength="500" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
@@ -334,7 +347,7 @@
           <Property Name="sales_item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="sale_id" Type="int" Nullable="false" />
           <Property Name="item_id" Type="int" Nullable="false" />
-          <Property Name="sold_price_for_item" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="sold_price_for_item" Type="decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="history_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="SalesStatuses">
@@ -468,7 +481,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Items__category___5070F446">
-          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
           <End Role="Items" Type="Self.Items" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categories">
@@ -791,6 +804,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AddressSources_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="AddressSources" Type="Self.AddressSources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="AddressSources">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_AddressSources">
+          <End Role="AddressSources" Type="Self.AddressSources" Multiplicity="0..1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressSources">
+              <PropertyRef Name="address_source_id" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="address_source_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Clients_DocumentTypes">
           <End Role="DocumentTypes" Type="Self.DocumentTypes" Multiplicity="1" />
           <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
@@ -875,7 +912,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Items_AcquisitionSourceTypes1">
+        <Association Name="FK_Items_AcquisitionSourceTypes">
           <End Role="AcquisitionSourceTypes" Type="Self.AcquisitionSourceTypes" Multiplicity="1" />
           <End Role="Items" Type="Self.Items" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1045,6 +1082,7 @@
         </Association>
         <EntityContainer Name="PawnShopModelStoreContainer">
           <EntitySet Name="AcquisitionSourceTypes" EntityType="Self.AcquisitionSourceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddressSources" EntityType="Self.AddressSources" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
@@ -1216,6 +1254,14 @@
             <End Role="RecordHistory" EntitySet="RecordHistory" />
             <End Role="AcquisitionSourceTypes" EntitySet="AcquisitionSourceTypes" />
           </AssociationSet>
+          <AssociationSet Name="FK_AddressSources_RecordHistory" Association="Self.FK_AddressSources_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="AddressSources" EntitySet="AddressSources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_AddressSources" Association="Self.FK_Clients_AddressSources">
+            <End Role="AddressSources" EntitySet="AddressSources" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
           <AssociationSet Name="FK_Clients_DocumentTypes" Association="Self.FK_Clients_DocumentTypes">
             <End Role="DocumentTypes" EntitySet="DocumentTypes" />
             <End Role="Clients" EntitySet="Clients" />
@@ -1244,7 +1290,7 @@
             <End Role="RecordHistory" EntitySet="RecordHistory" />
             <End Role="ItemConditions" EntitySet="ItemConditions" />
           </AssociationSet>
-          <AssociationSet Name="FK_Items_AcquisitionSourceTypes1" Association="Self.FK_Items_AcquisitionSourceTypes1">
+          <AssociationSet Name="FK_Items_AcquisitionSourceTypes" Association="Self.FK_Items_AcquisitionSourceTypes">
             <End Role="AcquisitionSourceTypes" EntitySet="AcquisitionSourceTypes" />
             <End Role="Items" EntitySet="Items" />
           </AssociationSet>
@@ -1318,15 +1364,29 @@
           <Property Name="order_index" Type="Int32" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK_AcquisitionSourceTypes_RecordHistory" FromRole="AcquisitionSourceTypes" ToRole="RecordHistory" />
-          <NavigationProperty Name="Items" Relationship="Self.FK_Items_AcquisitionSourceTypes1" FromRole="AcquisitionSourceTypes" ToRole="Items" />
+          <NavigationProperty Name="Items" Relationship="Self.FK_Items_AcquisitionSourceTypes" FromRole="AcquisitionSourceTypes" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="AddressSources">
+          <Key>
+            <PropertyRef Name="address_source_id" />
+          </Key>
+          <Property Name="address_source_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="order_index" Type="Int32" Nullable="false" />
+          <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RecordHistory" Relationship="Self.FK_AddressSources_RecordHistory" FromRole="AddressSources" ToRole="RecordHistory" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_AddressSources" FromRole="AddressSources" ToRole="Clients" />
         </EntityType>
         <EntityType Name="Branches">
           <Key>
             <PropertyRef Name="branch_id" />
           </Key>
           <Property Name="branch_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
@@ -1339,7 +1399,7 @@
             <PropertyRef Name="category_id" />
           </Key>
           <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="parent_id" Type="Int32" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
@@ -1359,11 +1419,12 @@
           <Property Name="document_number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="pesel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="address_source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address_source_id" Type="Int32" />
           <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AddressSources" Relationship="Self.FK_Clients_AddressSources" FromRole="Clients" ToRole="AddressSources" />
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__Clients__history__48CFD27E" FromRole="Clients" ToRole="RecordHistory" />
           <NavigationProperty Name="PawnLoans" Relationship="Self.FK__PawnLoans__clien__5EBF139D" FromRole="Clients" ToRole="PawnLoans" />
           <NavigationProperty Name="PurchaseContracts" Relationship="Self.FK__PurchaseC__clien__6A30C649" FromRole="Clients" ToRole="PurchaseContracts" />
@@ -1418,9 +1479,9 @@
             <PropertyRef Name="employee_id" />
           </Key>
           <Property Name="employee_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
           <Property Name="employee_role_id" Type="Int32" Nullable="false" />
@@ -1463,10 +1524,10 @@
             <PropertyRef Name="interest_rate_id" />
           </Key>
           <Property Name="interest_rate_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="rate_percent" Type="Decimal" Precision="6" Scale="2" />
-          <Property Name="period_days" Type="Int32" />
-          <Property Name="minimal_interest" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rate_percent" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="period_days" Type="Int32" Nullable="false" />
+          <Property Name="minimal_interest" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="is_default" Type="Boolean" Nullable="false" />
           <Property Name="is_active" Type="Boolean" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
@@ -1492,8 +1553,8 @@
             <PropertyRef Name="item_id" />
           </Key>
           <Property Name="item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="category_id" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="estimated_value" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="sale_price" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
@@ -1503,7 +1564,8 @@
           <Property Name="current_branch_id" Type="Int32" Nullable="false" />
           <Property Name="item_status_id" Type="Int32" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AcquisitionSourceTypes" Relationship="Self.FK_Items_AcquisitionSourceTypes1" FromRole="Items" ToRole="AcquisitionSourceTypes" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AcquisitionSourceTypes" Relationship="Self.FK_Items_AcquisitionSourceTypes" FromRole="Items" ToRole="AcquisitionSourceTypes" />
           <NavigationProperty Name="Branches" Relationship="Self.FK__Items__current_b__5165187F" FromRole="Items" ToRole="Branches" />
           <NavigationProperty Name="Categories" Relationship="Self.FK__Items__category___5070F446" FromRole="Items" ToRole="Categories" />
           <NavigationProperty Name="ItemConditions" Relationship="Self.FK_Items_ItemConditions" FromRole="Items" ToRole="ItemConditions" />
@@ -1574,7 +1636,7 @@
           <Property Name="pawn_loan_item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pawn_loan_id" Type="Int32" Nullable="false" />
           <Property Name="item_id" Type="Int32" Nullable="false" />
-          <Property Name="loan_amount_for_item" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="loan_amount_for_item" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Items" Relationship="Self.FK__PawnLoanI__item___66603565" FromRole="PawnLoanItems" ToRole="Items" />
@@ -1640,8 +1702,8 @@
           </Key>
           <Property Name="price_history_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="item_id" Type="Int32" Nullable="false" />
-          <Property Name="previous_value" Type="Decimal" Precision="12" Scale="2" />
-          <Property Name="new_value" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="previous_value" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="new_value" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="changed_by" Type="Int32" Nullable="false" />
           <Property Name="changed_at" Type="DateTime" Nullable="false" Precision="7" />
           <NavigationProperty Name="Employees" Relationship="Self.FK__PriceHist__chang__5629CD9C" FromRole="PriceHistory" ToRole="Employees" />
@@ -1654,7 +1716,7 @@
           <Property Name="purchase_contract_item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="purchase_contract_id" Type="Int32" Nullable="false" />
           <Property Name="item_id" Type="Int32" Nullable="false" />
-          <Property Name="purchase_price" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="purchase_price" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Items" Relationship="Self.FK__PurchaseC__item___03F0984C" FromRole="PurchaseContractItems" ToRole="Items" />
@@ -1691,6 +1753,7 @@
           <Property Name="deleted_by" Type="Int32" />
           <Property Name="deleted_at" Type="DateTime" Precision="7" />
           <NavigationProperty Name="AcquisitionSourceTypes" Relationship="Self.FK_AcquisitionSourceTypes_RecordHistory" FromRole="RecordHistory" ToRole="AcquisitionSourceTypes" />
+          <NavigationProperty Name="AddressSources" Relationship="Self.FK_AddressSources_RecordHistory" FromRole="RecordHistory" ToRole="AddressSources" />
           <NavigationProperty Name="Branches" Relationship="Self.FK__Branches__histor__3B75D760" FromRole="RecordHistory" ToRole="Branches" />
           <NavigationProperty Name="Categories" Relationship="Self.FK__Categorie__histo__4D94879B" FromRole="RecordHistory" ToRole="Categories" />
           <NavigationProperty Name="Clients" Relationship="Self.FK__Clients__history__48CFD27E" FromRole="RecordHistory" ToRole="Clients" />
@@ -1743,7 +1806,7 @@
           <Property Name="sales_item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="sale_id" Type="Int32" Nullable="false" />
           <Property Name="item_id" Type="Int32" Nullable="false" />
-          <Property Name="sold_price_for_item" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="sold_price_for_item" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="history_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Items" Relationship="Self.FK__SalesItem__item___7F2BE32F" FromRole="SalesItems" ToRole="Items" />
           <NavigationProperty Name="RecordHistory" Relationship="Self.FK__SalesItem__histo__00200768" FromRole="SalesItems" ToRole="RecordHistory" />
@@ -1786,7 +1849,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Items_AcquisitionSourceTypes1">
+        <Association Name="FK_Items_AcquisitionSourceTypes">
           <End Role="AcquisitionSourceTypes" Type="Self.AcquisitionSourceTypes" Multiplicity="1" />
           <End Role="Items" Type="Self.Items" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1795,6 +1858,30 @@
             </Principal>
             <Dependent Role="Items">
               <PropertyRef Name="acquisition_source_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddressSources_RecordHistory">
+          <End Role="RecordHistory" Type="Self.RecordHistory" Multiplicity="1" />
+          <End Role="AddressSources" Type="Self.AddressSources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordHistory">
+              <PropertyRef Name="history_id" />
+            </Principal>
+            <Dependent Role="AddressSources">
+              <PropertyRef Name="history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_AddressSources">
+          <End Role="AddressSources" Type="Self.AddressSources" Multiplicity="0..1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressSources">
+              <PropertyRef Name="address_source_id" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="address_source_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1859,7 +1946,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Items__category___5070F446">
-          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
           <End Role="Items" Type="Self.Items" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categories">
@@ -2458,8 +2545,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PawnShopEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PawnShopEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AcquisitionSourceTypes" EntityType="Self.AcquisitionSourceTypes" />
+          <EntitySet Name="AddressSources" EntityType="Self.AddressSources" />
           <EntitySet Name="Branches" EntityType="Self.Branches" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <EntitySet Name="Clients" EntityType="Self.Clients" />
@@ -2491,9 +2579,17 @@
             <End Role="RecordHistory" EntitySet="RecordHistory" />
             <End Role="AcquisitionSourceTypes" EntitySet="AcquisitionSourceTypes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Items_AcquisitionSourceTypes1" Association="Self.FK_Items_AcquisitionSourceTypes1">
+          <AssociationSet Name="FK_Items_AcquisitionSourceTypes" Association="Self.FK_Items_AcquisitionSourceTypes">
             <End Role="AcquisitionSourceTypes" EntitySet="AcquisitionSourceTypes" />
             <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddressSources_RecordHistory" Association="Self.FK_AddressSources_RecordHistory">
+            <End Role="RecordHistory" EntitySet="RecordHistory" />
+            <End Role="AddressSources" EntitySet="AddressSources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_AddressSources" Association="Self.FK_Clients_AddressSources">
+            <End Role="AddressSources" EntitySet="AddressSources" />
+            <End Role="Clients" EntitySet="Clients" />
           </AssociationSet>
           <AssociationSet Name="FK__Branches__histor__3B75D760" Association="Self.FK__Branches__histor__3B75D760">
             <End Role="RecordHistory" EntitySet="RecordHistory" />
@@ -2721,11 +2817,24 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PawnShopModelStoreContainer" CdmEntityContainer="PawnShopEntities3">
+        <EntityContainerMapping StorageEntityContainer="PawnShopModelStoreContainer" CdmEntityContainer="PawnShopEntities">
           <EntitySetMapping Name="AcquisitionSourceTypes">
             <EntityTypeMapping TypeName="PawnShopModel.AcquisitionSourceTypes">
               <MappingFragment StoreEntitySet="AcquisitionSourceTypes">
                 <ScalarProperty Name="acquisition_source_type_id" ColumnName="acquisition_source_type_id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="order_index" ColumnName="order_index" />
+                <ScalarProperty Name="history_id" ColumnName="history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressSources">
+            <EntityTypeMapping TypeName="PawnShopModel.AddressSources">
+              <MappingFragment StoreEntitySet="AddressSources">
+                <ScalarProperty Name="address_source_id" ColumnName="address_source_id" />
                 <ScalarProperty Name="code" ColumnName="code" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -2768,7 +2877,7 @@
                 <ScalarProperty Name="document_number" ColumnName="document_number" />
                 <ScalarProperty Name="pesel" ColumnName="pesel" />
                 <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="address_source" ColumnName="address_source" />
+                <ScalarProperty Name="address_source_id" ColumnName="address_source_id" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="is_active" ColumnName="is_active" />
@@ -2897,6 +3006,7 @@
                 <ScalarProperty Name="current_branch_id" ColumnName="current_branch_id" />
                 <ScalarProperty Name="item_status_id" ColumnName="item_status_id" />
                 <ScalarProperty Name="history_id" ColumnName="history_id" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

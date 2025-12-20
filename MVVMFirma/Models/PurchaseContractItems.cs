@@ -17,7 +17,7 @@ namespace MVVMFirma.Models
         public int purchase_contract_item_id { get; set; }
         public int purchase_contract_id { get; set; }
         public int item_id { get; set; }
-        public Nullable<decimal> purchase_price { get; set; }
+        public decimal purchase_price { get; set; }
         public string notes { get; set; }
         public int history_id { get; set; }
     

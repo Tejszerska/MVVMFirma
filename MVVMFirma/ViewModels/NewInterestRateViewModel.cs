@@ -1,10 +1,5 @@
 using MVVMFirma.Models;
 using MVVMFirma.ViewModels.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 namespace MVVMFirma.ViewModels
 {
     public class NewInterestRateViewModel : OneViewModel<InterestRates>
@@ -35,7 +30,7 @@ namespace MVVMFirma.ViewModels
                 }
             }
         }
-       public decimal? Rate_percent
+       public decimal Rate_percent
         {
             get
             {
@@ -51,7 +46,7 @@ namespace MVVMFirma.ViewModels
             }
         }
 
-        public int? Period_days
+        public int Period_days
         {
             get
             {
@@ -67,7 +62,7 @@ namespace MVVMFirma.ViewModels
             }
         }
 
-        public decimal? Minimal_interest
+        public decimal Minimal_interest
         {
             get
             {

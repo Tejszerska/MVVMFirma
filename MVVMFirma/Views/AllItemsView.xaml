@@ -9,18 +9,16 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
         <DataGrid.Columns>
-                <DataGridTextColumn Header="Item ID" Binding="{Binding item_id}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
-                <DataGridTextColumn Header="Category ID" Binding="{Binding category_id}"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding description}"/>
-                <DataGridTextColumn Header="Estimated value" Binding="{Binding estimated_value}"/>
-                <DataGridTextColumn Header="Sale price" Binding="{Binding sale_price}"/>
-                <DataGridTextColumn Header="Condition" Binding="{Binding condition_id}"/>
-                <DataGridTextColumn Header="Acquisition source type" Binding="{Binding acquisition_source_type}"/>
-                <DataGridTextColumn Header="Acquisition source ID" Binding="{Binding acquisition_source_id}"/>
-                <DataGridTextColumn Header="Current branch ID" Binding="{Binding current_branch_id}"/>
-                <DataGridTextColumn Header="Item status" Binding="{Binding item_status}"/>
-                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
+                <DataGridTextColumn Header="Item ID" Binding="{Binding ItemId}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding ItemName}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding ItemStatus}"/>
+                <DataGridTextColumn Header="Category" Binding="{Binding CategoryName}"/>
+                <DataGridTextColumn Header="Condition" Binding="{Binding Condition}"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Estimated value" Binding="{Binding EstimatedValue}"/>
+                <DataGridTextColumn Header="Sale price" Binding="{Binding SalePrice}"/>
+                <DataGridTextColumn Header="Acquisition source type" Binding="{Binding AcquisitionSource}"/>
+                <DataGridTextColumn Header="Current branch" Binding="{Binding BranchName}"/>
         </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -20,7 +20,7 @@ public class AllInterestRatesViewModel : AllViewModel<InterestRates>
 
             List = new ObservableCollection<InterestRates>
                 (
-                  pawnShopEntities.InterestRates.ToList()
+                  pawnShopEntities.InterestRates.Where(x => x.is_active == true).ToList()
                 );
         }
         #endregion
