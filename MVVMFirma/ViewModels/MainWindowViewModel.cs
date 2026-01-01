@@ -44,9 +44,13 @@ namespace MVVMFirma.ViewModels
                     "Pawn Loans Overview ",
                     new BaseCommand(() => this.CreateView(new PawnLoansRaportViewModel()))),
 
-                    new CommandViewModel(
+                new CommandViewModel(
                     "Aging Inventory",
                     new BaseCommand(() => this.ShowAllView<InventoryAgingRaportViewModel>())),
+
+                new CommandViewModel(
+                    "Categories Statistics",
+                    new BaseCommand(() => this.CreateView(new CategoryStatsRaportViewModel()))),
 
 
                 new CommandViewModel(

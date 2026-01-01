@@ -30,9 +30,7 @@ namespace MVVMFirma.ViewModels
             generateAgingRaportClick();
         }
         #endregion
-
         #region Fields and properties
-        // Kolekcja dla DataGrid
         private ObservableCollection<InventoryAging> _AgingItems;
         public ObservableCollection<InventoryAging> AgingItems
         {
@@ -47,7 +45,6 @@ namespace MVVMFirma.ViewModels
             }
         }
 
-        // Licznik towarów zalegających powyżej 90 dni
         private int _CriticalItemsCount;
         public int CriticalItemsCount
         {
@@ -62,7 +59,6 @@ namespace MVVMFirma.ViewModels
             }
         }
 
-        // Sumaryczna wartość towarów krytycznych
         private decimal _TotalCriticalValue;
         public decimal TotalCriticalValue
         {
@@ -93,16 +89,12 @@ namespace MVVMFirma.ViewModels
 
         private void generateAgingRaportClick()
         {
-            // Tworzymy instancję logiki biznesowej
             var logic = new InventoryAgingB(pawnShopEntities);
 
-            // Pobieramy dane z bazy
             var results = logic.GetAgingReport().ToList();
 
-            // Przypisujemy wyniki do listy widocznej w DataGrid
             AgingItems = new ObservableCollection<InventoryAging>(results);
 
-            // Wyliczamy statystyki dla widoku (układ dwukolumnowy)
             CriticalItemsCount = results.Count(x => x.DaysInStock > 90);
             TotalCriticalValue = results.Where(x => x.DaysInStock > 90).Sum(x => x.EstimatedValue);
         }

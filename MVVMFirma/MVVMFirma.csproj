@@ -84,6 +84,8 @@
     <Compile Include="Models\Branches.cs">
       <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BussinessLogic\CategoriesB.cs" />
+    <Compile Include="Models\BussinessLogic\CategoryStatsSummaryB.cs" />
     <Compile Include="Models\BussinessLogic\DatabaseClass.cs" />
     <Compile Include="Models\BussinessLogic\ContractStatusesB.cs" />
     <Compile Include="Models\BussinessLogic\InventoryAgingB.cs" />
@@ -110,6 +112,7 @@
       <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EntitiesForView\CategoriesExtendedView.cs" />
+    <Compile Include="Models\EntitiesForView\CategoryStatistics.cs" />
     <Compile Include="Models\EntitiesForView\ClientsExtendedView.cs" />
     <Compile Include="Models\EntitiesForView\EmpoloyeeShiftExtendedView.cs" />
     <Compile Include="Models\EntitiesForView\InventoryAging.cs" />
@@ -212,6 +215,7 @@
     <Compile Include="ViewModels\AllSalesViewModel.cs" />
     <Compile Include="ViewModels\BaseDBViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CategoryStatsRaportViewModel.cs" />
     <Compile Include="ViewModels\CommandViewModel.cs" />
     <Compile Include="ViewModels\InventoryAgingRaportViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -281,6 +285,9 @@
       <DependentUpon>AllSalesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AllViewBase.cs" />
+    <Compile Include="Views\CategoryStatsRaportView.xaml.cs">
+      <DependentUpon>CategoryStatsRaportView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\InventoryAgingRaportView.xaml.cs">
       <DependentUpon>InventoryAgingRaportView.xaml</DependentUpon>
     </Compile>
@@ -438,6 +445,10 @@
     <Page Include="Views\AllSalesView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CategoryStatsRaportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\InventoryAgingRaportView.xaml">
       <SubType>Designer</SubType>

@@ -32,6 +32,8 @@ namespace MVVMFirma.Models.BussinessLogic
         {
         }
         #endregion
+
+
         #region Bussiness functions
         public decimal GetTotalLoanAmount(int statusId, DateTime startDate, DateTime endDate)
         {

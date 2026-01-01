@@ -14,19 +14,19 @@ namespace MVVMFirma.Models.BussinesLogic
         {
         }
         #endregion
-        #region Helping functions
-          public IQueryable<KeyAndValue> GetPawnLoansStatusesKeyAndValue()
-        {
 
+        #region Helping functions
+        public IQueryable<KeyAndValue> GetPawnLoansStatusesKeyAndValue()
+        {
             var statusesForCB =
                 (
                 from statuses in pawnShopEntities.ContractStatuses
-                 where statuses.is_active == true && statuses.contract_type == "PAWN_LOAN"
-                 select new KeyAndValue
-                 {
-                     Key = statuses.contract_status_id,
-                     Value = statuses.name + " (Code: " + statuses.code + ")"
-                 }
+                where statuses.is_active == true && statuses.contract_type == "PAWN_LOAN"
+                select new KeyAndValue
+                {
+                    Key = statuses.contract_status_id,
+                    Value = statuses.name + " (Code: " + statuses.code + ")"
+                }
                 ).ToList();
 
             statusesForCB.Insert(0, new KeyAndValue()
@@ -34,10 +34,9 @@ namespace MVVMFirma.Models.BussinesLogic
                 Key = 0,
                 Value = "All statuses"
             });
+
             return statusesForCB.AsQueryable();
         }
-
+        #endregion
     }
-     #endregion
-}
-
+} 

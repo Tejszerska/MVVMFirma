@@ -14,7 +14,6 @@ namespace MVVMFirma.ViewModels
         #region Database
         public readonly PawnShopEntities pawnShopEntities;
         #endregion
-    
         #region Contructor
         public PawnLoansRaportViewModel()
             
