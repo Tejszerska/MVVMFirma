@@ -19,14 +19,39 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="2">
-            <MenuItem Header="_Plik"/>
-            <MenuItem Header="_Magazyn">
-                <MenuItem Header="Wszystkie towary"/>
-                <MenuItem Header="Nowy towar"/>
-                <MenuItem Header="Wydanie Zewnętrzne (WZ)"/>
-                <MenuItem Header="Przyjęcie Zewnętrzne (PZ)"/>
+            <MenuItem Header="_Contracts">
+                <MenuItem Header="Pawn Loans Overview" Command="{Binding ShowPawnLoanOverviewCommand}"/>
+                <MenuItem Header="New Pawn Loan" Command="{Binding AddPawnLoanCommand}"/>
+                <MenuItem Header="Pawn Loans" Command="{Binding ShowPawnLoanCommand}"/>
+                <MenuItem Header="Interest Rates" Command="{Binding ShowInterestRatesCommand}"/>
+                <Separator />
+                <MenuItem Header="New Purchase Contract" Command="{Binding AddPurchaseContractCommand}"/>
+                <MenuItem Header="Purchase Contracts" Command="{Binding ShowPurchaseContractCommand}"/>
+                <Separator />
+                <MenuItem Header="New Client" Command="{Binding AddClientsCommand}"/>
+                <MenuItem Header="Clients" Command="{Binding ShowClientsCommand}"/>
             </MenuItem>
-            <MenuItem Header="Program"/>
+            
+            <MenuItem Header="_Inventory">
+                <MenuItem Header="" Command="{Binding}"/>
+            </MenuItem>
+            
+            <MenuItem Header="Sa_les">
+                <MenuItem Header="" Command="{Binding}"/>
+            </MenuItem>
+            
+            <MenuItem Header="_Network">
+                <MenuItem Header="New Employee" Command="{Binding AddEmployeesCommand}"/>
+                <MenuItem Header="Employees" Command="{Binding ShowEmployeesCommand}"/>
+                <MenuItem Header="Employees shitfs" Command="{Binding ShowEmployeesShiftsCommand}"/>
+                <Separator />
+                <MenuItem Header="New Branch" Command="{Binding AddBranchesCommand}"/>
+                <MenuItem Header="Branches" Command="{Binding ShowBranchesCommand}"/>
+            </MenuItem>
+            
+            <MenuItem Header="_Settings">
+                <!--interest rates, ustawienia menu bocznego i moze cos jeszcze-->
+            </MenuItem>
         </Menu>
         <ToolBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="2">
             <ToggleButton Width="32" Height="32" Background="Blue" Margin="2"/>
@@ -54,7 +79,7 @@
         </Border>
         <StatusBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
             <StatusBarItem>
-                <TextBlock>Artur Kornatka</TextBlock>
+                <TextBlock>Barbara Wojciechowska</TextBlock>
             </StatusBarItem>
             <Separator/>
             <StatusBarItem>
