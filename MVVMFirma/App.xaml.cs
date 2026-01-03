@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -19,6 +19,26 @@ namespace MVVMFirma
             window.DataContext = viewModel;
             window.Show();
         }
+
+        public void UpdateTheme(bool isDark)
+        {
+            // path for new mode
+            string themeName = isDark ? "Themes/DarkMode.xaml" : "Themes/LightMode.xaml";
+            var newDict = new ResourceDictionary { Source = new Uri(themeName, UriKind.Relative) };
+
+            // find and remove old mode
+            var oldDict = Resources.MergedDictionaries
+                .FirstOrDefault(d => d.Source != null && d.Source.OriginalString.Contains("Mode.xaml"));
+
+            if (oldDict != null)
+            {
+                Resources.MergedDictionaries.Remove(oldDict);
+            }
+
+            // add new mode
+            Resources.MergedDictionaries.Add(newDict);
+        }
+
     }
 
 }

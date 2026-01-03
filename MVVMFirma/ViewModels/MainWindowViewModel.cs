@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -16,9 +17,9 @@ namespace MVVMFirma.ViewModels
     public class MainWindowViewModel : BaseViewModel
     {
         #region FirstAdditionalFeature
-
+        // top menu
         #region Fields1
-        
+
         // Contracts Menu
         private ICommand _ShowPawnLoanOverviewCommand;
         private ICommand _AddInterestRatesCommand;
@@ -40,8 +41,6 @@ namespace MVVMFirma.ViewModels
         private ICommand _ShowPawnItemsCommand;
 
         //  Sales Menu
-        private ICommand _AddCommand;
-        private ICommand _ShowCommand;
         private ICommand _AddSalesCommand;
         private ICommand _ShowSalesCommand;
         private ICommand _AddOnlineOffersCommand;
@@ -242,28 +241,7 @@ namespace MVVMFirma.ViewModels
         }
 
         // Sales Menu
-        public ICommand AddCommand
-        {
-            get
-            {
-                if (_AddCommand == null)
-                {
-                    _AddCommand = new BaseCommand(() => Add());
-                }
-                return _AddCommand;
-            }
-        }
-        public ICommand ShowCommand
-        {
-            get
-            {
-                if (_ShowCommand == null)
-                {
-                    _ShowCommand = new BaseCommand(() => Show());
-                }
-                return _ShowCommand;
-            }
-        }
+
         public ICommand AddSalesCommand
         {
             get
@@ -459,14 +437,6 @@ namespace MVVMFirma.ViewModels
             this.ShowAllView<AllPawnLoanItemsViewModel>();
         }
         // Sales Menu 
-        private void Add()
-        {
-            this.CreateView(new NewBranchViewModel());
-        }
-        private void Show()
-        {
-            this.ShowAllView<AllBranchesViewModel>();
-        }
         private void AddSales()
         {
             this.CreateView(new NewSaleViewModel());
@@ -516,6 +486,23 @@ namespace MVVMFirma.ViewModels
         #endregion
         #endregion
 
+        #region SecondAdditionalFeature
+        //dark mode
+        private bool _isDarkMode = true;
+        public bool IsDarkMode
+        {
+            get => _isDarkMode;
+            set
+            {
+                _isDarkMode = value;
+                ((App)Application.Current).UpdateTheme(_isDarkMode); // Call the method from App.xaml.cs 
+                OnPropertyChanged(() => IsDarkMode); //notify UI about the change
+
+            }
+        }
+
+        #endregion
+
         #region Fields
         private ReadOnlyCollection<CommandViewModel> _Commands;
         private ObservableCollection<WorkspaceViewModel> _Workspaces;
@@ -542,12 +529,32 @@ namespace MVVMFirma.ViewModels
             return new List<CommandViewModel>
             {
                 new CommandViewModel(
-                    "-- LOGIKA BIZNESOWA -- ",
-                    new BaseCommand(() => this.CreateView(null))),
-
-                new CommandViewModel(
                     "Pawn Loans Overview ",
                     new BaseCommand(() => this.CreateView(new PawnLoansRaportViewModel()))),
+
+                new CommandViewModel(
+                    "New Pawn Loan",
+                    new BaseCommand(() => this.CreateView(new NewPawnLoanViewModel()))),
+
+                new CommandViewModel(
+                    "Pawn Loan Contracts",
+                    new BaseCommand(() => this.ShowAllView<AllPawnLoansViewModel>())),
+
+                new CommandViewModel(
+                    "New Purchase Contract",
+                    new BaseCommand(() => this.CreateView(new NewPurchaseContractViewModel()))),
+
+                new CommandViewModel(
+                    "Purchase Contacts ",
+                    new BaseCommand(() => this.ShowAllView<AllPurchaseContractsViewModel>())),
+
+                new CommandViewModel(
+                    "Interest Rates",
+                    new BaseCommand(() => this.ShowAllView<AllInterestRatesViewModel>())),
+
+                new CommandViewModel(
+                    "Items",
+                    new BaseCommand(() => this.ShowAllView<AllItemsViewModel>())),
 
                 new CommandViewModel(
                     "Aging Inventory",
@@ -557,145 +564,31 @@ namespace MVVMFirma.ViewModels
                     "Categories Statistics",
                     new BaseCommand(() => this.CreateView(new CategoryStatsRaportViewModel()))),
 
-
                 new CommandViewModel(
-                    "-- BEZ FK -- ",
-                    new BaseCommand(() => this.CreateView(null))),
-                 
-
-                // proba z branches 
-                new CommandViewModel(
-                    "Branches",
-                    new BaseCommand(() => this.ShowAllView<AllBranchesViewModel>())),
-
-                new CommandViewModel(
-                    "New Branch",
-                    new BaseCommand(() => this.CreateView(new NewBranchViewModel()))),
-
-                new CommandViewModel(
-                    "Employees",
-                    new BaseCommand(() => this.ShowAllView<AllEmployeesViewModel>())),
-
-                new CommandViewModel(
-                    "New employee",
-                    new BaseCommand(() => this.CreateView(new NewEmployeeViewModel()))),
-
-                new CommandViewModel(
-                    "Interest Rates",
-                    new BaseCommand(() => this.ShowAllView<AllInterestRatesViewModel>())),
-
-                new CommandViewModel(
-                    "New Interest Rate",
-                    new BaseCommand(() => this.CreateView(new NewInterestRateViewModel()))),
-
-
-                 new CommandViewModel(
-                    "-- Z FK --",
-                    new BaseCommand(() => this.CreateView(null))),
-
-                new CommandViewModel(
-                    "Clients",
-                    new BaseCommand(() => this.ShowAllView<AllClientsViewModel>())),
-
-                new CommandViewModel(
-                    "New client",
-                    new BaseCommand(() => this.CreateView(new NewClientViewModel()))),
-
-                new CommandViewModel(
-                    "Categories",
-                    new BaseCommand(() => this.ShowAllView<AllCategoriesViewModel>())),
-
-                new CommandViewModel(
-                    "New Category",
-                    new BaseCommand(() => this.CreateView(new NewCategoryViewModel()))),
-
-                new CommandViewModel(
-                    "Items",
-                    new BaseCommand(() => this.ShowAllView<AllItemsViewModel>())),
-
-               new CommandViewModel(
-                    "New Item",
-                    new BaseCommand(() => this.CreateView(new NewItemViewModel()))),
-
-                new CommandViewModel(
-                    "Payments",
-                    new BaseCommand(() => this.ShowAllView<AllPaymentsViewModel>())),
-
-                new CommandViewModel(
-                    "New Payment",
-                    new BaseCommand(() => this.CreateView(new NewPaymentViewModel()))),
-
-                new CommandViewModel(
-                    "Online Offers",
-                    new BaseCommand(() => this.ShowAllView<AllOnlineSaleOffersViewModel>())),
-
-                new CommandViewModel(
-                    "New Online Offer",
-                    new BaseCommand(() => this.CreateView(new NewOnlineSaleOfferViewModel()))),
-
-                new CommandViewModel(
-                    "Price History",
-                    new BaseCommand(() => this.ShowAllView<AllPriceHistoryViewModel>())),
-
-                new CommandViewModel(
-                    "Records History",        
-                    new BaseCommand(() => this.ShowAllView<RecordsHistoryViewModel>())),
-                              
-                new CommandViewModel(
-                    "Employees Shifts",
-                    new BaseCommand(() => this.ShowAllView<AllEmployeeShiftsViewModel>())),
-
-                new CommandViewModel(
-                    "-- TABELA ŁĄCZĄCA --",
-                    new BaseCommand(() => this.CreateView(null))),
-
-                new CommandViewModel(
-                    "Purchase Contacts ",
-                    new BaseCommand(() => this.ShowAllView<AllPurchaseContractsViewModel>())),
-
-                new CommandViewModel(
-                    "New Purchase Contract",
-                    new BaseCommand(() => this.CreateView(new NewPurchaseContractViewModel()))),
-
-                new CommandViewModel(
-                    "Purchase Contract Items",
-                    new BaseCommand(() => this.ShowAllView<AllPurchaseContractItemsViewModel>())),
-
-                new CommandViewModel(
-                    "New Purchase Contract Item",
-                    new BaseCommand(() => this.CreateView(new NewPurchaseContractItemViewModel()))),
-
-                new CommandViewModel(
-                    "Pawn Loan Contracts",
-                    new BaseCommand(() => this.ShowAllView<AllPawnLoansViewModel>())),
-
-                new CommandViewModel(
-                    "New Pawn Loan",
-                    new BaseCommand(() => this.CreateView(new NewPawnLoanViewModel()))),
-
-                new CommandViewModel(
-                    "Pawn Loan Items",
-                    new BaseCommand(() => this.ShowAllView<AllPawnLoanItemsViewModel>())),
-
-                new CommandViewModel(
-                    "New Pawn Loan Item",
-                    new BaseCommand(() => this.CreateView(new NewPawnLoanItemViewModel()))),
+                    "New Sale",
+                    new BaseCommand(() => this.CreateView(new NewSaleViewModel()))),
 
                 new CommandViewModel(
                     "Sales",
                     new BaseCommand(() => this.ShowAllView<AllSalesViewModel>())),
 
                 new CommandViewModel(
-                    "New Sale",
-                    new BaseCommand(() => this.CreateView(new NewSaleViewModel()))),
+                    "New Payment",
+                    new BaseCommand(() => this.CreateView(new NewPaymentViewModel()))),
 
                 new CommandViewModel(
-                    "Sales Items",
-                    new BaseCommand(() => this.ShowAllView<AllSalesItemsViewModel>())),
+                    "Payments",
+                    new BaseCommand(() => this.ShowAllView<AllPaymentsViewModel>())),
 
-              new CommandViewModel(
-                    "New Sales Item",
-                    new BaseCommand(() => this.CreateView(new NewSalesItemsViewModel()))),
+                new CommandViewModel(
+                    "Branches",
+                    new BaseCommand(() => this.ShowAllView<AllBranchesViewModel>())),
+
+                new CommandViewModel(
+                    "Employees",
+                    new BaseCommand(() => this.ShowAllView<AllEmployeesViewModel>())),
+
+
             };
         }
         #endregion

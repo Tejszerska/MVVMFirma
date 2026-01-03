@@ -112,24 +112,8 @@
     <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
         <Setter Property="HeaderTemplate">
             <Setter.Value>
-                <DataTemplate>
-                    <Border 
-            Background="Blue" 
-            BorderBrush="LightGray" 
-            BorderThickness="1" 
-            CornerRadius="5" 
-            Margin="4" 
-            Padding="4" 
-            SnapsToDevicePixels="True" 
-            >
-                        <TextBlock 
-              FontSize="14"
-              FontWeight="Bold"
-              Foreground="White" 
-              HorizontalAlignment="Center"  
-              Text="{TemplateBinding Content}" 
-              />
-                    </Border>
+                <DataTemplate >
+                    <Border Visibility="Collapsed" > </Border>
                 </DataTemplate>
             </Setter.Value>
         </Setter>
@@ -156,15 +140,39 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
+    
+    <Style TargetType="{x:Type TabItem}">
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="{x:Type TabItem}">
+                <Border x:Name="Border" BorderThickness="1,1,1,0" BorderBrush="{DynamicResource Accent}" 
+                        CornerRadius="4,4,0,0" Margin="2,0" Padding="10,5">
+                    <ContentPresenter ContentSource="Header" RecognizesAccessKey="True"/>
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter TargetName="Border" Property="Background" Value="{DynamicResource Accent}"/>
+                        <Setter Property="Foreground" Value="Black"/>
+                    </Trigger>
+                    <Trigger Property="IsSelected" Value="False">
+                        <Setter TargetName="Border" Property="Background" Value="{DynamicResource SidebarBg}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource MainText}"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+</Style>
+    
     <!--
   This style ensures that the borders in the main window are consistent.
   -->
     <Style x:Key="MainBorderStyle" TargetType="{x:Type Border}">
-        <Setter Property="Background" Value="WhiteSmoke" />
-        <Setter Property="BorderBrush" Value="LightGray" />
+        <Setter Property="Background" Value="{DynamicResource WorkspaceBg}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource SidebarBg}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="CornerRadius" Value="0" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
     </Style>
 
@@ -193,22 +201,23 @@
     <DataTemplate x:Key="ClosableTabItemTemplate">
         <DockPanel Width="120">
             <Button 
-        Command="{Binding Path=CloseCommand}"
-        Content="X"
-        Cursor="Hand"
-        DockPanel.Dock="Right"
-        Focusable="False"
-        FontFamily="Courier" 
-        FontSize="9"
-        FontWeight="Bold"  
-        Margin="0,1,0,0"
-        Padding="0"
-        VerticalContentAlignment="Bottom"
-        Width="16" Height="16" 
+            Command="{Binding Path=CloseCommand}"
+            Content="X"
+            Cursor="Hand"
+            DockPanel.Dock="Right"
+            Focusable="False"
+            FontFamily="Courier" 
+            FontSize="9"
+            FontWeight="Bold"  
+            Margin="0,1,0,0"
+            Padding="0"
+            VerticalContentAlignment="Bottom"
+            Width="16" Height="16" 
         />
-            <ContentPresenter 
-        Content="{Binding Path=DisplayName}" 
-        VerticalAlignment="Center" 
+            <TextBlock 
+            Text="{Binding Path=DisplayName}" 
+            VerticalAlignment="Center"
+            Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type TabItem}}, Path=Foreground}"
         />
         </DockPanel>
     </DataTemplate>

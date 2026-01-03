@@ -3,6 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
         Title="MVVMFirma" Height="300" Width="300" WindowState="Maximized"
         xmlns:vm="clr-namespace:MVVMFirma.Views"
+                Background="{DynamicResource SidebarBg}"
+
         >
     <Window.Resources>
         <ResourceDictionary Source="MainWindowResources.xaml"  />
@@ -14,11 +16,13 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="2">
+        <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="2" 
+              Background="{DynamicResource SidebarBg}"
+              Foreground="{DynamicResource MainText}"
+              >
             <MenuItem Header="_Contracts">
                 <MenuItem Header="Pawn loans overview" Command="{Binding ShowPawnLoanOverviewCommand}"/>
                 <MenuItem Header="New pawn loan" Command="{Binding AddPawnLoanCommand}"/>
@@ -61,54 +65,51 @@
                 <MenuItem Header="New Branch" Command="{Binding AddBranchesCommand}"/>
                 <MenuItem Header="Branches" Command="{Binding ShowBranchesCommand}"/>
             </MenuItem>
-            
+
+            <ToggleButton IsChecked="{Binding IsDarkMode, Mode=TwoWay}" 
+              Width="40" Height="40" 
+              Content="Dark Mode" />
         </Menu>
-        <ToolBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="2">
-            <ToggleButton Width="32" Height="32" Background="Blue" Margin="2"/>
-            <ToggleButton Width="32" Height="32" Background="Yellow" Margin="2"/>
-        </ToolBar>
-        <Border Grid.Row="2" Grid.Column="0">
-            <ScrollViewer>
+        
+        <Border Grid.Row="1" Grid.Column="0">
+  
                 <StackPanel>
                     <ListBox ItemsSource="{Binding Commands}" 
-             BorderThickness="0" 
-             Background="Red"
-             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        BorderThickness="0" 
+                        Background="{DynamicResource SidebarBg}"
+                        ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Button Command="{Binding Command}" 
-                        Background="Transparent" 
-                        BorderThickness="0" 
-                        HorizontalContentAlignment="Left"
-                        Cursor="Hand">
+                                <Button Command="{Binding Command}" Background="Transparent" BorderThickness="0">
                                     <StackPanel Orientation="Horizontal" Margin="5">
                                         <TextBlock Text="&#xE115;" 
-                                   FontFamily="Segoe MDL2 Assets" 
-                                   FontSize="16" 
-                                   Foreground="#3498db" 
-                                   Margin="0,0,10,0"/>
-
+                               FontFamily="Segoe MDL2 Assets" 
+                               FontSize="16" 
+                               Foreground="{DynamicResource Accent}" 
+                               Margin="0,0,10,0"/>
                                         <TextBlock Text="{Binding DisplayName}" 
-                                   Foreground="White" 
-                                   FontSize="14"/>
+                               Foreground="{DynamicResource MainText}" 
+                               FontSize="14"/>
                                     </StackPanel>
                                 </Button>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
-                    </ListBox>
+                        </ListBox>
                 </StackPanel>
-            </ScrollViewer>
+
         </Border>
-        
-        <Border Grid.Row="2" Grid.Column="1">
+
+        <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource MainBorderStyle}">
             <HeaderedContentControl 
-                Header="Przestrzeń robocza"
+                Header="Workspace"
                 Content="{Binding Path=Workspaces}"
                 ContentTemplate="{StaticResource WorkspacesTemplate}"
                 Style="{StaticResource MainHCCStyle}"
             />
         </Border>
-        <StatusBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+        <StatusBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"
+                   Background="{DynamicResource SidebarBg}"
+                    Foreground="{DynamicResource MainText}">
             <StatusBarItem>
                 <TextBlock>Artur Kornatka</TextBlock>
             </StatusBarItem>
