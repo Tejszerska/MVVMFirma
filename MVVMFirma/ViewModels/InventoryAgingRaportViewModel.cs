@@ -22,11 +22,9 @@ namespace MVVMFirma.ViewModels
         {
             base.DisplayName = "Inventory Aging Report";
             pawnShopEntities = new PawnShopEntities();
-            // Inicjalizacja domyślnych wartości
             CriticalItemsCount = 0;
             TotalCriticalValue = 0;
 
-            // Załaduj dane przy starcie (opcjonalnie)
             generateAgingRaportClick();
         }
         #endregion

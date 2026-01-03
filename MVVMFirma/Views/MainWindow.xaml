@@ -20,24 +20,37 @@
         </Grid.RowDefinitions>
         <Menu Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="2">
             <MenuItem Header="_Contracts">
-                <MenuItem Header="Pawn Loans Overview" Command="{Binding ShowPawnLoanOverviewCommand}"/>
-                <MenuItem Header="New Pawn Loan" Command="{Binding AddPawnLoanCommand}"/>
-                <MenuItem Header="Pawn Loans" Command="{Binding ShowPawnLoanCommand}"/>
-                <MenuItem Header="Interest Rates" Command="{Binding ShowInterestRatesCommand}"/>
+                <MenuItem Header="Pawn loans overview" Command="{Binding ShowPawnLoanOverviewCommand}"/>
+                <MenuItem Header="New pawn loan" Command="{Binding AddPawnLoanCommand}"/>
+                <MenuItem Header="Pawn loans" Command="{Binding ShowPawnLoanCommand}"/>
+                <MenuItem Header="New interest rate" Command="{Binding AddInterestRatesCommand}"/>
+                <MenuItem Header="Interest rates" Command="{Binding ShowInterestRatesCommand}"/>
                 <Separator />
-                <MenuItem Header="New Purchase Contract" Command="{Binding AddPurchaseContractCommand}"/>
-                <MenuItem Header="Purchase Contracts" Command="{Binding ShowPurchaseContractCommand}"/>
+                <MenuItem Header="New purchase contract" Command="{Binding AddPurchaseContractCommand}"/>
+                <MenuItem Header="Purchase contracts" Command="{Binding ShowPurchaseContractCommand}"/>
                 <Separator />
-                <MenuItem Header="New Client" Command="{Binding AddClientsCommand}"/>
+                <MenuItem Header="New client" Command="{Binding AddClientsCommand}"/>
                 <MenuItem Header="Clients" Command="{Binding ShowClientsCommand}"/>
             </MenuItem>
-            
+
             <MenuItem Header="_Inventory">
-                <MenuItem Header="" Command="{Binding}"/>
+                <MenuItem Header="All items" Command="{Binding ShowItemsCommand}"/>
+                <MenuItem Header="Pawn Loan Items" Command="{Binding ShowPawnItemsCommand}"/>
+                <MenuItem Header="Aging invenory" Command="{Binding ShowInventoryAgingCommand}"/>
+                <MenuItem Header="Price changes" Command="{Binding ShowPriceChangesCommand}"/>
+                <Separator />
+                <MenuItem Header="Category statistics" Command="{Binding ShowCategoryStatisticsCommand}"/>
+                <MenuItem Header="New category" Command="{Binding AddCategoryCommand}"/>
+                <MenuItem Header="Categories" Command="{Binding ShowCategoryCommand}"/>
             </MenuItem>
             
             <MenuItem Header="Sa_les">
-                <MenuItem Header="" Command="{Binding}"/>
+                <MenuItem Header="New pxayment" Command="{Binding AddPaymentsCommand}"/>
+                <MenuItem Header="Payments" Command="{Binding ShowPaymentsCommand}"/>
+                <MenuItem Header="New online offers" Command="{Binding AddOnlineOffersCommand}"/>
+                <MenuItem Header="Show online offers" Command="{Binding ShowOnlineOffersCommand}"/>
+                <MenuItem Header="New sale" Command="{Binding AddSalesCommand}"/>
+                <MenuItem Header="Sales" Command="{Binding ShowSalesCommand}"/>
             </MenuItem>
             
             <MenuItem Header="_Network">
@@ -49,9 +62,6 @@
                 <MenuItem Header="Branches" Command="{Binding ShowBranchesCommand}"/>
             </MenuItem>
             
-            <MenuItem Header="_Settings">
-                <!--interest rates, ustawienia menu bocznego i moze cos jeszcze-->
-            </MenuItem>
         </Menu>
         <ToolBar Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="2">
             <ToggleButton Width="32" Height="32" Background="Blue" Margin="2"/>
@@ -59,16 +69,37 @@
         </ToolBar>
         <Border Grid.Row="2" Grid.Column="0">
             <ScrollViewer>
-                <HeaderedContentControl 
-                Header="Operacje" 
-                Background="Aqua" 
-                Content="{Binding Path=Commands}" 
-                ContentTemplate="{StaticResource CommandsTemplate}"
-                Style="{StaticResource MainHCCStyle}"
-                 />
+                <StackPanel>
+                    <ListBox ItemsSource="{Binding Commands}" 
+             BorderThickness="0" 
+             Background="Red"
+             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding Command}" 
+                        Background="Transparent" 
+                        BorderThickness="0" 
+                        HorizontalContentAlignment="Left"
+                        Cursor="Hand">
+                                    <StackPanel Orientation="Horizontal" Margin="5">
+                                        <TextBlock Text="&#xE115;" 
+                                   FontFamily="Segoe MDL2 Assets" 
+                                   FontSize="16" 
+                                   Foreground="#3498db" 
+                                   Margin="0,0,10,0"/>
+
+                                        <TextBlock Text="{Binding DisplayName}" 
+                                   Foreground="White" 
+                                   FontSize="14"/>
+                                    </StackPanel>
+                                </Button>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
             </ScrollViewer>
-           
         </Border>
+        
         <Border Grid.Row="2" Grid.Column="1">
             <HeaderedContentControl 
                 Header="Przestrzeń robocza"
@@ -79,7 +110,7 @@
         </Border>
         <StatusBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
             <StatusBarItem>
-                <TextBlock>Barbara Wojciechowska</TextBlock>
+                <TextBlock>Artur Kornatka</TextBlock>
             </StatusBarItem>
             <Separator/>
             <StatusBarItem>

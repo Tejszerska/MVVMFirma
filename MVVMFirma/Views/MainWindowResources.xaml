@@ -3,6 +3,7 @@
                     xmlns:vm="clr-namespace:MVVMFirma.ViewModels"
                     xmlns:vw="clr-namespace:MVVMFirma.Views"
                     >
+    
     <DataTemplate DataType="{x:Type vm:AllBranchesViewModel}">
         <vw:AllBranchesView/>
     </DataTemplate>
@@ -106,6 +107,8 @@
         <vw:CategoryStatsRaportView/>
     </DataTemplate>
 
+    
+    
     <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
         <Setter Property="HeaderTemplate">
             <Setter.Value>
@@ -170,8 +173,8 @@
   side in the main window (the 'Control Panel' area).
   -->
     <DataTemplate x:Key="CommandsTemplate">
-        <ItemsControl IsTabStop="False" ItemsSource="{Binding}" Margin="6,2">
-            <ItemsControl.ItemTemplate>
+        <TabControl  IsTabStop="False" ItemsSource="{Binding}" Margin="6,2">
+            <TabControl.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Margin="2,6">
             <Hyperlink Command="{Binding Path=Command}">
@@ -179,8 +182,8 @@
             </Hyperlink>
           </TextBlock>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            </TabControl.ItemTemplate>
+        </TabControl>
     </DataTemplate>
 
     <!-- 

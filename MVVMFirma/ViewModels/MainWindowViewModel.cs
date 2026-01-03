@@ -18,10 +18,10 @@ namespace MVVMFirma.ViewModels
         #region FirstAdditionalFeature
 
         #region Fields1
+        
         // Contracts Menu
-        private ICommand _AddCommand;
-        private ICommand _ShowCommand;
         private ICommand _ShowPawnLoanOverviewCommand;
+        private ICommand _AddInterestRatesCommand;
         private ICommand _ShowInterestRatesCommand;
         private ICommand _AddPurchaseContractCommand;
         private ICommand _ShowPurchaseContractCommand;
@@ -30,6 +30,24 @@ namespace MVVMFirma.ViewModels
         private ICommand _AddClientsCommand;
         private ICommand _ShowClientsCommand;
 
+        //  Inventory Menu     
+        private ICommand _ShowPriceChangesCommand;        
+        private ICommand _AddCategoryCommand;
+        private ICommand _ShowCategoryCommand;        
+        private ICommand _ShowInventoryAgingCommand;        
+        private ICommand _ShowCategoryStatisticsCommand;        
+        private ICommand _ShowItemsCommand;
+        private ICommand _ShowPawnItemsCommand;
+
+        //  Sales Menu
+        private ICommand _AddCommand;
+        private ICommand _ShowCommand;
+        private ICommand _AddSalesCommand;
+        private ICommand _ShowSalesCommand;
+        private ICommand _AddOnlineOffersCommand;
+        private ICommand _ShowOnlineOffersCommand;
+        private ICommand _AddPaymentsCommand;
+        private ICommand _ShowPaymentsCommand;
 
         // Network Menu
         private ICommand _ShowBranchesCommand;
@@ -42,28 +60,7 @@ namespace MVVMFirma.ViewModels
 
         #region Commands1
         // Contracts Menu
-        public ICommand AddCommand
-        {
-            get
-            {
-                if (_AddCommand == null)
-                {
-                    _AddCommand = new BaseCommand(() => Add());
-                }
-                return _AddCommand;
-            }
-        }
-        public ICommand ShowCommand
-        {
-            get
-            {
-                if (_ShowCommand == null)
-                {
-                    _ShowCommand = new BaseCommand(() => Show());
-                }
-                return _ShowCommand;
-            }
-        }
+     
         public ICommand ShowPawnLoanOverviewCommand
         {
             get
@@ -152,6 +149,188 @@ namespace MVVMFirma.ViewModels
                 return _ShowClientsCommand;
             }
         }
+        public ICommand AddInterestRatesCommand
+        {
+            get
+            {
+                if (_AddInterestRatesCommand == null)
+                {
+                    _AddInterestRatesCommand = new BaseCommand(() => AddInterestRates());
+                }
+                return _AddInterestRatesCommand;
+            }
+        }
+        // Inventory Menu
+        public ICommand ShowPriceChangesCommand
+        {
+            get
+            {
+                if (_ShowPriceChangesCommand == null)
+                {
+                    _ShowPriceChangesCommand = new BaseCommand(() => ShowPriceChanges());
+                }
+                return _ShowPriceChangesCommand;
+            }
+        }
+        public ICommand AddCategoryCommand
+        {
+            get
+            {
+                if (_AddCategoryCommand == null)
+                {
+                    _AddCategoryCommand = new BaseCommand(() => AddCategory());
+                }
+                return _AddCategoryCommand;
+            }
+        }
+        public ICommand ShowCategoryCommand
+        {
+            get
+            {
+                if (_ShowCategoryCommand == null)
+                {
+                    _ShowCategoryCommand = new BaseCommand(() => ShowCategory());
+                }
+                return _ShowCategoryCommand;
+            }
+        }
+        public ICommand ShowInventoryAgingCommand
+        {
+            get
+            {
+                if (_ShowInventoryAgingCommand == null)
+                {
+                    _ShowInventoryAgingCommand = new BaseCommand(() => ShowInventoryAging());
+                }
+                return _ShowInventoryAgingCommand;
+            }
+        }
+        public ICommand ShowCategoryStatisticsCommand
+        {
+            get
+            {
+                if (_ShowCategoryStatisticsCommand == null)
+                {
+                    _ShowCategoryStatisticsCommand = new BaseCommand(() => ShowCategoryStatistics());
+                }
+                return _ShowCategoryStatisticsCommand;
+            }
+        }
+      
+        public ICommand ShowItemsCommand
+        {
+            get
+            {
+                if (_ShowItemsCommand == null)
+                {
+                    _ShowItemsCommand = new BaseCommand(() => ShowItems());
+                }
+                return _ShowItemsCommand;
+            }
+        }
+
+        public ICommand ShowPawnItemsCommand
+        {
+            get
+            {
+                if (_ShowPawnItemsCommand == null)
+                {
+                    _ShowPawnItemsCommand = new BaseCommand(() => ShowPawnItems());
+                }
+                return _ShowPawnItemsCommand;
+            }
+        }
+
+        // Sales Menu
+        public ICommand AddCommand
+        {
+            get
+            {
+                if (_AddCommand == null)
+                {
+                    _AddCommand = new BaseCommand(() => Add());
+                }
+                return _AddCommand;
+            }
+        }
+        public ICommand ShowCommand
+        {
+            get
+            {
+                if (_ShowCommand == null)
+                {
+                    _ShowCommand = new BaseCommand(() => Show());
+                }
+                return _ShowCommand;
+            }
+        }
+        public ICommand AddSalesCommand
+        {
+            get
+            {
+                if (_AddSalesCommand == null)
+                {
+                    _AddSalesCommand = new BaseCommand(() => AddSales());
+                }
+                return _AddSalesCommand;
+            }
+        }
+        public ICommand ShowSalesCommand
+        {
+            get
+            {
+                if (_ShowSalesCommand == null)
+                {
+                    _ShowSalesCommand = new BaseCommand(() => ShowSales());
+                }
+                return _ShowSalesCommand;
+            }
+        }
+        public ICommand AddOnlineOffersCommand
+        {
+            get
+            {
+                if (_AddOnlineOffersCommand == null)
+                {
+                    _AddOnlineOffersCommand = new BaseCommand(() => AddOnlineOffers());
+                }
+                return _AddOnlineOffersCommand;
+            }
+        }
+        public ICommand ShowOnlineOffersCommand
+        {
+            get
+            {
+                if (_ShowOnlineOffersCommand == null)
+                {
+                    _ShowOnlineOffersCommand = new BaseCommand(() => ShowOnlineOffers());
+                }
+                return _ShowOnlineOffersCommand;
+            }
+        }
+        public ICommand AddPaymentsCommand
+        {
+            get
+            {
+                if (_AddPaymentsCommand == null)
+                {
+                    _AddPaymentsCommand = new BaseCommand(() => AddPayments());
+                }
+                return _AddPaymentsCommand;
+            }
+        }
+        public ICommand ShowPaymentsCommand
+        {
+            get
+            {
+                if (_ShowPaymentsCommand == null)
+                {
+                    _ShowPaymentsCommand = new BaseCommand(() => ShowPayments());
+                }
+                return _ShowPaymentsCommand;
+            }
+        }
+
         // Network Menu
         public ICommand ShowBranchesCommand
         {
@@ -209,16 +388,10 @@ namespace MVVMFirma.ViewModels
             }
         }
         #endregion
+
         #region Helper1
-        // Contracts Menu 
-        private void Add()
-        {
-            this.CreateView(new NewBranchViewModel());
-        }
-        private void Show()
-        {
-            this.ShowAllView<AllBranchesViewModel>();
-        }
+        
+        // Contracts Menu         
         private void ShowPawnLoanOverview()
         {
             this.CreateView(new PawnLoansRaportViewModel());
@@ -251,6 +424,74 @@ namespace MVVMFirma.ViewModels
         {
             this.ShowAllView<AllClientsViewModel>();
         }
+
+        private void AddInterestRates()
+        {
+            this.CreateView(new NewInterestRateViewModel());
+        }
+        // Inventory Menu 
+        private void ShowPriceChanges()
+        {
+            this.ShowAllView<AllPriceHistoryViewModel>();
+        }
+        private void AddCategory()
+        {
+            this.CreateView(new NewCategoryViewModel());
+        }
+        private void ShowCategory()
+        {
+            this.ShowAllView<AllCategoriesViewModel>();
+        }
+        private void ShowInventoryAging()
+        {
+            this.ShowAllView<InventoryAgingRaportViewModel>();
+        }
+        private void ShowCategoryStatistics()
+        {
+            this.CreateView(new CategoryStatsRaportViewModel());
+        }
+        private void ShowItems()
+        {
+            this.ShowAllView<AllItemsViewModel>();
+        }
+        private void ShowPawnItems()
+        {
+            this.ShowAllView<AllPawnLoanItemsViewModel>();
+        }
+        // Sales Menu 
+        private void Add()
+        {
+            this.CreateView(new NewBranchViewModel());
+        }
+        private void Show()
+        {
+            this.ShowAllView<AllBranchesViewModel>();
+        }
+        private void AddSales()
+        {
+            this.CreateView(new NewSaleViewModel());
+        }
+        private void ShowSales()
+        {
+            this.ShowAllView<AllSalesViewModel>();
+        }
+        private void AddOnlineOffers()
+        {
+            this.CreateView(new NewOnlineSaleOfferViewModel());
+        }
+        private void ShowOnlineOffers()
+        {
+            this.ShowAllView<AllOnlineSaleOffersViewModel>();
+        }
+        private void AddPayments()
+        {
+            this.CreateView(new NewPaymentViewModel());
+        }
+        private void ShowPayments()
+        {
+            this.ShowAllView<AllPaymentsViewModel>();
+        }
+
         // Network Menu
         private void ShowBranches()
         {
