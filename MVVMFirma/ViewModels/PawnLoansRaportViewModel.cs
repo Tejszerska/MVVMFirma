@@ -20,10 +20,10 @@ namespace MVVMFirma.ViewModels
         {
             pawnShopEntities = new PawnShopEntities();
             base.DisplayName = "Pawn Agreements Overview";
-            //StartDate = DateTime.Now.AddMonths(-1);
-            //EndDate = DateTime.Now;
-            StartDate= new DateTime(2025,09,01);
-            EndDate = new DateTime(2025,09,30);
+            StartDate = DateTime.Now.AddMonths(-1);
+            EndDate = DateTime.Now;
+            //StartDate= new DateTime(2025,09,01);
+            //EndDate = new DateTime(2025,09,30);
             StatusId = 1;
             TotalLoanAmount = 0;
         }

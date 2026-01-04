@@ -528,67 +528,21 @@ namespace MVVMFirma.ViewModels
         {
             return new List<CommandViewModel>
             {
-                new CommandViewModel(
-                    "Pawn Loans Overview ",
-                    new BaseCommand(() => this.CreateView(new PawnLoansRaportViewModel()))),
-
-                new CommandViewModel(
-                    "New Pawn Loan",
-                    new BaseCommand(() => this.CreateView(new NewPawnLoanViewModel()))),
-
-                new CommandViewModel(
-                    "Pawn Loan Contracts",
-                    new BaseCommand(() => this.ShowAllView<AllPawnLoansViewModel>())),
-
-                new CommandViewModel(
-                    "New Purchase Contract",
-                    new BaseCommand(() => this.CreateView(new NewPurchaseContractViewModel()))),
-
-                new CommandViewModel(
-                    "Purchase Contacts ",
-                    new BaseCommand(() => this.ShowAllView<AllPurchaseContractsViewModel>())),
-
-                new CommandViewModel(
-                    "Interest Rates",
-                    new BaseCommand(() => this.ShowAllView<AllInterestRatesViewModel>())),
-
-                new CommandViewModel(
-                    "Items",
-                    new BaseCommand(() => this.ShowAllView<AllItemsViewModel>())),
-
-                new CommandViewModel(
-                    "Aging Inventory",
-                    new BaseCommand(() => this.ShowAllView<InventoryAgingRaportViewModel>())),
-
-                new CommandViewModel(
-                    "Categories Statistics",
-                    new BaseCommand(() => this.CreateView(new CategoryStatsRaportViewModel()))),
-
-                new CommandViewModel(
-                    "New Sale",
-                    new BaseCommand(() => this.CreateView(new NewSaleViewModel()))),
-
-                new CommandViewModel(
-                    "Sales",
-                    new BaseCommand(() => this.ShowAllView<AllSalesViewModel>())),
-
-                new CommandViewModel(
-                    "New Payment",
-                    new BaseCommand(() => this.CreateView(new NewPaymentViewModel()))),
-
-                new CommandViewModel(
-                    "Payments",
-                    new BaseCommand(() => this.ShowAllView<AllPaymentsViewModel>())),
-
-                new CommandViewModel(
-                    "Branches",
-                    new BaseCommand(() => this.ShowAllView<AllBranchesViewModel>())),
-
-                new CommandViewModel(
-                    "Employees",
-                    new BaseCommand(() => this.ShowAllView<AllEmployeesViewModel>())),
-
-
+                new CommandViewModel("Pawn Loans Overview", ShowPawnLoanOverviewCommand, "\uE9D2"),
+                new CommandViewModel("New Pawn Loan", AddPawnLoanCommand, "\uE710"),
+                new CommandViewModel("Pawn Loan Contracts", ShowPawnLoanCommand, "\uE8A5"),
+                new CommandViewModel("New Purchase Contract", AddPurchaseContractCommand, "\uE82D"),
+                new CommandViewModel("Purchase Contacts", ShowPurchaseContractCommand, "\uE77B"),
+                new CommandViewModel("Interest Rates", ShowInterestRatesCommand, "\uE94C"),
+                new CommandViewModel("Items", ShowItemsCommand, "\uE7B8"),
+                new CommandViewModel("Aging Inventory", ShowInventoryAgingCommand, "\uE81C"),
+                new CommandViewModel("Categories Statistics", ShowCategoryStatisticsCommand, "\uE99A"),
+                new CommandViewModel("New Sale", AddSalesCommand, "\uE8A1"),
+                new CommandViewModel("Sales", ShowSalesCommand, "\uE890"),
+                new CommandViewModel("New Payment", AddPaymentsCommand, "\uE8C7"),
+                new CommandViewModel("Payments", ShowPaymentsCommand, "\uE171"),
+                new CommandViewModel("Branches", ShowBranchesCommand, "\uE707"),
+                new CommandViewModel("Employees", ShowEmployeesCommand, "\uE779")
             };
         }
         #endregion

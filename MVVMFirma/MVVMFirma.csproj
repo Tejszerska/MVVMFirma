@@ -48,6 +48,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -540,6 +541,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Images\logo-dark.png" />
+    <Resource Include="Images\logo-light.png" />
     <Content Include="Models\PawnShop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PawnShop.edmx</DependentUpon>

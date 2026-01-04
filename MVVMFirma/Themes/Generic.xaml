@@ -14,12 +14,12 @@
                             <RowDefinition Height="*"/> <!--* oznacza pozostały obszar-->
                         </Grid.RowDefinitions>
                         <ToolBar Grid.Row="0" Height="30" Margin="0,2,0,2">
-                            <ToggleButton Content="Add" Height="30" Width="70"/>
-                            <ToggleButton Content="Edit" Height="30" Width="70"/>
-                            <ToggleButton Content="Delete" Height="30" Width="70"/>
-                            <ToggleButton Content="Refresh" Height="30" Width="70" Command="{Binding LoadCommand}"/>
+                            <ToggleButton Content="Add" Height="30" Width="70" Foreground="{DynamicResource MainText}"/>
+                            <ToggleButton Content="Edit" Height="30" Width="70" Foreground="{DynamicResource MainText}"/>
+                            <ToggleButton Content="Delete" Height="30" Width="70" Foreground="{DynamicResource MainText}"/>
+                            <ToggleButton Content="Refresh" Height="30" Width="70" Command="{Binding LoadCommand}" Foreground="{DynamicResource MainText}"/>
                         </ToolBar>
-                        <Expander Grid.Row="1"  Header="Filter and Sort">
+                        <Expander Grid.Row="1"  Header="Filter and Sort"  Foreground="{DynamicResource MainText}">
                             <Label>Filtring and sorting </Label>
                         </Expander>
                         <ContentPresenter Grid.Row="2" Margin="0,5,0,5" />
@@ -39,10 +39,10 @@
                             <RowDefinition Height="*"/>                            
                         </Grid.RowDefinitions>
                         <ToolBar Grid.Row="0" Height="30" Margin="0,2,0,2">
-                            <ToggleButton Content="Save and close" Command="{Binding SaveAndCloseCommand}"/>
-                            <ToggleButton Content="Cancel"/>
+                            <ToggleButton Content="Save and close" Command="{Binding SaveAndCloseCommand}" Foreground="{DynamicResource MainText}"/>
+                            <ToggleButton Content="Cancel" Foreground="{DynamicResource MainText}"/>
                         </ToolBar>
-                        <ContentPresenter Grid.Row="1" Margin="0,5,0,5"/>
+                        <ContentPresenter Grid.Row="1" Margin="0,5,0,5" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

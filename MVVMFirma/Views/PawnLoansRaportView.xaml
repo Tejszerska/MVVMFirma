@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MVVMFirma.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid HorizontalAlignment="Left" Margin="20" Width="550">
+    <Grid  HorizontalAlignment="Left" Margin="20" Width="550">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="250"/>
@@ -38,7 +38,8 @@
                   DisplayMemberPath="Value"
                   SelectedValuePath="Key"
                   SelectedValue="{Binding StatusId, Mode=TwoWay}"
-                  VerticalContentAlignment="Center"/>
+                  VerticalContentAlignment="Center"
+                  />
 
         <Button Grid.Row="4" Grid.Column="1" Content="Generate Report" Command="{Binding GenerateRaportCommand}" Margin="0,5,0,5"/>
 
