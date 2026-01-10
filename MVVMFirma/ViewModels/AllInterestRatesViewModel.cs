@@ -14,7 +14,66 @@ namespace MVVMFirma.ViewModels
 {
 public class AllInterestRatesViewModel : AllViewModel<InterestRates>
     {
-        #region 
+        #region  Abstract implemented methods
+        public override void Sort()
+        {
+            if (SortField == "Name")
+            {
+                List = new ObservableCollection<InterestRates>(List.OrderBy(x => x.name));
+            }
+            if (SortField == "Minimal interest")
+            {
+                List = new ObservableCollection<InterestRates>(List.OrderBy(x => x.minimal_interest));
+            }
+            if (SortField == "Period days")
+            {
+                List = new ObservableCollection<InterestRates>(List.OrderBy(x => x.period_days));
+            }
+            if (SortField == "Rate percent")
+            {
+                List = new ObservableCollection<InterestRates>(List.OrderBy(x => x.rate_percent));
+            }
+            if (SortField == "Default")
+            {
+                List = new ObservableCollection<InterestRates>(List.OrderByDescending(x => x.is_default));
+            }
+        }
+
+        public override void Search()
+        {
+            if (SearchField == "Name")
+            {
+                List = new ObservableCollection<InterestRates>(List.Where(x => x.name != null && x.name.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Minimal interest")
+            {
+                List = new ObservableCollection<InterestRates>(List.Where(x => x.minimal_interest.ToString().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Period days")
+            {
+                List = new ObservableCollection<InterestRates>(List.Where(x => x.period_days.ToString().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Rate percent")
+            {
+                List = new ObservableCollection<InterestRates>(List.Where(x => x.rate_percent.ToString().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Default")
+            {
+                SearchTextBox = "Default rate";
+
+                List = new ObservableCollection<InterestRates>(List.Where(x => x.is_default == true));
+            }
+        }
+
+        public override List<string> getComboboxSortList()
+        {
+            return new List<string> { "Name", "Minimal interest", "Period days", "Rate percent" };
+        }
+
+        public override List<string> getComboboxSearchList()
+        {
+            return new List<string> { "Default", "Name", "Minimal interest", "Period days", "Rate percent" };
+        }
         public override void Load()
         {
 

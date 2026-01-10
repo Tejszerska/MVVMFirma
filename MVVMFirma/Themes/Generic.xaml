@@ -20,7 +20,25 @@
                             <ToggleButton Content="Refresh" Height="30" Width="70" Command="{Binding LoadCommand}" Foreground="{DynamicResource MainText}"/>
                         </ToolBar>
                         <Expander Grid.Row="1"  Header="Filter and Sort"  Foreground="{DynamicResource MainText}">
-                            <Label>Filtring and sorting </Label>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition  Height="25"/>
+                                        <RowDefinition  Height="25"/>
+                                        <RowDefinition  Height="30"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="230"/>
+                                        <ColumnDefinition  Width="60"/>
+                                        <ColumnDefinition  Width="230"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label  Grid.Row="0"  Grid.Column="0" Content="Sort:  "/>
+                                    <ComboBox  Grid.Row="1"  Grid.Column="0" ItemsSource="{Binding  SortComboboxItems}"  SelectedValue="{Binding Path=SortField,Mode=TwoWay}"  Margin="0,0,60,0"/>
+                                    <Button  Content="Sortuj"  Grid.Row="1"  Grid.Column="0" Command="{Binding  SortCommand}" Margin="170,0,0,0"/>
+                                    <Label  Grid.Row="0"  Grid.Column="2" Content="Search:  "/>
+                                    <ComboBox  Grid.Row="1"  Grid.Column="2" ItemsSource="{Binding  SearchComboboxItems}"  SelectedValue="{Binding Path=SearchField,Mode=TwoWay}"  />
+                                <TextBox  Grid.Row="2"  Grid.Column="2" Margin="0,5,60,0"  Text="{Binding  SearchTextBox}"/>
+                                <Button  Content="Szukaj"  Grid.Row="3"  Grid.Column="2" Command="{Binding  SearchCommand}" Margin="170,5,0,0"/>
+                                </Grid>
                         </Expander>
                         <ContentPresenter Grid.Row="2" Margin="0,5,0,5" />
                     </Grid>

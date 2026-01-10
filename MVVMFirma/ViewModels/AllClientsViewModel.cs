@@ -14,7 +14,56 @@ namespace MVVMFirma.ViewModels
 {
     public class AllClientsViewModel : AllViewModel<ClientsExtendedView>
     {
-        #region 
+        #region  Abstract implemented methods
+        public override void Sort()
+        {
+            if (SortField == "Last name")
+            {
+                List = new ObservableCollection<ClientsExtendedView>(List.OrderBy(x => x.LastName));
+            }
+            if (SortField == "Client's ID")
+            {
+                               List = new ObservableCollection<ClientsExtendedView>(List.OrderBy(x => x.ClientId));
+            }
+            if (SortField == "Document Type")
+            {
+                List = new ObservableCollection<ClientsExtendedView>(List.OrderBy(x => x.DocumentType));
+            }
+        }
+
+        public override void Search()
+        {
+            if(SearchField == "Last name")
+            {
+                List = new ObservableCollection<ClientsExtendedView>(List.Where(x => x.LastName != null && x.LastName.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Client's ID")
+            {                
+                List = new ObservableCollection<ClientsExtendedView>(List.Where(x => x.ClientId.ToString() == SearchTextBox));
+             }
+            if (SearchField == "Document Number")
+                {
+                List = new ObservableCollection<ClientsExtendedView>(List.Where(x => x.DocumentNumber != null && x.DocumentNumber.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "PESEL")
+            {
+                List = new ObservableCollection<ClientsExtendedView>(List.Where(x => x.PESEL != null && x.PESEL.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Email")
+            {
+                List = new ObservableCollection<ClientsExtendedView>(List.Where(x => x.Email != null && x.Email.ToLower().StartsWith(SearchTextBox)));
+            }
+        }
+
+        public override List<string> getComboboxSortList()
+        {
+            return new List<string> {"Last name", "Client's ID", "Document Type" };
+        }
+
+        public override List<string> getComboboxSearchList()
+        {
+            return new List<string> { "Last name", "Client's ID", "Document Number", "PESEL", "Email" };
+        }
         public override void Load()
         {
 
@@ -37,6 +86,8 @@ namespace MVVMFirma.ViewModels
                 }
                 );
         }
+
+
         #endregion
         #region Constructor
         public AllClientsViewModel()

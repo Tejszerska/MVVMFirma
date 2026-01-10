@@ -1,6 +1,7 @@
 using MVVMFirma.Models;
 using MVVMFirma.Models.EntitiesForView;
 using MVVMFirma.ViewModels.Abstract;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -9,7 +10,78 @@ namespace MVVMFirma.ViewModels
 {
 public class AllItemsViewModel : AllViewModel<ItemsExtendedView>
     {
-        #region 
+        #region  Abstract implemented methods
+        public override void Sort()
+        {
+            if (SortField == "ID")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.OrderBy(x => x.ItemId));
+            }
+            if (SortField == "Name")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.OrderBy(x => x.ItemName));
+            }
+            if (SortField == "Estimated Value")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.OrderBy(x => x.EstimatedValue));
+            }
+            if (SortField == "Sale Price")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.OrderBy(x => x.SalePrice));
+            }
+
+        }
+
+        public override void Search()
+        {
+            if (SearchField == "ID")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.ItemId.ToString().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Name")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.ItemName != null && x.ItemName.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Estimated Value")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.EstimatedValue.ToString().StartsWith(SearchTextBox)));
+            }   
+            if (SearchField == "Sale Price")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.SalePrice.ToString().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Status")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.ItemStatus != null && x.ItemStatus.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Category")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.CategoryName != null && x.CategoryName.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Condition")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.Condition != null && x.Condition.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Acquisition Source")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.AcquisitionSource != null && x.AcquisitionSource.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Branch")
+            {
+                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.BranchName != null && x.BranchName.ToLower().StartsWith(SearchTextBox)));
+            }
+        }
+
+        public override List<string> getComboboxSortList()
+        {
+            return new List<string> { "ID", "Name", "Estimated Value", "Sale Price" };
+
+        }
+
+        public override List<string> getComboboxSearchList()
+        {
+            return new List<string> { "ID", "Name", "Estimated Value", "Sale Price", "Status", "Category", "Condition", "Acquisition Source", "Branch" };
+        }
         public override void Load()
         {
 

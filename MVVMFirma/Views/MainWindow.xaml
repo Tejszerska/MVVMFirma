@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
         Title="Pawn Shop Manager" Height="300" Width="300" WindowState="Maximized"
-        Icon="Images/app_icon.ico"
+        Icon="/Images/icon.ico"
         xmlns:vm="clr-namespace:MVVMFirma.Views"
                 Background="{DynamicResource SidebarBg}">
     <Window.Resources>

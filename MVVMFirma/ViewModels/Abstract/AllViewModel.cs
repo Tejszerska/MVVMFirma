@@ -58,5 +58,60 @@ namespace MVVMFirma.ViewModels.Abstract
         }
 
         #endregion
+        #region Sort and search
+        public string SortField { get; set; }
+        public List<string> SortComboboxItems
+        {
+            get
+            {
+                return getComboboxSortList();
+            }
+        }
+        public string SearchField { get; set; }
+        private string _SearchTextBox;
+        public string SearchTextBox { 
+            get
+                {
+                return _SearchTextBox;
+            }
+            set
+            {
+                if (_SearchTextBox != value)
+                {
+                    _SearchTextBox = value?.ToLower().Trim();
+                    OnPropertyChanged(() => SearchTextBox);
+                }
+            } 
+        }
+        public List<string> SearchComboboxItems
+        {
+            get
+            {
+                return getComboboxSearchList();
+            }
+        }
+        private BaseCommand _SortCommand; // command for sort button
+        public ICommand SortCommand
+        {
+            get
+            {
+                if (_SortCommand == null) _SortCommand = new BaseCommand(Sort);
+                return _SortCommand;
+            }
+        }
+        private BaseCommand _SearchCommand; // command for search button
+        public ICommand SearchCommand
+        {
+            get
+            {
+                if (_SearchCommand == null) _SearchCommand = new BaseCommand(Search);
+                return _SearchCommand;
+            }
+        }
+        public abstract void Sort();
+        public abstract void Search();
+        public abstract List<string> getComboboxSortList();
+        public abstract List<string> getComboboxSearchList();
+        #endregion
     }
 }

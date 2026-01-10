@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
@@ -543,6 +546,8 @@
   <ItemGroup>
     <Resource Include="Images\logo-dark.png" />
     <Resource Include="Images\logo-light.png" />
+    <Resource Include="icon.ico" />
+    <Resource Include="Images\icon.ico" />
     <Content Include="Models\PawnShop.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PawnShop.edmx</DependentUpon>

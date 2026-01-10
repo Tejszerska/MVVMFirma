@@ -14,7 +14,56 @@ namespace MVVMFirma.ViewModels
 {
     public class AllPriceHistoryViewModel : AllViewModel<PriceHistoryExtededView>
     {
-        #region 
+        #region  Abstract implemented methods
+        public override void Sort()
+        {
+            if (SortField == "ID")
+            {
+                List = new ObservableCollection<PriceHistoryExtededView>(List.OrderBy(x => x.ItemID));
+            }
+            if (SortField == "Date of change")
+            {
+                List = new ObservableCollection<PriceHistoryExtededView>(List.OrderBy(x => x.ChangeDate));
+            }
+            if (SortField == "New price")
+            {
+                List = new ObservableCollection<PriceHistoryExtededView>(List.OrderBy(x => x.NewPrice));
+            }
+            if (SortField == "Old price")
+            {
+                List = new ObservableCollection<PriceHistoryExtededView>(List.OrderBy(x => x.OldPrice));
+            }
+        }
+
+        public override void Search()
+        {
+            if (SearchField == "Name")
+            {
+                List = new ObservableCollection<PriceHistoryExtededView>(List.Where(x => x.ItemName != null && x.ItemName.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "ID")
+            {
+                List = new ObservableCollection<PriceHistoryExtededView>(List.Where(x => x.ItemID.ToString().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Date of change")
+            {
+                List = new ObservableCollection<PriceHistoryExtededView>(List.Where(x => x.ChangeDate.ToString().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Employee")
+            {
+                List = new ObservableCollection<PriceHistoryExtededView>(List.Where(x => x.ChangedByEmployee != null && x.ChangedByEmployee.ToLower().Contains(SearchTextBox)));
+            }
+        }
+
+        public override List<string> getComboboxSortList()
+        {
+            return new List<string> {"ID", "Date of change", "New price", "Old price"  };
+        }
+
+        public override List<string> getComboboxSearchList()
+        {
+            return new List<string> {"Name", "ID", "Date of change", "Employee"};
+        }
         public override void Load()
         {
 
@@ -32,7 +81,8 @@ namespace MVVMFirma.ViewModels
                 }
                 );
         }
-        #endregion
+        #endregion Abstract implemented methods
+     
         #region Constructor
         public AllPriceHistoryViewModel()
             : base()

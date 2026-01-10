@@ -15,7 +15,61 @@ namespace MVVMFirma.ViewModels
 {
 public class AllEmployeeShiftsViewModel : AllViewModel<EmpoloyeeShiftExtendedView>
     {
-        #region 
+        #region  Abstract implemented methods
+        public override void Sort()
+        {
+            if(SortField == "Last name")
+            {
+                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.OrderBy(x => x.EmployeeLastName));
+            }
+            if (SortField == "Branch")
+            {
+                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.OrderBy(x => x.BranchName));
+            }
+            if (SortField == "Shift Start")
+            {
+                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.OrderBy(x => x.ShiftStart));
+            }
+            if (SortField == "Shift End")
+            {
+                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.OrderBy(x => x.ShiftEnd));
+            }
+        }
+
+        public override void Search()
+        {
+            if(SearchField == "Last name")
+            {
+                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.EmployeeLastName != null && x.EmployeeLastName.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Branch")
+            {
+                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.BranchName != null && x.BranchName.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Shift Start")
+            {
+                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.ShiftStart.ToString().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Shift End")
+            {
+                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.ShiftEnd != null && x.ShiftEnd.ToString().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "Shift ID")
+            {
+                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.EmployeeShiftId.ToString().StartsWith(SearchTextBox)));
+            }
+        }
+
+        public override List<string> getComboboxSortList()
+        {
+            return new List<string> { "Last name", "Employee's ID", "Branch", "Shift Start", "Shift End" };
+        }
+
+        public override List<string> getComboboxSearchList()
+        {
+            return new List<string> { "Last name", "Shift ID", "Branch", "Shift Start", "Shift End" };
+        }
+
         public override void Load()
         {
 

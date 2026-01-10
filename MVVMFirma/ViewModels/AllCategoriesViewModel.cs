@@ -38,7 +38,43 @@ public class AllCategoriesViewModel : AllViewModel<CategoriesExtendedView>
                 }                  
                 );
         }
-        #endregion
+
+        public override void Sort()
+        {
+            
+            if (SortField == "name")
+            {
+                List = new ObservableCollection<CategoriesExtendedView>(List.OrderBy(x => x.Name));
+            }
+            if (SortField == "parent")
+            {
+                List = new ObservableCollection<CategoriesExtendedView>(List.OrderBy(x => x.ParentCategory));
+            }
+        }
+
+        public override void Search()
+        {
+            if (SearchField == "name")
+            {
+                List = new ObservableCollection<CategoriesExtendedView>(List.Where(x => x.Name != null && x.Name.ToLower().StartsWith(SearchTextBox)));
+            }
+            if (SearchField == "parent")
+            {
+                List = new ObservableCollection<CategoriesExtendedView>(List.Where(x => x.ParentCategory != null && x.ParentCategory.ToLower().StartsWith(SearchTextBox)));
+            }
+        }
+
+        public override List<string> getComboboxSortList()
+        {
+            return new List<string> { "name", "parent" };
+        }
+
+        public override List<string> getComboboxSearchList()
+        {
+            return new List<string> { "name", "parent" };
+        }
+        #endregion  Abstract implemented methods
+
         #region Constructor
         public AllCategoriesViewModel()
             : base()

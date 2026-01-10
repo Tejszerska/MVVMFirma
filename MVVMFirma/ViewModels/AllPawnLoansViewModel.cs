@@ -1,6 +1,8 @@
 using MVVMFirma.Models;
 using MVVMFirma.Models.EntitiesForView;
 using MVVMFirma.ViewModels.Abstract;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -18,7 +20,26 @@ namespace MVVMFirma.ViewModels
         }
         #endregion
 
-        #region List
+        #region Abstract implemented methods
+        public override void Sort()
+        {
+           
+        }
+
+        public override void Search()
+        {
+          
+        }
+
+        public override List<string> getComboboxSortList()
+        {
+            return null;
+        }
+
+        public override List<string> getComboboxSearchList()
+        {
+           return null;
+        }
 
         public override void Load()
         {
