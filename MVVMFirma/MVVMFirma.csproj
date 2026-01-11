@@ -123,10 +123,14 @@
     <Compile Include="Models\EntitiesForView\ItemsExtendedView.cs" />
     <Compile Include="Models\EntitiesForView\KeyAndValue.cs" />
     <Compile Include="Models\EntitiesForView\OnlineSaleOffersExtendedView.cs" />
+    <Compile Include="Models\EntitiesForView\PawnItemForAllView.cs" />
     <Compile Include="Models\EntitiesForView\PawnLoanForAllView.cs" />
     <Compile Include="Models\EntitiesForView\PaymentsExtendedView.cs" />
     <Compile Include="Models\EntitiesForView\PriceHistoryExtededView.cs" />
+    <Compile Include="Models\EntitiesForView\PurchaseContractForAllView.cs" />
     <Compile Include="Models\EntitiesForView\RecordHistoryExtendedView.cs" />
+    <Compile Include="Models\EntitiesForView\SaleItemForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\SalesForAllView.cs" />
     <Compile Include="Models\FinalizationSources.cs">
       <DependentUpon>PawnShop.tt</DependentUpon>
     </Compile>

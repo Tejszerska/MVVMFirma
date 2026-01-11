@@ -9,16 +9,47 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="sale_id" Binding="{Binding sale_id}"/>
-                <DataGridTextColumn Header="sale_price" Binding="{Binding sale_price}"/>
-                <DataGridTextColumn Header="sale_date" Binding="{Binding sale_date}"/>
-                <DataGridTextColumn Header="finalization_source" Binding="{Binding finalization_source}"/>
-                <DataGridTextColumn Header="online_offer_id" Binding="{Binding online_offer_id}"/>
-                <DataGridTextColumn Header="payment_id" Binding="{Binding payment_id}"/>
-                <DataGridTextColumn Header="status" Binding="{Binding branch_id}"/>
-                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
-                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
+                <DataGridTextColumn Header="Sale ID" Binding="{Binding SaleID}"/>
+                <DataGridTextColumn Header="Sale Date" Binding="{Binding SaleDate, StringFormat=\{0:yyyy-MM-dd\}}"/>
+                <DataGridTextColumn Header="Total Amount" Binding="{Binding TotalAmount, StringFormat=\{0:C\}}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="Payment Method" Binding="{Binding PaymentMethod}"/>
+                <DataGridTextColumn Header="Payment Date" Binding="{Binding PaymentDate, StringFormat=\{0:yyyy-MM-dd\}}"/>
             </DataGrid.Columns>
+
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Border Padding="2">
+                        <StackPanel>
+                            <ItemsControl ItemsSource="{Binding Items}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Padding="0,5,0,10"  Background="{DynamicResource HighlatedRow}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <TextBlock Grid.Row="0" FontWeight="Bold" Style="{DynamicResource ThemeColorText}">
+                                                    <Run Text="{Binding ItemID, StringFormat='{}{0}:'}" />
+                                                    <Run Text="{Binding ItemName}" />
+                                                </TextBlock>
+
+                                                <TextBlock Grid.Row="1" Margin="0,2,0,0" Style="{DynamicResource ThemeColorText}" Opacity="0.9">
+                                                    <Run Text="{Binding Condition, StringFormat='Condition: {0}'}" />
+                                                    <Run Text=" | " Foreground="{DynamicResource Accent}" />
+                                                    <Run Text="{Binding SellingPrice, StringFormat='Price: {0:C}'}" />
+                                                </TextBlock>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
     </Grid>
 </local:AllViewBase>

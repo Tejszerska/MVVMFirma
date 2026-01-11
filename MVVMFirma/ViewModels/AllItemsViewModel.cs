@@ -36,19 +36,30 @@ public class AllItemsViewModel : AllViewModel<ItemsExtendedView>
         {
             if (SearchField == "ID")
             {
-                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.ItemId.ToString().StartsWith(SearchTextBox)));
+
+                if (int.TryParse(SearchTextBox, out int search))
+                    {
+                    List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.ItemId == search));
+                }
             }
             if (SearchField == "Name")
             {
-                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.ItemName != null && x.ItemName.ToLower().StartsWith(SearchTextBox)));
+                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.ItemName != null && x.ItemName.ToLower().Contains(SearchTextBox)));
             }
             if (SearchField == "Estimated Value")
             {
-                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.EstimatedValue.ToString().StartsWith(SearchTextBox)));
-            }   
+                if (decimal.TryParse(SearchTextBox, out decimal search))
+                {
+                    List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.EstimatedValue == search));
+                }
+
+            }
             if (SearchField == "Sale Price")
             {
-                List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.SalePrice.ToString().StartsWith(SearchTextBox)));
+                if (decimal.TryParse(SearchTextBox, out decimal search))
+                {
+                    List = new ObservableCollection<ItemsExtendedView>(List.Where(x => x.SalePrice == search));
+                }
             }
             if (SearchField == "Status")
             {

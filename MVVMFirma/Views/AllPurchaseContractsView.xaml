@@ -9,15 +9,46 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding List}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="purchase_contract_id" Binding="{Binding purchase_contract_id}"/>
-                <DataGridTextColumn Header="client_id" Binding="{Binding client_id}"/>
-                <DataGridTextColumn Header="agreement_number" Binding="{Binding agreement_number}"/>
-                <DataGridTextColumn Header="purchase_date" Binding="{Binding purchase_date}"/>
-                <DataGridTextColumn Header="total_purchase_price" Binding="{Binding total_purchase_price}"/>
-                <DataGridTextColumn Header="status" Binding="{Binding status}"/>
-                <DataGridTextColumn Header="Active?" Binding="{Binding is_active}"/>
-                <DataGridTextColumn Header="History ID" Binding="{Binding history_id}"/>
+                <DataGridTextColumn Header="Agreement Number" Binding="{Binding AgreementNumber}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Purchase Date" Binding="{Binding PurchaseDate, StringFormat=\{0:yyyy-MM-dd\}}"/>
+                <DataGridTextColumn Header="Total Amount" Binding="{Binding TotalAmount}"/>
             </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Border Padding="3" Background="{DynamicResource HighlatedRow}">
+                        <ItemsControl ItemsSource="{Binding Items}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0,1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" FontWeight="Bold" Style="{DynamicResource ThemeColorText}">
+                                            <Run Text="{Binding ItemID, StringFormat='{}{0}:'}" />
+                                            <Run Text="{Binding ItemName}" />
+                                        </TextBlock>
+
+                                        <TextBlock Grid.Row="1" Margin="0,2,0,0" Style="{DynamicResource ThemeColorText}">
+                                            <Run Text="Condition:"/>
+                                            <Run Text="{Binding Condition}" />
+                                            <Run Text=" | " Foreground="{DynamicResource Accent}" />
+                                            <Run Text="{Binding EstimatedValue, StringFormat='Est. Value: {0:C}'}" />
+                                            <Run Text=" | " Foreground="{DynamicResource Accent}" />
+                                            <Run Text="{Binding SellingPrice, StringFormat='Selling price: {0:C}'}" />
+                                        </TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Border>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+
         </DataGrid>
     </Grid>
 </local:AllViewBase>

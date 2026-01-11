@@ -37,7 +37,11 @@ public class AllEmployeesViewModel : AllViewModel<Employees>
             }
             if (SearchField == "ID")
             {
-                List = new ObservableCollection<Employees>(List.Where(x => x.employee_id.ToString().StartsWith(SearchTextBox)));
+                if (int.TryParse(SearchTextBox, out int search))
+                {
+                    List = new ObservableCollection<Employees>(List.Where(x => x.employee_id == search));
+                }
+
             }
         }
 

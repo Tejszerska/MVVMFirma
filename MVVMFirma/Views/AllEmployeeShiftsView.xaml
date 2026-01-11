@@ -13,8 +13,8 @@
                 <DataGridTextColumn Header="First Name" Binding="{Binding EmployeeFirstName}"/>
                 <DataGridTextColumn Header="Last Name" Binding="{Binding EmployeeLastName}"/>
                 <DataGridTextColumn Header="Branch Name" Binding="{Binding BranchName}"/>
-                <DataGridTextColumn Header="Shift start" Binding="{Binding ShiftStart}"/>
-                <DataGridTextColumn Header="Shift end" Binding="{Binding ShiftEnd}"/>
+                <DataGridTextColumn Header="Shift start" Binding="{Binding ShiftStart, StringFormat=\{0:yyyy-MM-dd hh:mm:ss\}}"/>
+                <DataGridTextColumn Header="Shift end" Binding="{Binding ShiftEnd, StringFormat=\{0:yyyy-MM-dd hh:mm:ss\}}"/>
                 <DataGridTextColumn Header="Notes" Binding="{Binding Notes}"/>
             </DataGrid.Columns>
         </DataGrid>

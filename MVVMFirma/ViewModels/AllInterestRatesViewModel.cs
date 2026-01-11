@@ -47,15 +47,26 @@ public class AllInterestRatesViewModel : AllViewModel<InterestRates>
             }
             if (SearchField == "Minimal interest")
             {
-                List = new ObservableCollection<InterestRates>(List.Where(x => x.minimal_interest.ToString().StartsWith(SearchTextBox)));
+                if (decimal.TryParse(SearchTextBox, out decimal search))
+                    {
+                    List = new ObservableCollection<InterestRates>(List.Where(x => x.minimal_interest == search));
+                }
+
             }
             if (SearchField == "Period days")
             {
-                List = new ObservableCollection<InterestRates>(List.Where(x => x.period_days.ToString().StartsWith(SearchTextBox)));
+                if (int.TryParse(SearchTextBox, out int search))
+                    {
+                    List = new ObservableCollection<InterestRates>(List.Where(x => x.period_days == search));
+                }
             }
             if (SearchField == "Rate percent")
             {
-                List = new ObservableCollection<InterestRates>(List.Where(x => x.rate_percent.ToString().StartsWith(SearchTextBox)));
+                if (decimal.TryParse(SearchTextBox, out decimal search))
+                {
+                    List = new ObservableCollection<InterestRates>(List.Where(x => x.rate_percent == search));
+                }
+
             }
             if (SearchField == "Default")
             {

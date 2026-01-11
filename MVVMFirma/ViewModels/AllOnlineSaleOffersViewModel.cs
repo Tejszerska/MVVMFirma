@@ -1,6 +1,7 @@
 using MVVMFirma.Models;
 using MVVMFirma.Models.EntitiesForView;
 using MVVMFirma.ViewModels.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -37,17 +38,22 @@ public class AllOnlineSaleOffersViewModel : AllViewModel<OnlineSaleOffersExtende
             {
                 List = new ObservableCollection<OnlineSaleOffersExtendedView>(List.Where(x => x.Platform != null && x.Platform.ToLower().StartsWith(SearchTextBox)));
             }
-            if (SearchField == "Expiration Date")
-            {
-                List = new ObservableCollection<OnlineSaleOffersExtendedView>(List.Where(x => x.ExpirationDate.ToString().StartsWith(SearchTextBox)));
-            }
+            
             if (SearchField == "Price")
             {
-                List = new ObservableCollection<OnlineSaleOffersExtendedView>(List.Where(x => x.Price.ToString().StartsWith(SearchTextBox)));
+                if (decimal.TryParse(SearchTextBox, out decimal search))
+                    {
+                    List = new ObservableCollection<OnlineSaleOffersExtendedView>(List.Where(x => x.Price == search));
+                }
+
             }
             if (SearchField == "Offer ID")
             {
-                List = new ObservableCollection<OnlineSaleOffersExtendedView>(List.Where(x => x.OnlineSaleOfferId.ToString().StartsWith(SearchTextBox)));
+                if (int.TryParse(SearchTextBox, out int search))
+                {
+                  List = new ObservableCollection<OnlineSaleOffersExtendedView>(List.Where(x => x.OnlineSaleOfferId == search));
+                }
+
             }
         }
 

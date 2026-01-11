@@ -13,7 +13,7 @@
                 <DataGridTextColumn Header="Item Name" Binding="{Binding ItemName}"/>
                 <DataGridTextColumn Header="Platform" Binding="{Binding Platform}"/>
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
-                <DataGridTextColumn Header="Expiration Date" Binding="{Binding ExpirationDate}"/>
+                <DataGridTextColumn Header="Expiration Date" Binding="{Binding ExpirationDate, StringFormat=\{0:yyyy-MM-dd\}}"/>
                 <DataGridTextColumn Header="Offer Title" Binding="{Binding OfferTitle}"/>
                 <DataGridTextColumn Header="Link" Binding="{Binding Link}"/>
                 

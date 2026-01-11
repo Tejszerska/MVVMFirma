@@ -38,8 +38,12 @@ namespace MVVMFirma.ViewModels
                 List = new ObservableCollection<ClientsExtendedView>(List.Where(x => x.LastName != null && x.LastName.ToLower().StartsWith(SearchTextBox)));
             }
             if (SearchField == "Client's ID")
-            {                
-                List = new ObservableCollection<ClientsExtendedView>(List.Where(x => x.ClientId.ToString() == SearchTextBox));
+            {
+                if (int.TryParse(SearchTextBox, out int search))
+                {
+                   List = new ObservableCollection<ClientsExtendedView>(List.Where(x => x.ClientId == search));
+                }
+
              }
             if (SearchField == "Document Number")
                 {

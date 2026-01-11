@@ -43,11 +43,18 @@ namespace MVVMFirma.ViewModels
             }
             if (SearchField == "ID")
             {
-                List = new ObservableCollection<PriceHistoryExtededView>(List.Where(x => x.ItemID.ToString().StartsWith(SearchTextBox)));
+                if (int.TryParse(SearchTextBox, out int search))
+                {
+                    List = new ObservableCollection<PriceHistoryExtededView>(List.Where(x => x.ItemID == search));
+                }
+
             }
             if (SearchField == "Date of change")
             {
-                List = new ObservableCollection<PriceHistoryExtededView>(List.Where(x => x.ChangeDate.ToString().StartsWith(SearchTextBox)));
+                if (DateTime.TryParse(SearchTextBox, out DateTime searchDate))
+                {
+                     List = new ObservableCollection<PriceHistoryExtededView>(List.Where(x => x.ChangeDate.Date == searchDate.Date));
+                }
             }
             if (SearchField == "Employee")
             {

@@ -46,23 +46,33 @@ public class AllEmployeeShiftsViewModel : AllViewModel<EmpoloyeeShiftExtendedVie
             {
                 List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.BranchName != null && x.BranchName.ToLower().StartsWith(SearchTextBox)));
             }
-            if (SearchField == "Shift Start")
+            
+            if (SearchField == "Shift ID")
             {
-                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.ShiftStart.ToString().StartsWith(SearchTextBox)));
+                if (int.TryParse(SearchTextBox, out int search))
+                {
+                     List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.EmployeeShiftId == search));
+                }
+            }
+            if(SearchField == "Shift Start")
+            {
+                if(DateTime.TryParse(SearchTextBox, out DateTime searchDate))
+                {
+                    List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.ShiftStart.Date == searchDate.Date));
+                }
             }
             if (SearchField == "Shift End")
             {
-                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.ShiftEnd != null && x.ShiftEnd.ToString().StartsWith(SearchTextBox)));
-            }
-            if (SearchField == "Shift ID")
-            {
-                List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.EmployeeShiftId.ToString().StartsWith(SearchTextBox)));
+                if (DateTime.TryParse(SearchTextBox, out DateTime searchDate))
+                {
+                    List = new ObservableCollection<EmpoloyeeShiftExtendedView>(List.Where(x => x.ShiftEnd.HasValue && x.ShiftEnd.Value.Date == searchDate.Date));
+                }
             }
         }
 
         public override List<string> getComboboxSortList()
         {
-            return new List<string> { "Last name", "Employee's ID", "Branch", "Shift Start", "Shift End" };
+            return new List<string> {"Shift Start", "Shift End" };
         }
 
         public override List<string> getComboboxSearchList()

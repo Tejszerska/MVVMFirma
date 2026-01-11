@@ -4,8 +4,24 @@
     <SolidColorBrush x:Key="WorkspaceBg" Color="#192432"/>
     <SolidColorBrush x:Key="MainText" Color="#F2F1ED"/>
     <SolidColorBrush x:Key="Accent" Color="#F7D370"/>
+    <SolidColorBrush x:Key="HighlatedRow" Color="#14315c"/>
     <BitmapImage x:Key="AppLogo" UriSource="pack://application:,,,/Images/logo-dark.png" />
+    
+    <Style TargetType="{x:Type DataGridRow}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="FontSize" Value="12" />
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontWeight" Value="SemiBold" />
 
+                <Setter Property="MinHeight" Value="45" />
+                <Setter Property="Margin" Value="0,5" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
     <Style TargetType="{x:Type DataGrid}">
         <Setter Property="Background" Value="{StaticResource WorkspaceBg}"/>
         <Setter Property="RowBackground" Value="{StaticResource WorkspaceBg}"/>
@@ -15,9 +31,23 @@
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="HorizontalGridLinesBrush" Value="#34495e"/>
         <Setter Property="VerticalGridLinesBrush" Value="#34495e"/>
-        <Setter Property="HeadersVisibility" Value="Column"/> 
-    </Style>
+        <Setter Property="HeadersVisibility" Value="Column"/>
 
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                         Color="{Binding Color, Source={StaticResource HighlatedRow}}" />
+
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" 
+                         Color="{Binding Color, Source={StaticResource MainText}}" />
+
+            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" 
+                         Color="{Binding Color, Source={StaticResource HighlatedRow}}" />
+
+            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" 
+                         Color="{Binding Color, Source={StaticResource MainText}}" />
+        </Style.Resources>
+
+    </Style>
 
     <Style TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="Background" Value="{StaticResource SidebarBg}"/>

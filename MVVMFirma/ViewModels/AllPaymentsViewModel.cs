@@ -15,22 +15,57 @@ namespace MVVMFirma.ViewModels
         #region  Abstract implemented methods
         public override void Sort()
         {
-
+            if (SortField == "ID")
+            {
+                List = new ObservableCollection<PaymentsExtendedView>(List.OrderBy(x => x.PaymentID));
+            }
+            if (SortField == "Date")
+            {
+                List = new ObservableCollection<PaymentsExtendedView>(List.OrderBy(x => x.PaymentDate));
+            }
+            if (SortField == "Amount")
+            {
+                List = new ObservableCollection<PaymentsExtendedView>(List.OrderBy(x => x.Amount));
+            }
         }
 
         public override void Search()
         {
-
+            if (SearchField == "ID")
+            {
+                if (int.TryParse(SearchTextBox, out int search))
+                {
+                    List = new ObservableCollection<PaymentsExtendedView>(List.Where(x => x.PaymentID == search));
+                }
+            }
+            if (SearchField == "Date")
+            {
+                if (DateTime.TryParse(SearchTextBox, out DateTime searchDate))
+                {
+                    List = new ObservableCollection<PaymentsExtendedView>(List.Where(x => x.PaymentDate.Date == searchDate.Date));
+                }
+            }
+            if (SearchField == "Amount")
+            {
+                if (decimal.TryParse(SearchTextBox, out decimal search))
+                {
+                    List = new ObservableCollection<PaymentsExtendedView>(List.Where(x => x.Amount == search));
+                }
+            }
+            if (SearchField == "Payment method")
+            {
+                List = new ObservableCollection<PaymentsExtendedView>(List.Where(x => x.PaymentMethod != null && x.PaymentMethod.ToLower().StartsWith(SearchTextBox)));
+            }
         }
 
         public override List<string> getComboboxSortList()
         {
-            return null;
+            return new List<string> { "Date", "ID", "Amount"};
         }
 
         public override List<string> getComboboxSearchList()
         {
-            return null;
+            return new List<string> { "Date", "ID", "Amount", "Payment method" };
         }
         public override void Load()
         {
